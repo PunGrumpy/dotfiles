@@ -11,3 +11,13 @@
 ## Reference setting
 
 [Takuya](https://github.com/craftzdog/dotfiles-public)
+
+## Problem on WindowOS 
+
+### NeoVim Treesitter
+
+[Tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter)
+
+### NeoVim Packer
+
+[Packer](https://github.com/wbthomason/packer.nvim)
