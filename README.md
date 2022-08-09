@@ -4,7 +4,8 @@
 
 ## ⚙️ Contents
 
--   NeoVim config
+- vim (NeoVim) config
+  - Plugins are managed with [dein.vim](https://github.com/Shougo/dein.vim)
 -   git config
 -   PowerShell config
 
@@ -34,9 +35,3 @@ Requires Neovim (>= 0.5)
 ## ©️ Reference setting
 
 [Takuya](https://github.com/craftzdog/dotfiles-public/tree/nvim-05)
-
-## 🪟 Problem on WindowOS
-
-### NeoVim Treesitter
-
-[Tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter)
