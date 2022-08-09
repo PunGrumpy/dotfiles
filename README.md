@@ -2,12 +2,18 @@
 
 **Warning** : Don't bindly use my setting unless you know what that entails. Use at your own risk!
 
-## Contents
+## ⚙️ Contents
 
-- NeoVim config
-- git config
-- PowerShell config
+-   NeoVim config
+-   git config
+-   PowerShell config
 
-## Reference setting
+## ©️ Reference setting
 
-[Takuya](https://github.com/craftzdog/dotfiles-public)
+[Takuya](https://github.com/craftzdog/dotfiles-public/tree/nvim-05)
+
+## 🪟 Problem on WindowOS
+
+### NeoVim Treesitter
+
+[Tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter)
