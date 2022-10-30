@@ -66,5 +66,4 @@ Requires [Neovim](https://neovim.io/) (>= 0.7)
 
 ## ⚠️ Problem on WindowOS
 
-- [Tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- [Packer](https://github.com/wbthomason/packer.nvim)
+- [Markdown Preview](https://github.com/iamcco/markdown-preview.nvim)
