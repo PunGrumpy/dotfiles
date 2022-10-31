@@ -8,9 +8,9 @@
 -   git config
 -   PowerShell config
 
-### Neovim setup
+## Neovim setup
 
-Requires [Neovim](https://neovim.io/) (>= 0.7)
+Requires [Neovim](https://neovim.io/) (>= 0.8)
 
 - [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim) - A plugin manager for Neovim
 - [svrana/neosolarized.nvim](https://github.com/svrana/neosolarized.nvim) - A truecolor, solarized dark colorscheme
@@ -22,7 +22,6 @@ Requires [Neovim](https://neovim.io/) (>= 0.7)
 - [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion engine plugin for neovim written in Lua
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - A collection of configurations for Neovim's built-in LSP
 - [jose-elias-alvarez/null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim) - Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
-- [MunifTanjim/prettier.nvim](https://github.com/MunifTanjim/prettier.nvim) - Prettier plugin for Neovim's built-in LSP client
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) - Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters
 - [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
 - [glepnir/lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim) - A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI
@@ -39,18 +38,7 @@ Requires [Neovim](https://neovim.io/) (>= 0.7)
 - [folke/zen-mode.nvim](https://github.com/folke/zen-mode.nvim) - Distraction-free mode
 - [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) - Markdown live preview
 
-### Shell setup (macOS & Linux)
-
-- [Fish shell](https://fishshell.com/)
-- [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
-- [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 5: `fisher install ilancosman/tide@v5`
-- [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use Hack.
-- [z for fish](https://github.com/jethrokuan/z) - Directory jumping
-- [Exa](https://the.exa.website/) - `ls` replacement
-- [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
-- [peco](https://github.com/peco/peco) - Interactive filtering
-
-### PowerShell setup (Windows)
+## PowerShell setup (Windows)
 
 - [Scoop](https://scoop.sh/) - A command-line installer
 - [Git for Windows](https://gitforwindows.org/)
@@ -63,7 +51,3 @@ Requires [Neovim](https://neovim.io/) (>= 0.7)
 ## ©️ Reference setting
 
 [Takuya](https://github.com/craftzdog/dotfiles-public)
-
-## ⚠️ Problem on WindowOS
-
-- [Markdown Preview](https://github.com/iamcco/markdown-preview.nvim)
