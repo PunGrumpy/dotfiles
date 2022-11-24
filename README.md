@@ -38,6 +38,18 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 - [folke/zen-mode.nvim](https://github.com/folke/zen-mode.nvim) - Distraction-free mode
 - [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) - Markdown live preview
 
+## Shell setup (macOS & Linux)
+
+- [Home Brew](https://brew.sh/)
+- [Fish shell](https://fishshell.com/)
+- [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
+- [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 5: `fisher install ilancosman/tide@v5`
+- [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use Hack.
+- [z for fish](https://github.com/jethrokuan/z) - Directory jumping
+- [Exa](https://the.exa.website/) - `ls` replacement
+- [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
+- [peco](https://github.com/peco/peco) - Interactive filtering
+
 ## PowerShell setup (Windows)
 
 - [Scoop](https://scoop.sh/) - A command-line installer
