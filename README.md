@@ -2,6 +2,8 @@
 
 **Warning** : Don't bindly use my setting unless you know what that entails. Use at your own risk!
 
+**Recommend** : For Windows user you can find the color scheme for **Windows Terminal** in https://windowsterminalthemes.dev/
+
 ## ⚙️ Contents
 
 -   NeoVim config
@@ -53,6 +55,7 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 
 ## PowerShell setup (Windows)
 
+- [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=th-th&gl=th)
 - [Scoop](https://scoop.sh/) - A command-line installer
 - [Git for Windows](https://gitforwindows.org/)
 - [Oh My Posh](https://ohmyposh.dev/) - Prompt theme engine
