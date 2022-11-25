@@ -7,6 +7,7 @@
 -   NeoVim config
 -   git config
 -   PowerShell config
+-   Starship config
 
 ## Neovim setup
 
@@ -59,6 +60,10 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 - [PSReadLine](https://docs.microsoft.com/en-us/powershell/module/psreadline/) - Cmdlets for customizing the editing environment, used for autocompletion
 - [z](https://www.powershellgallery.com/packages/z) - Directory jumper
 - [PSFzf](https://github.com/kelleyma49/PSFzf) - Fuzzy finder
+
+## Starship setup (macOS, Linux, Windwos, etc.)
+
+- [Starship](https://starship.rs/) - Cross shell prompt
 
 ## ©️ Reference setting
 
