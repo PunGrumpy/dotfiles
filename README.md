@@ -71,3 +71,4 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 ## ©️ Reference setting
 
 [Takuya](https://github.com/craftzdog/dotfiles-public)
+[Christian Lempa](https://github.com/ChristianLempa/dotfiles-win)
