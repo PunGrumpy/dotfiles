@@ -17,6 +17,7 @@ This terminal use:
 This terminal use:
 - color scheme **One Half Dark**
 - powershell
+- oh-my-posh
 - neovim
 
 **Warning** : Don't bindly use my setting unless you know what that entails. Use at your own risk!
