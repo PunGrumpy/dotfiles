@@ -1,12 +1,15 @@
 [github]
-  user = PunGrumpy
+	user = PunGrumpy
+[user]
+	email = <email>
+	name = <name>
 [init]
   author = PunGrumpy
   defaultBranch = main
 [core]
-  excludesfile = ~/.gitignore
-  editor = nvim
-  ignorecase = false
+	excludesfile = ~/.gitignore
+	editor = nvim
+	ignorecase = false
 [push]
   default = simple
 [color]
@@ -43,8 +46,6 @@
 
 [hub]
   protocol = https
-[github]
-	user = craftzdog
 [diff]
   tool = nvimdiff
 [difftool "nvimdiff"]
