@@ -17,7 +17,7 @@ command_timeout = 1000
 # $all[╰─](238)$character"""
 
 # new config
-format = """$env_var $all"""
+format = """$env_var $all [❯](fff)$character"""
 
 # Change the default prompt characters
 [character]
@@ -48,7 +48,7 @@ disabled = false
 
 [directory]
 truncation_length = 1
-truncation_symbol = "…/"
+truncation_symbol = ".../"
 home_symbol = " ~"
 read_only_style = "197"
 read_only = "  "
@@ -58,7 +58,7 @@ format = "at [$path]($style)[$read_only]($read_only_style) "
 symbol = " "
 format = "via [$symbol$branch]($style) "
 # truncation_length = 4
-truncation_symbol = "…/"
+truncation_symbol = ".../"
 style = "bold green"
 
 [git_status]
@@ -81,7 +81,6 @@ format = 'via [ﴱ $context\($namespace\)](bold purple) '
 disabled = false
 
 # (deactivated because of no space left)
-# 
 [terraform]
 format = "via [ terraform $version]($style) 壟 [$workspace]($style) "
 disabled = true
