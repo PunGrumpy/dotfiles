@@ -1,5 +1,24 @@
 # PunGrumpy's dotfiles
 
+![Example Terminal](./images/example-terminal-1.png)
+This terminal use:
+- color scheme **Solarized Dark**
+- fish
+- tide fish
+- neovim
+
+![Example Terminal](./images/example-terminal-2.png)
+This terminal use:
+- color scheme **Xcad**
+- fish
+- starship
+
+![Example Terminal](./images/example-terminal-3.png)
+This terminal use:
+- color scheme **One Half Dark**
+- powershell
+- neovim
+
 **Warning** : Don't bindly use my setting unless you know what that entails. Use at your own risk!
 
 **Recommend** : For Windows user you can find the color scheme for **Windows Terminal** in https://windowsterminalthemes.dev/
