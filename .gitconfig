@@ -10,6 +10,7 @@
 	excludesfile = ~/.gitignore
 	editor = nvim
 	ignorecase = false
+	longpaths = true
 [push]
   default = simple
 [color]
