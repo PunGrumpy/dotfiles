@@ -1,3 +1,6 @@
+# set PowerShell to UTF-8
+[console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
+
 # Load prompt config
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\grumpy.omp.json" | Invoke-Expression
 
