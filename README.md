@@ -2,6 +2,7 @@
 
 ![Example Terminal](./images/example-terminal-1.png)
 This terminal use:
+
 - color scheme **Solarized Dark**
 - fish
 - tide fish
@@ -9,12 +10,14 @@ This terminal use:
 
 ![Example Terminal](./images/example-terminal-2.png)
 This terminal use:
+
 - color scheme **Xcad**
 - fish
 - starship
 
 ![Example Terminal](./images/example-terminal-3.png)
 This terminal use:
+
 - color scheme **One Half Dark**
 - powershell
 - oh-my-posh
@@ -26,10 +29,10 @@ This terminal use:
 
 ## ⚙️ Contents
 
--   NeoVim config
--   git config
--   PowerShell config
--   Starship config
+- NeoVim config
+- git config
+- PowerShell config
+- Starship config
 
 ## Neovim setup
 
@@ -83,6 +86,19 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 - [PSReadLine](https://docs.microsoft.com/en-us/powershell/module/psreadline/) - Cmdlets for customizing the editing environment, used for autocompletion
 - [z](https://www.powershellgallery.com/packages/z) - Directory jumper
 - [PSFzf](https://github.com/kelleyma49/PSFzf) - Fuzzy finder
+
+### Link files
+
+```powershell
+# Create a symbolic link to the profile file
+New-Item -ItemType SymbolicLink -Path $PROFILE -Value ".dotfiles\powershell\Microsoft.PowerShell_profile.ps1"
+
+# Create a symbolic link to the theme of Oh My Posh
+New-Item -ItemType SymbolicLink -Path $env:POSH_THEMES_PATH -Value ".dotfiles\powershell\grumpy.omp.json"
+
+# Create a symbolic link to the theme of Windows Terminal
+New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json -Value ".dotfiles\windows-terminal\settings.json"
+```
 
 ## Starship setup (macOS, Linux, Windwos, etc.)
 
