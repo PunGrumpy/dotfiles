@@ -1,8 +1,7 @@
 [github]
   user = PunGrumpy
 [user]
-	email = <email>
-	name = <name>
+	name = PunGrumpy
 [init]
   author = PunGrumpy
   defaultBranch = main
