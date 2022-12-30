@@ -2,6 +2,7 @@
   user = PunGrumpy
 [user]
 	name = PunGrumpy
+  email = noppakorn.pun@gmail.com
 [init]
   author = PunGrumpy
   defaultBranch = main
