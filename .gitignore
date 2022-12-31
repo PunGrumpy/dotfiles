@@ -63,6 +63,18 @@ Pods/
 # Fish local config
 .config/fish/config-local.fish
 .config/fish/fish_variables.x86_64
+.config/fish/fish_variables
+.config/fish/fish_plugins.x86_64
+.config/fish/fish_plugins
+.config/fish/completions
+.config/fish/functions/_*
+.config/fish/functions/fish_mode_prompt.fish
+.config/fish/functions/fish_prompt.fish
+.config/fish/functions/fisher.fish
+.config/fish/functions/tide.fish
+.config/fish/functions/tide/
+.config/fish/conf.d/_*
+.config/fish/conf.d/z*
 
 # Karabiner
 .config/karabiner/automatic_backups
