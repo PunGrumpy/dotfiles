@@ -2,6 +2,15 @@ set fish_greeting ""
 
 set -gx TERM xterm-256color
 
+# set title terminal and add 👻 emoji
+function fish_title
+  set -l title (basename (pwd))
+  if test -n "$SSH_CONNECTION"
+    set title "$title (SSH) 👻"
+  end
+  echo -n "$title"
+end
+
 # theme
 set -g theme_color_scheme terminal-dark
 set -g fish_prompt_pwd_dir_length 1
