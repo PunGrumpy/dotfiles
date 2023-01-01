@@ -67,7 +67,8 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 ## Shell setup (macOS & Linux)
 
 - [Home Brew](https://brew.sh/)
-- [Fish shell](https://fishshell.com/)
+- [Stow](https://www.gnu.org/software/stow/) - Dotfiles manager: `sudo apt install -y update && sudo apt install -y stow`
+- [Fish shell](https://fishshell.com/) - User-friendly shell
 - [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
 - [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 5: `fisher install ilancosman/tide@v5`
 - [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use Hack.
