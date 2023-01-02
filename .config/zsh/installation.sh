@@ -24,6 +24,7 @@ else
     read -r answer
     if [ "$answer" = "y" ]; then
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        exit
     fi
 fi
 
@@ -49,4 +50,14 @@ else
     if [ "$answer" = "y" ]; then
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     fi
+fi
+
+# Ask to ./links.sh
+echo "${WHITE}Do you want to link files? (y/n)${NC}"
+read -r answer
+if [ "$answer" = "y" ]; then
+    ./links.sh
+else 
+    echo "${RED}Linking files is skipped${NC}"
+    echo "${RED}Do you want to link file, you can run ./links.sh${NC}"
 fi

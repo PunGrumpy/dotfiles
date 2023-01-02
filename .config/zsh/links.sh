@@ -1,4 +1,5 @@
 # Color definitions
+WHILE='\033[0;33m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
@@ -16,18 +17,24 @@ link() {
 # Check if the file exists, if it ask to link it, if not ask to create it
 ask() {
     if [ -f "$1" ]; then
-        echo "${GREEN}$1 exists${NC}"
-        echo "${GREEN}Do you want to link it? (y/n)${NC}"
+        echo "${WHITE}$1 exists${NC}"
+        echo "${WHITE}Do you want to link it? (y/n)${NC}"
         read -r answer
         if [ "$answer" = "y" ]; then
             link "$1" "$2"
+            # after linked the file, echo "Link success"
+            echo "${GREEN}Link success${NC}"
         fi
     else
         echo "${RED}$1 does not exist${NC}"
-        echo "${RED}Do you want to create it? (y/n)${NC}"
+        echo "${WHITE}Do you want to create it? (y/n)${NC}"
         read -r answer
         if [ "$answer" = "y" ]; then
             touch "$1"
+            # after created the file, echo "Create success"
+            echo "${GREEN}Create success${NC}"
+            # after the file is created, ask to link it
+            ask "$1" "$2"
         fi
     fi
 }
