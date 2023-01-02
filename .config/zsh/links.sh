@@ -1,10 +1,10 @@
 # Link funtion
 link() {
     if [ -f "$1" ]; then
-        echo -e "${GREEN}Linking $1${NC}"
-        ln -s "$1" "$2"
+        echo "${GREEN}Linking $1${NC}"
+        ln -sf "$1" "$2"
     else
-        echo -e "${RED}$1 does not exist${NC}"
+        echo "${RED}$1 does not exist${NC}"
     fi
 }
 
