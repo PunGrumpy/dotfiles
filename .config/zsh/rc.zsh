@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # check file exists
 source_if_exists() {
     if [ -f "$1" ]; then
@@ -11,24 +18,7 @@ if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
 fi
 
 # ----- Aliases -----
-# LS
-if command -v exa >/dev/null 2>&1; then
-    alias ls='exa'
-    alias la='exa -a'
-    alias ll='exa -l --git --group'
-    alias lla='exa -la --git --group'
-    alias lt='exa -T'
-else
-    alias ls='ls --color=auto'
-    alias la='ls -a'
-    alias ll='ls -l'
-    alias lla='ls -la'
-    alias lt='ls -T'
-fi
-# Git
-alias g='git'
-# Vim
-alias v='vim'
+source_if_exists ~/.config/zsh/aliases.zsh
 
 # ----- Bin -----
 # Add ~/.local/bin to PATH
@@ -63,3 +53,6 @@ fi
 # ----- Zsh-editor -----
 ZSH_EDITOR="vscode"
 export ZSH_EDITOR
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/p10k.zsh.
+[[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
