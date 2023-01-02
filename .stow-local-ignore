@@ -4,6 +4,10 @@
 # Folder assets
 /icon-terminal
 /images
+/installation
+
+# All .sh files
+\.sh
 
 RCS
 .+,v
