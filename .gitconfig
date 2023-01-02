@@ -63,3 +63,5 @@
 	process = git-lfs filter-process
 [ghq]
   root = ~/.ghq
+[safe]
+  directory = //wsl.localhost/Ubuntu/home/grumpy/.dotfiles
