@@ -56,8 +56,8 @@ fi
 echo "${WHITE}Do you want to link files? (y/n)${NC}"
 read -r answer
 if [ "$answer" = "y" ]; then
-    ./links.sh
+    ./link.sh
 else 
     echo "${RED}Linking files is skipped${NC}"
-    echo "${RED}Do you want to link file, you can run ./links.sh${NC}"
+    echo "${RED}Do you want to link file, you can run ./link.sh${NC}"
 fi
