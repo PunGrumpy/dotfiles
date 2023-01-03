@@ -1,5 +1,6 @@
 # Git
 /.git
+configstore
 
 # Folder assets
 /icon-terminal
