@@ -1,27 +1,49 @@
 # PunGrumpy's dotfiles
 
-![Example Terminal](./images/example-terminal-1.png)
-This terminal use:
+<details>
+    <summary>Example Terminal 1</summary>
+    <img src="./images/example-terminal-1.png"
+        alt="Example Terminal 1" />
+    <p>This terminal use:</p>
+    <ul>
+        <li>color scheme <strong>Solarized Dark (Modded)</strong></li>
+        <li>fish</li>
+        <li>tmux</li>
+    </ul>
+</details>
 
-- color scheme **Solarized Dark**
-- fish
-- tide fish
-- neovim
+<details>
+    <summary>Example Terminal 2</summary>
+    <img src="./images/example-terminal-2.png"
+        alt="Example Terminal 2" />
+    <p>This terminal use:</p>
+    <ul>
+        <li>color scheme <strong>Xcad</strong></li>
+        <li><a href="https://starship.rs/guide/#%F0%9F%9A%80-installation">starship</a></li>
+    </ul>
+</details>
 
-![Example Terminal](./images/example-terminal-2.png)
-This terminal use:
+<details>
+    <summary>Example Terminal 3</summary>
+    <img src="./images/example-terminal-3.png"
+        alt="Example Terminal 3" />
+    <p>This terminal use:</p>
+    <ul>
+        <li>color scheme <strong>One Half Dark (Modded)</strong></li>
+        <li>powershell</li>
+    </ul>
+</details>
 
-- color scheme **Xcad**
-- fish
-- starship
-
-![Example Terminal](./images/example-terminal-3.png)
-This terminal use:
-
-- color scheme **One Half Dark**
-- powershell
-- oh-my-posh
-- neovim
+<details>
+    <summary>Example Terminal 4</summary>
+    <img src="./images/example-terminal-4.png"
+        alt="Example Terminal 4" />
+    <p>This terminal use:</p>
+    <ul>
+        <li>color scheme <strong>Solarized Dark (Modded)</strong></li>
+        <li>zsh</li>
+    </ul>
+</details>
 
 **Warning** : Don't bindly use my setting unless you know what that entails. Use at your own risk!
 
@@ -88,18 +110,9 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 - [z](https://www.powershellgallery.com/packages/z) - Directory jumper
 - [PSFzf](https://github.com/kelleyma49/PSFzf) - Fuzzy finder
 
-### Link files
+## Git config
 
-```powershell
-# Create a symbolic link to the profile file
-New-Item -ItemType SymbolicLink -Path $PROFILE -Value ".dotfiles\powershell\Microsoft.PowerShell_profile.ps1"
-
-# Create a symbolic link to the theme of Oh My Posh
-New-Item -ItemType SymbolicLink -Path $env:POSH_THEMES_PATH -Value ".dotfiles\powershell\grumpy.omp.json"
-
-# Create a symbolic link to the theme of Windows Terminal
-New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json -Value ".dotfiles\windows-terminal\settings.json"
-```
+- [Git commitizen](https://github.com/commitizen/cz-cli) - Commitizen helps you commit better messages `npm install -g commitizen` and `npm install -g cz-conventional-changelog`
 
 ## Starship setup (macOS, Linux, Windwos, etc.)
 
