@@ -2,7 +2,8 @@
   user = PunGrumpy
 [user]
 	name = PunGrumpy
-  email = PunGrumpy+108584943@users.noreply.github.com
+  # email: pungrumpy followed by @repository-name.com (e.g. pungrumpy@github.com)
+  email = PunGrumpy@"$(git config --get remote.origin.url | sed -e 's/.*@//' -e 's/:.*//')".com
 [init]
   author = PunGrumpy
   defaultBranch = main
