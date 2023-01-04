@@ -8,10 +8,10 @@ if command -v exa >/dev/null 2>&1; then
     alias lt='exa -T'
 else
     alias ls='ls --color=auto'
-    alias la='ls -a'
-    alias ll='ls -l'
-    alias lla='ls -la'
-    alias lt='ls -T'
+    alias la='ls -a --color=auto'
+    alias ll='ls -l --color=auto'
+    alias lla='ls -la --color=auto'
+    alias lt='ls -T --color=auto'
 fi
 # Git
 alias g='git'

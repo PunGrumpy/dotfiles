@@ -18,7 +18,7 @@ if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
 fi
 
 # ----- Aliases -----
-source_if_exists ~/.config/zsh/aliases.zsh
+source_if_exists ~/.dotfiles/.config/zsh/aliases.zsh
 
 # ----- Bin -----
 # Add ~/.local/bin to PATH
