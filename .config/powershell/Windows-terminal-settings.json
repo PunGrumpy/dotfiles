@@ -69,7 +69,7 @@
         "hidden": false,
         "icon": "%USERPROFILE%\\.dotfiles\\icon-terminal\\git.png",
         "name": "Git Bash",
-        "opacity": 70,
+        "opacity": 75,
         "tabTitle": "Git Bash \ud83d\udc7b"
       },
       {
