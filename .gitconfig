@@ -2,7 +2,8 @@
   user = PunGrumpy
 [user]
 	name = PunGrumpy
-  email = "$(git config --get user.name)"@"$(git config --get remote.origin.url | sed -e 's/.*@//' -e 's/:.*//')".com
+  email = "PunGrumpy+108584943@users.noreply.github.com"
+  avatar = "https://avatars.githubusercontent.com/u/108584943?v=4"
 [init]
   author = PunGrumpy
   defaultBranch = main
@@ -45,7 +46,6 @@
   edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
   # add conflicted file on merge
   add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
-
 [hub]
   protocol = https
 [diff]
