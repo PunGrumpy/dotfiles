@@ -1,8 +1,8 @@
 [github]
   user = PunGrumpy
 [user]
-	name = $(git config --get github.user)
-  email = "$(git config --get github.user)"@"$(git config --get remote.origin.url | sed -e 's/.*@//' -e 's/:.*//')".com
+	name = PunGrumpy
+  email = "$(git config --get user.name)"@"$(git config --get remote.origin.url | sed -e 's/.*@//' -e 's/:.*//')".com
 [init]
   author = PunGrumpy
   defaultBranch = main
