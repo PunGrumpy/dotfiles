@@ -25,6 +25,10 @@ node_modules
 bower_components
 fishd.*
 configstore
+scoop
+.ssh
+.ssh/*
+neofetch
 
 # Vim
 Session.vim
