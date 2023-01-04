@@ -66,6 +66,7 @@ else
 # Ask to ./links.sh
 echo "${WHITE}Do you want to link files? (y/n)${NC}"
 read -r answer
+# Check current directory before running ./link.sh
 if [ "$answer" = "y" ]; then
     ./link.sh
 else 

@@ -76,3 +76,8 @@ then
         echo "${RED}if you want to use brew, you need to eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) to .bashrc${NC}"
     fi
 fi
+
+# Run tools.sh
+echo "${WHITE}Running tools.sh${NC}"
+./tools.sh
+echo "${GREEN}tools.sh finished${NC}"

@@ -40,5 +40,5 @@ ask() {
 }
 
 # Link files rc.zsh and p10k.zsh to .zshrc and .p10k.zsh
-ask "$HOME/.config/zsh/rc.zsh" "$HOME/.zshrc"
-ask "$HOME/.config/zsh/p10k.zsh" "$HOME/.p10k.zsh"
+ask "$HOME/.dotfiles/.config/zsh/rc.zsh" "$HOME/.zshrc"
+ask "$HOME/.dotfiles/.config/zsh/p10k.zsh" "$HOME/.p10k.zsh"

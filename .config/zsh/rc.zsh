@@ -31,12 +31,12 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 # ----- History -----
-source_if_exists ~/.config/zsh/history.zsh
+source_if_exists ~/.dotfiles/.config/zsh/history.zsh
 
 # ----- Powerlevel10k -----
 # path p10k.zsh
 # link p10k.zsh to ~/.p10k.zsh
-source_if_exists ~/.config/zsh/p10k.zsh
+source_if_exists ~/.dotfiles/.config/zsh/p10k.zsh
 # check ~/.powerlevel10k exists
 if [ -d "$HOME/.powerlevel10k" ]; then
     source "$HOME/.powerlevel10k/powerlevel10k.zsh-theme"
@@ -48,11 +48,9 @@ if [ -d "$HOME/.oh-my-zsh/custom/plugins" ]; then
     # path plugins
     source_if_exists ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
     source_if_exists ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source_if_exists ~/.oh-my-zsh/custom/plugins/zsh-completions/zsh-completions.plugin.zsh
 fi
 
 # ----- Zsh-editor -----
 ZSH_EDITOR="vscode"
 export ZSH_EDITOR
-
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/p10k.zsh.
-[[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh

@@ -11,19 +11,26 @@ echo "This script will install all the dependencies and link the dotfiles"
 
 # Run homebrew.sh
 echo "${WHITE}Running homebrew.sh${NC}"
-./homebrew.sh
+./dependencies/homebrew.sh
 
 # Run stow.sh
 echo "${WHITE}Running stow.sh${NC}"
-./stow.sh
+./dependencies/stow.sh
 
-# Ascii art "Thanks for using my dotfiles"
-echo "${GREEN}Thanks for using my dotfiles${NC}"
-echo "  _   _      _ _        __        __         _     _ _ "
-echo " | | | | ___| | | ___   \ \      / /__  _ __| | __| | |"
-echo " | |_| |/ _ \ | |/ _ \   \ \ /\ / / _ \| '__| |/ _\` | |"
-echo " |  _  |  __/ | | (_) |   \ V  V / (_) | |  | | (_| |_|"
-echo " |_| |_|\___|_|_|\___( )   \_/\_/ \___/|_|  |_|\__,_(_)"
-echo "                     |/                                 "
+# Ask for user input
+# 1. Install zsh
+# 2. Install fish
+echo "${WHITE}Do you want to install
+1. zsh
+2. fish${NC}"
+read -r answer echo "${WHITE}You chose $answer${NC}"
 
-# End of script
+if [ "$answer" = "1" ]; then
+    echo "${WHITE}Installing zsh${NC}"
+    ./zsh/install.sh
+elif [ "$answer" = "2" ]; then
+    echo "${WHITE}Installing fish${NC}"
+    ./fish/install.sh
+else
+    echo "${RED}Invalid input${NC}"
+fi
