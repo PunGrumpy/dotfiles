@@ -5,7 +5,7 @@ if command -v exa >/dev/null 2>&1; then
     alias la='exa -a'
     alias ll='exa -l --git --group'
     alias lla='exa -la --git --group'
-    alias lt='exa -T'
+    alias lt='exa -T' 
 else
     alias ls='ls --color=auto'
     alias la='ls -a --color=auto'
@@ -13,7 +13,15 @@ else
     alias lla='ls -la --color=auto'
     alias lt='ls -T --color=auto'
 fi
+
 # Git
 alias g='git'
+
 # NeoVim
 alias vim='nvim'
+
+# History
+alias h='history'
+alias hc='history -c'
+alias hg='history | grep'
+
