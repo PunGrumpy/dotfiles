@@ -38,8 +38,6 @@ fi
 source_if_exists ~/.dotfiles/.config/zsh/history.zsh
 
 # ----- Powerlevel10k -----
-# path p10k.zsh
-# link p10k.zsh to ~/.p10k.zsh
 source_if_exists ~/.dotfiles/.config/zsh/p10k.zsh
 # check ~/.powerlevel10k exists
 if [ -d "$HOME/.powerlevel10k" ]; then
