@@ -15,5 +15,5 @@ else
 fi
 # Git
 alias g='git'
-# Vim
-alias v='vim'
+# NeoVim
+alias vim='nvim'
