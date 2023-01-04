@@ -52,6 +52,17 @@ else
     fi
 fi
 
+# Check zsh-completions is installed, if not ask to install it
+if [ -d ~/.oh-my-zsh/custom/plugins/zsh-completions ]; then
+    echo "${GREEN}zsh-completions is installed${NC}"
+else
+    echo "${RED}zsh-completions is not installed${NC}"
+    echo "${RED}Do you want to install it? (y/n)${NC}"
+    read -r answer
+    if [ "$answer" = "y" ]; then
+        git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+    fi
+
 # Ask to ./links.sh
 echo "${WHITE}Do you want to link files? (y/n)${NC}"
 read -r answer
