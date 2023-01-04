@@ -2,8 +2,7 @@
   user = PunGrumpy
 [user]
 	name = PunGrumpy
-  email = "PunGrumpy+108584943@users.noreply.github.com"
-  avatar = "https://avatars.githubusercontent.com/u/108584943?v=4"
+  email = "108584943+PunGrumpy@users.noreply.github.com"
 [init]
   author = PunGrumpy
   defaultBranch = main
