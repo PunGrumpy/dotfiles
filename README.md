@@ -58,6 +58,7 @@
 - Fish config
 - Tmux config
 - Zsh config
+- Install script
 
 ## Neovim setup
 
