@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# set terminal title to current directory
+DISABLE_AUTO_TITLE="true"
+echo -ne "\033]0;${PWD##*/}\007"
+
 # check file exists
 source_if_exists() {
     if [ -f "$1" ]; then
