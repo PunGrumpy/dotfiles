@@ -11,7 +11,6 @@ else
     alias la='ls -a --color=auto'
     alias ll='ls -l --color=auto'
     alias lla='ls -la --color=auto'
-    alias lt='ls -T'
 fi
 
 # Git
