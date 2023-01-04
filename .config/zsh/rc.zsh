@@ -21,9 +21,6 @@ if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
-# ----- Aliases -----
-source_if_exists ~/.dotfiles/.config/zsh/aliases.zsh
-
 # ----- Bin -----
 # Add ~/.local/bin to PATH
 if [ -d "$HOME/.local/bin" ]; then
@@ -34,9 +31,6 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# ----- History -----
-source_if_exists ~/.dotfiles/.config/zsh/history.zsh
-
 # ----- Powerlevel10k -----
 source_if_exists ~/.dotfiles/.config/zsh/p10k.zsh
 # check ~/.powerlevel10k exists
@@ -45,13 +39,24 @@ if [ -d "$HOME/.powerlevel10k" ]; then
 fi
 
 # ----- Plugins -----
-# check plugins directory exists
+# oh-my-zsh plugins
+if [ -d "$HOME/.oh-my-zsh/plugins" ]; then
+    source_if_exists ~/.oh-my-zsh/plugins/git/git.plugin.zsh
+    source_if_exists ~/.oh-my-zsh/plugins/common-aliases/common-aliases.plugin.zsh
+fi
+
+# addition plugins
 if [ -d "$HOME/.oh-my-zsh/custom/plugins" ]; then
-    # path plugins
     source_if_exists ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
     source_if_exists ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source_if_exists ~/.oh-my-zsh/custom/plugins/zsh-completions/zsh-completions.plugin.zsh
 fi
+
+# ----- Aliases -----
+source_if_exists ~/.dotfiles/.config/zsh/aliases.zsh
+
+# ----- History -----
+source_if_exists ~/.dotfiles/.config/zsh/history.zsh
 
 # ----- Zsh-editor -----
 ZSH_EDITOR="vscode"
