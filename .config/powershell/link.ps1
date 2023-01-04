@@ -13,7 +13,7 @@ if (!(Get-Module oh-my-posh -ListAvailable)) {
 }
 
 # Check current path is the dotfiles/.config/powershell folder and ask to change it if not
-if ((pwd).Path -ne (pwd).Path + "\.dotfiles\.config\powershell") {
+if ((Get-Location).Path -ne (Get-Location).Path + "\.dotfiles\.config\powershell") {
     Write-Host "You are not in the dotfiles/.config/powershell folder. Do you want to change it? (y/n)"
     $answer = Read-Host
     if ($answer -eq "y") {
@@ -36,13 +36,13 @@ Link() {
 }
 
 # Create a symbolic link to the profile file
-# New-Item -ItemType SymbolicLink -Path $PROFILE -Value ".dotfiles\powershell\Microsoft.PowerShell_profile.ps1"
-Link (pwd).Path + "\Microsoft.PowerShell_profile.ps1" $PROFILE 
+# New-Item -ItemType SymbolicLink -Path $PROFILE -Value ".dotfiles\.config\powershell\Microsoft.PowerShell_profile.ps1"
+Link (Get-Location).Path + "\Microsoft.PowerShell_profile.ps1" $PROFILE 
 
 # Create a symbolic link to the theme of Oh My Posh
-# New-Item -ItemType SymbolicLink -Path $env:POSH_THEMES_PATH -Value ".dotfiles\powershell\grumpy.omp.json"
-Link (pwd).Path + "\grumpy.omp.json" $env:POSH_THEMES_PATH
+# New-Item -ItemType SymbolicLink -Path $env:POSH_THEMES_PATH -Value ".dotfiles\.config\powershell\grumpy.omp.json"
+Link (Get-Location).Path + "\grumpy.omp.json" $env:POSH_THEMES_PATH
 
 # Create a symbolic link to the theme of Windows Terminal
-# New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json -Value ".dotfiles\windows-terminal\settings.json"
-Link (pwd).Path + "\settings.json" "$env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
+# New-Item -ItemType SymbolicLink -Path $env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json -Value ".dotfiles\.config\windows-terminal\settings.json"
+Link (Get-Location).Path + "\settings.json" "$env:LOCALAPPDATA\Microsoft\Windows Terminal\settings.json"
