@@ -43,7 +43,6 @@
 - NeoVim config
 - git config
 - PowerShell config
-- Starship config
 - Fish config
 - Tmux config
 - Zsh config
