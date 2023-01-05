@@ -117,7 +117,7 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 
 ## Installations
 
-**Recommended**: I'll recommend for linux or macos users to use it
+**Recommended**: I recommend to use **Linux** or **MacOS** or **WSL**. I don't recommend to use Windows.
 
 Go to [installation](./installation/README.md)
 
