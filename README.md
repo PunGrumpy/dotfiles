@@ -18,8 +18,8 @@
         alt="Example Terminal 2" />
     <p>This terminal use:</p>
     <ul>
-        <li>color scheme <strong>Xcad</strong></li>
-        <li><a href="https://starship.rs/guide/#%F0%9F%9A%80-installation">starship</a></li>
+        <li>color scheme <strong>One Half Dark (Modded)</strong></li>
+        <li>powershell</li>
     </ul>
 </details>
 
@@ -27,17 +27,6 @@
     <summary>Example Terminal 3</summary>
     <img src="./images/example-terminal-3.png"
         alt="Example Terminal 3" />
-    <p>This terminal use:</p>
-    <ul>
-        <li>color scheme <strong>One Half Dark (Modded)</strong></li>
-        <li>powershell</li>
-    </ul>
-</details>
-
-<details>
-    <summary>Example Terminal 4</summary>
-    <img src="./images/example-terminal-4.png"
-        alt="Example Terminal 4" />
     <p>This terminal use:</p>
     <ul>
         <li>color scheme <strong>Solarized Dark (Modded)</strong></li>
@@ -127,11 +116,6 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 
 - [Git commitizen](https://github.com/commitizen/cz-cli) - Commitizen helps you commit better messages `npm install -g commitizen` and `npm install -g cz-conventional-changelog`
 
-## Starship setup (macOS, Linux, Windwos, etc.)
-
-- [Starship](https://starship.rs/) - Cross shell prompt
-
 ## ©️ Reference setting
 
 - [Takuya](https://github.com/craftzdog/dotfiles-public)
-- [Christian Lempa](https://github.com/ChristianLempa/dotfiles-win)
