@@ -11,7 +11,7 @@ echo -ne "\033]0;${PWD##*/}\007"
 
 # K8s auto-complete
 autoload -U +X compinit && compinit
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 
 # check file exists
 source_if_exists() {
