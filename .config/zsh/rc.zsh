@@ -62,6 +62,6 @@ source_if_exists ~/.dotfiles/.config/zsh/aliases.zsh
 # ----- History -----
 source_if_exists ~/.dotfiles/.config/zsh/history.zsh
 
-# ----- Zsh-editor -----
+# ----- Editor -----
 ZSH_EDITOR="vscode"
 export ZSH_EDITOR
