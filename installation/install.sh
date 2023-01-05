@@ -8,7 +8,7 @@ sleep_clear() {
 
 # check cowsay, lolcat, fortune, figlet and toilet are installed
 if [ -x "$(command -v cowsay)" ] && [ -x "$(command -v lolcat)" ] && [ -x "$(command -v fortune)" ] && [ -x "$(command -v figlet)" ] && [ -x "$(command -v toilet)" ]; then
-    sudo apt install cowsay lolcat fortune figlet toilet -y
+    sudo apt install cowsay lolcat fortune figlet toilet pv -y
     sleep_clear
 
     echo "Next, we will install dotfiles and dependencies" | toilet -f term -F border | lolcat

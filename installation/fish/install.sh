@@ -3,6 +3,8 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+echo "Welcome to fish installation script" | pv -qL 10 | lolcat
+
 # Check fisher is installed, if not ask to install it
 if [ -d ~/.config/fish/functions/fisher.fish ]; then
     echo "${GREEN}fisher is installed${NC}"

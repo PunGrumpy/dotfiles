@@ -3,6 +3,10 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+# Welcome message
+# echo "${GREEN}Welcome to zsh installation script${NC}"
+echo "Welcome to zsh installation script" | pv -qL 10 | lolcat
+
 # Check power10kline is installed, if not ask to install it
 if [ -f ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme ]; then
     echo "${GREEN}powerlevel10k is installed${NC}"
