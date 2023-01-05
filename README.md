@@ -115,6 +115,12 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 
 - [Git commitizen](https://github.com/commitizen/cz-cli) - Commitizen helps you commit better messages `npm install -g commitizen` and `npm install -g cz-conventional-changelog`
 
+## Installations
+
+**Recommended**: I'll recommend for linux or macos users to use it
+
+Go to [installation](./installation/README.md)
+
 ## ©️ Reference setting
 
 - [Takuya](https://github.com/craftzdog/dotfiles-public)
