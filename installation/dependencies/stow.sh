@@ -9,8 +9,7 @@ NC='\033[0m' # No Color
 # Ask to install Stow if not installed yet and install it
 if test ! $(which stow)
 then
-    echo "${RED}Stow is not installed, do you want to install it? (y/n)${NC}"
-    read -r answer
+    read -r answer -p "${RED}Stow is not installed, do you want to install it? (y/n)${NC}"
     if [ "$answer" = "y" ]; then
         sudo apt-get install stow
         echo "${GREEN}Stow installed${NC}"

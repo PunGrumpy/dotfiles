@@ -10,8 +10,7 @@ NC='\033[0m' # No Color
 # Before install Homebrew, check git, curl, if not installed ask to install it
 if test ! $(which git)
 then
-    echo "${RED}git is not installed, do you want to install it? (y/n)${NC}"
-    read -r answer
+    read -r answer -p "${RED}git is not installed, do you want to install it? (y/n)${NC}"
     if [ "$answer" = "y" ]; then
         sudo apt-get install git
         echo "${GREEN}git installed${NC}"
@@ -22,8 +21,7 @@ fi
 
 if test ! $(which curl)
 then
-    echo "${RED}curl is not installed, do you want to install it? (y/n)${NC}"
-    read -r answer
+    read -r answer -p "${RED}curl is not installed, do you want to install it? (y/n)${NC}"
     if [ "$answer" = "y" ]; then
         sudo apt-get install curl
         echo "${GREEN}curl installed${NC}"
@@ -36,8 +34,7 @@ fi
 if test ! $(which brew)
 then
     # ask before install
-    echo "${RED}Homebrew is not installed, do you want to install it? (y/n)${NC}"
-    read -r answer
+    read -r answer -p "${RED}Homebrew is not installed, do you want to install it? (y/n)${NC}"
     if [ "$answer" = "y" ]; then
         # Install the correct homebrew for each OS type
         if test "$(uname)" = "Darwin"
@@ -57,8 +54,7 @@ fi
 # Check os and then Ask to eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) to .bashrc
 if test "$(uname)" = "Darwin"
 then
-    echo "${WHITE}Do you want to eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) to .bashrc? (y/n)${NC}"
-    read -r answer
+    read -r answer -p "${WHITE}Do you want to eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) to .bashrc? (y/n)${NC}"
     if [ "$answer" = "y" ]; then
         echo "eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >> ~/.bashrc
         echo "${GREEN}eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) to .bashrc successfully${NC}"
@@ -67,8 +63,7 @@ then
     fi
 elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
 then
-    echo "${WHITE}Do you want to eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) to .bashrc? (y/n)${NC}"
-    read -r answer
+    read -r answer -p "${WHITE}Do you want to eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) to .bashrc? (y/n)${NC}"
     if [ "$answer" = "y" ]; then
         echo "eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >> ~/.bashrc
         echo "${GREEN}eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) to .bashrc successfully${NC}"
