@@ -30,6 +30,16 @@ echo "Running stow.sh" | toilet -f term -F border | lolcat
 ./dependencies/stow.sh
 sleep_clear
 
+# Install dependencies - tools
+echo "Running tools.sh" | toilet -f term -F border | lolcat
+./dependencies/tools.sh
+sleep_clear
+
+# Install dependencies - jenkins
+echo "Running jenkins.sh" | toilet -f term -F border | lolcat
+./dependencies/jenkins.sh
+sleep_clear
+
 # Install zsh or fish
 echo "Do you want to install zsh or fish?" | toilet -f term -F border | lolcat
 echo "1. zsh"
