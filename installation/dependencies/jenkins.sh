@@ -111,3 +111,15 @@ if [ "$answer" = "y" ]; then
 fi
 
 echo "${GREEN}Jenkins installation completed${NC}"
+
+# You want to run Jenkins
+read -r answer -p "${RED}Do you want to run Jenkins? (y/n)${NC}"
+if [ "$answer" = "y" ]; then
+    sudo service jenkins start
+    echo "${GREEN}Jenkins is running${NC}"
+    echo "${WHITE}If you want to unlock Jenkins, type: sudo cat /var/lib/jenkins/secrets/initialAdminPassword and then copy the password${NC}"
+else
+    echo "${WHITE}Jenkins is not running${NC}"
+    echo "${WHITE}To run Jenkins, type: sudo service jenkins start${NC}"
+    echo "${WHITE}If you want to unlock Jenkins, type: sudo cat /var/lib/jenkins/secrets/initialAdminPassword and then copy the password${NC}"
+fi
