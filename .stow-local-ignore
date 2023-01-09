@@ -2,10 +2,13 @@
 /.git
 configstore
 
-# Folder assets
+# Folder
 /icon-terminal
 /images
 /installation
+/nextjs-nodejs
+/Electron
+/yarn
 
 # All .sh files
 \.sh

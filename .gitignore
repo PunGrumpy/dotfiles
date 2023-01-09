@@ -83,3 +83,8 @@ Pods/
 
 # Karabiner
 .config/karabiner/automatic_backups
+
+# Folder
+.config/Electron
+.config/yarn
+.config/nextjs-nodejs
