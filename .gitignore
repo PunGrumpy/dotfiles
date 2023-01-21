@@ -89,3 +89,4 @@ Pods/
 .config/Electron
 .config/yarn
 .config/nextjs-nodejs
+.config/gatsby/
