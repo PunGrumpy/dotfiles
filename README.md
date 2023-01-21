@@ -80,7 +80,6 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 ## Shell setup (macOS & Linux)
 
 - [Home Brew](https://brew.sh/)
-- [Stow](https://www.gnu.org/software/stow/) - Dotfiles manager: `sudo apt install -y update && sudo apt install -y stow`
 - [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use Hack.
 - [Exa](https://the.exa.website/) - `ls` replacement
 - [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
