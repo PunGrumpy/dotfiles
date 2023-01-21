@@ -46,7 +46,6 @@
 - Fish config
 - Tmux config
 - Zsh config
-- Install script
 
 ## Neovim setup
 
@@ -114,12 +113,6 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 ## Git config
 
 - [Git commitizen](https://github.com/commitizen/cz-cli) - Commitizen helps you commit better messages `npm install -g commitizen` and `npm install -g cz-conventional-changelog`
-
-## Installations
-
-**Recommended**: I recommend to use **Linux** or **MacOS** or **WSL**. I don't recommend to use Windows.
-
-Go to [installation](./installation/README.md)
 
 ## ©️ Reference setting
 
