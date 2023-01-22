@@ -45,7 +45,6 @@
 - PowerShell config
 - Fish config
 - Tmux config
-- Zsh config
 
 ## Neovim setup
 
