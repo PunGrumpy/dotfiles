@@ -23,17 +23,6 @@
     </ul>
 </details>
 
-<details>
-    <summary>Example Terminal 3</summary>
-    <img src="./images/example-terminal-3.png"
-        alt="Example Terminal 3" />
-    <p>This terminal use:</p>
-    <ul>
-        <li>color scheme <strong>Solarized Dark (Modded)</strong></li>
-        <li>zsh</li>
-    </ul>
-</details>
-
 **Warning** : Don't bindly use my setting unless you know what that entails. Use at your own risk!
 
 **Recommend** : For Windows user you can find the color scheme for **Windows Terminal** in https://windowsterminalthemes.dev/
