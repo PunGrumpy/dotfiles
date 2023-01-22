@@ -84,19 +84,10 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 - [Exa](https://the.exa.website/) - `ls` replacement
 - [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
 - [peco](https://github.com/peco/peco) - Interactive filtering
-
-  ### Fish shell setup
-
-  - [Fish shell](https://fishshell.com/) - User-friendly shell
-  - [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
-  - [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 5: `fisher install ilancosman/tide@v5`
-  - [z for fish](https://github.com/jethrokuan/z) - Directory jumping: `fisher install jethrokuan/z`
-
-  ### Zsh setup
-
-  - [Zsh](https://www.zsh.org/) - Shell designed for interactive use
-  - [Oh My Zsh](https://ohmyz.sh/) - Framework for managing Zsh configuration
-  - [Powerlevel10k](https://github.com/romkatv/powerlevel10k) - Zsh theme
+- [Fish shell](https://fishshell.com/) - User-friendly shell
+- [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
+- [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 5: `fisher install ilancosman/tide@v5`
+- [z for fish](https://github.com/jethrokuan/z) - Directory jumping: `fisher install jethrokuan/z`
 
 ## PowerShell setup (Windows)
 
