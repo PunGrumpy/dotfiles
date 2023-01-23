@@ -90,3 +90,4 @@ Pods/
 .config/yarn
 .config/nextjs-nodejs
 .config/gatsby/
+.config/github-copilot
