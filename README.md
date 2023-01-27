@@ -1,6 +1,6 @@
 # PunGrumpy's dotfiles
 
-<details>
+<details open>
     <summary>Example Terminal 1</summary>
     <img src="./images/example-terminal-1.png"
         alt="Example Terminal 1" />
