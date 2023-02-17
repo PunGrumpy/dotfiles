@@ -50,6 +50,12 @@ function __check_rvm --on-variable PWD --description 'Do nvm stuff'
   end
 end
 
+# Maven
+if test -d /opt/apache-maven-3.9.0
+  set -gx M2_HOME /opt/apache-maven-3.9.0
+  set -gx PATH $M2_HOME/bin $PATH
+end
+
 switch (uname)
   case Darwin
     source (dirname (status --current-filename))/config-osx.fish
