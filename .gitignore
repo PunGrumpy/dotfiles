@@ -94,3 +94,5 @@ Pods/
 .config/gatsby/
 .config/github-copilot
 .config/simple-update-notifier/
+.config/Cypress/
+.config/google-chrome/
