@@ -64,23 +64,43 @@
         "tabTitle": "Ubuntu \ud83d\udc7b"
       },
       {
-        "colorScheme": "Monokai Remastered",
+        "colorScheme": "Solarized Dark (Modded)",
+        "commandline": "ssh pungrumpy-digitalocean",
+        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+        "hidden": false,
+        "icon": "%USERPROFILE%\\.dotfiles\\icon-terminal\\digitalocean.png",
+        "name": "DigitalOcean 🌊",
+        "opacity": 65,
+        "tabTitle": "DigitalOcean 🐳"
+      },
+      {
+        "colorScheme": "Xcad",
+        "commandline": "ssh mephisto-digitalocean",
+        "guid": "{2c4de342-38b7-51cf-b940-2309a097f519}",
+        "hidden": false,
+        "icon": "%USERPROFILE%\\.dotfiles\\icon-terminal\\digitaloceansammy.png",
+        "name": "DigitalOcean 🔥",
+        "opacity": 90,
+        "tabTitle": "DigitalOcean 🐳"
+      },
+      {
+        "colorScheme": "Xcad",
         "commandline": "C:\\Program Files\\Git\\bin\\bash.exe -i -l",
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "hidden": false,
         "icon": "%USERPROFILE%\\.dotfiles\\icon-terminal\\git.png",
         "name": "Git Bash",
-        "opacity": 75,
+        "opacity": 95,
         "tabTitle": "Git Bash \ud83d\udc7b"
       },
       {
         "colorScheme": "Xcad",
         "guid": "{46ca431a-3a87-5fb3-83cd-11ececc031d2}",
-        "source": "Windows.Terminal.Wsl",
         "hidden": false,
         "icon": "%USERPROFILE%\\.dotfiles\\icon-terminal\\kali.png",
         "name": "Kali Linux",
-        "opacity": 85
+        "opacity": 85,
+        "source": "Windows.Terminal.Wsl"
       },
       {
         "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
@@ -441,6 +461,29 @@
       "selectionBackground": "#FFFFFF",
       "white": "#F1F1F1",
       "yellow": "#3D2AFF"
+    },
+    {
+      "name": "Duotone Dark",
+      "black": "#1f1d27",
+      "red": "#d9393e",
+      "green": "#2dcd73",
+      "yellow": "#d9b76e",
+      "blue": "#ffc284",
+      "purple": "#de8d40",
+      "cyan": "#2488ff",
+      "white": "#b7a1ff",
+      "brightBlack": "#353147",
+      "brightRed": "#d9393e",
+      "brightGreen": "#2dcd73",
+      "brightYellow": "#d9b76e",
+      "brightBlue": "#ffc284",
+      "brightPurple": "#de8d40",
+      "brightCyan": "#2488ff",
+      "brightWhite": "#eae5ff",
+      "background": "#1f1d27",
+      "foreground": "#b7a1ff",
+      "selectionBackground": "#353147",
+      "cursorColor": "#ff9839"
     }
   ],
   "theme": "dark",
