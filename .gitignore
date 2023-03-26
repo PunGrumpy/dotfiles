@@ -97,6 +97,11 @@ Pods/
 .config/simple-update-notifier/
 .config/Cypress/
 .config/google-chrome/
+.config/gcloud
+.config/chatgpt-nodejs/
 .docker/features.json
 .docker/contexts
 .docker/scan
+.docker/.token_seed
+.docker/.token_seed.lock
+.docker/buildx/
