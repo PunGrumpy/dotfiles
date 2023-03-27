@@ -99,6 +99,8 @@ Pods/
 .config/google-chrome/
 .config/gcloud
 .config/chatgpt-nodejs/
+.config/tree-sitter/
+.docker/.buildNodeID
 .docker/features.json
 .docker/contexts
 .docker/scan
