@@ -38,13 +38,13 @@ theme: Solarized-Dark
 # Font
 font:
   normal:
-    family: Hack Nerd Font
+    family: Hack NF
     style: Regular
   bold:
-    family: Hack Nerd Font
+    family: Hack NF
     style: Bold
   italic:
-    family: Hack Nerd Font
+    family: Hack NF
     style: Italic
   size: 12.0
 
@@ -54,4 +54,4 @@ window:
   padding:
     x: 0
     y: 0
-  decorations: transparent
+  decorations: None
