@@ -50,6 +50,7 @@ font:
 
 # Window
 window:
+  opacity: 0.85
   padding:
     x: 0
     y: 0
