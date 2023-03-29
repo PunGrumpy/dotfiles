@@ -118,6 +118,7 @@ Pods/
 .config/Code/
 .config/menus/
 .config/Docker Desktop/
+.config/enchant/
 .docker/.buildNodeID
 .docker/features.json
 .docker/contexts
