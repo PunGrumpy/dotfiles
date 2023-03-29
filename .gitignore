@@ -88,6 +88,9 @@ Pods/
 # Karabiner
 .config/karabiner/automatic_backups
 
+# Alacritty
+.config/alacritty/*.bak
+
 # Folder
 .config/Electron
 .config/yarn
