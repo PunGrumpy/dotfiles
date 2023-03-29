@@ -1,57 +1,34 @@
-items:
-  - colors:
-      name: 3024 (dark)
-      author: Chris Kempson
-      primary:
-        background: "#090300"
-        foreground: "#a5a2a2"
-      cursor:
-        text: "#090300"
-        cursor: "#a5a2a2"
-      normal:
-        black: "#090300"
-        red: "#db2d20"
-        green: "#01a252"
-        yellow: "#fded02"
-        blue: "#01a0e4"
-        magenta: "#a16a94"
-        cyan: "#b5e4f4"
-        white: "#a5a2a2"
-      bright:
-        black: "#5c5855"
-        red: "#db2d20"
-        green: "#01a252"
-        yellow: "#fded02"
-        blue: "#01a0e4"
-        magenta: "#a16a94"
-        cyan: "#b5e4f4"
-        white: "#f7f7f7"
-  - theme: 3024.dark
 colors:
-  # Default colors
   primary:
-    background: '#101421'
-    foreground: '#fffbf6'
+    background: '#1b1b1b'
+    foreground: '#f1f1f1'
 
-  # Normal colors
   normal:
-    black: '#2e2e2e'
-    red: '#eb4129'
-    green: '#abe047'
-    yellow: '#f6c744'
-    blue: '#47a0f3'
-    magenta: '#7b5cb0'
-    cyan: '#64dbed'
-    white: '#e5e9f0'
+    black: '#121212'
+    red: '#a52aff'
+    green: '#7129ff'
+    yellow: '#3d2aff'
+    blue: '#2b4fff'
+    magenta: '#2883ff'
+    cyan: '#28b9ff'
+    white: '#f1f1f1'
 
-  # Bright colors
   bright:
-    black: '#565656'
-    red: '#ec5357'
-    green: '#c0e17d'
-    yellow: '#f9da6a'
-    blue: '#49a4f8'
-    magenta: '#a47de9'
-    cyan: '#99faf2'
+    black: '#666666'
+    red: '#ba5aff'
+    green: '#905aff'
+    yellow: '#685aff'
+    blue: '#5c78ff'
+    magenta: '#5ea2ff'
+    cyan: '#5ac8ff'
     white: '#ffffff'
-theme: iTerm-Default
+theme: Xcad
+
+window:
+  opacity: 0.95
+  decorations_theme_variant: None
+
+font:
+  normal:
+    family: Hack NF
+    style: Regular
