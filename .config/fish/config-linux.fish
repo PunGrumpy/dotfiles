@@ -6,7 +6,6 @@ if test -x /home/linuxbrew/.linuxbrew/bin/deno
   export PATH="$HOME/.deno/bin:$PATH"
 end
 
-# import cargo before import check it 
 if test -x /home/.cargo/env
   source /home/.cargo/env
 end
