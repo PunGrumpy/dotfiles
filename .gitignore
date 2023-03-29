@@ -113,6 +113,7 @@ Pods/
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/Code/
+.config/menus/
 .config/Docker Desktop/
 .docker/.buildNodeID
 .docker/features.json
