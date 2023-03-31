@@ -119,6 +119,8 @@ Pods/
 .config/menus/
 .config/Docker Desktop/
 .config/enchant/
+.config/Hyper/
+.config/create-next-app-nodejs/
 .docker/.buildNodeID
 .docker/features.json
 .docker/contexts
