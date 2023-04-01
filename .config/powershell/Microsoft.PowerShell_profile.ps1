@@ -3,6 +3,7 @@
 
 # Load prompt config
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\grumpy.omp.json" | Invoke-Expression
+# Invoke-Expression (&starship init powershell)
 
 # Icons
 Import-Module -Name Terminal-Icons
