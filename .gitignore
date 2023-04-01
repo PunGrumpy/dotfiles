@@ -121,6 +121,8 @@ Pods/
 .config/enchant/
 .config/Hyper/
 .config/create-next-app-nodejs/
+.config/fish/conf.d/00_fig_pre.fish
+.config/fish/conf.d/99_fig_post.fish
 .docker/.buildNodeID
 .docker/features.json
 .docker/contexts
