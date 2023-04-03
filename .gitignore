@@ -123,6 +123,9 @@ Pods/
 .config/create-next-app-nodejs/
 .config/fish/conf.d/00_fig_pre.fish
 .config/fish/conf.d/99_fig_post.fish
+.config/fish/conf.d/fzf.fish
+.config/fish/conf.d/pisces.fish
+.config/gnome-control-center/
 .config/htop/
 .docker/.buildNodeID
 .docker/features.json
