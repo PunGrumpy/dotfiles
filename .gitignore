@@ -81,7 +81,10 @@ Pods/
 .config/fish/functions/tide/
 .config/fish/functions/nvm.fish
 .config/fish/conf.d/_*
+.config/fish/conf.d/**_**
 .config/fish/conf.d/z*
+.config/fish/conf.d/fzf*
+.config/fish/conf.d/pisces*
 .config/fish/conf.d/nvm*
 .config/fish/conf.d/puffer_*
 
@@ -121,10 +124,6 @@ Pods/
 .config/enchant/
 .config/Hyper/
 .config/create-next-app-nodejs/
-.config/fish/conf.d/00_fig_pre.fish
-.config/fish/conf.d/99_fig_post.fish
-.config/fish/conf.d/fzf.fish
-.config/fish/conf.d/pisces.fish
 .config/gnome-control-center/
 .config/htop/
 .docker/.buildNodeID
