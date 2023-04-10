@@ -69,3 +69,9 @@ set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
 if test -f $LOCAL_CONFIG
   source $LOCAL_CONFIG
 end
+
+# BunJS
+if test -f "$HOME/.bun/bin/bun"
+  set -x BUN_INSTALL "$HOME/.bun"
+  set -x PATH $BUN_INSTALL/bin $PATH
+end
