@@ -127,6 +127,8 @@ Pods/
 .config/gnome-control-center/
 .config/htop/
 .config/yelp
+.config/chatgpt-nodejs/
+.config/cni/
 .docker/.buildNodeID
 .docker/features.json
 .docker/contexts
