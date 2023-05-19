@@ -7,6 +7,9 @@ saga.setup({
     border = 'rounded',
     colors = {
       normal_bg = '#002b36'
+    },
+    symbol_in_winbar = {
+      enabled = false
     }
   }
 })
