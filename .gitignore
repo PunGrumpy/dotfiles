@@ -129,10 +129,4 @@ Pods/
 .config/yelp
 .config/chatgpt-nodejs/
 .config/cni/
-.docker/.buildNodeID
-.docker/features.json
-.docker/contexts
-.docker/scan
-.docker/.token_seed
-.docker/.token_seed.lock
-.docker/buildx/
+.docker/
