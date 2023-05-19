@@ -14,6 +14,7 @@ ts.setup {
     "markdown",
     "markdown_inline",
     "tsx",
+    "typescript",
     "toml",
     "fish",
     "php",
@@ -26,6 +27,10 @@ ts.setup {
   },
   autotag = {
     enable = true,
+  },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
   },
 }
 
