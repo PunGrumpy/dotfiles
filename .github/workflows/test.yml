@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  REPO: ${{ github.repository }}
+  REPO: https://github.com/${{ github.repository }}
 
 jobs:
   build-and-test:
