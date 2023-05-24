@@ -1,0 +1,115 @@
+name: Test Dotfiles Configurationh
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  REPO: ${{ github.repository }}
+
+jobs:
+  build-and-test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    name: Build and Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Installation Dotfiles
+        run: |
+          git clone ${{ env.REPO }} ~/.dotfiles
+
+      - name: Linking Dotfiles
+        run: |
+          cd ~/.dotfiles
+          ln -sf ~/.dotfiles/.config ~/.config
+          ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
+          ln -sf ~/.dotfiles/.gitignore ~/.gitignore
+          ln -sf ~/.dotfiles/.czrc ~/.czrc
+
+      - name: Install Homebrew (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+      - name: Install Homebrew (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install build-essential curl file git
+          sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+          test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+          test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+          test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+          echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+
+      - name: Test Homebrew
+        run: |
+          brew doctor
+          brew --version
+
+      - name: Install Fish Shell (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install fish
+          echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+          chsh -s /usr/local/bin/fish
+
+      - name: Install Fish Shell (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          brew install fish
+          echo "/home/linuxbrew/.linuxbrew/bin/fish" | sudo tee -a /etc/shells
+          chsh -s /home/linuxbrew/.linuxbrew/bin/fish
+
+      - name: Fish Shell is Default Shell
+        run: |
+          echo $SHELL
+          echo $0
+
+      - name: Install Dependencies from Homebrew
+        run: |
+          brew install tmux
+          brew install neovim
+          brew install exa
+          brew install peco
+          brew install ghq
+
+      - name: Test Dependencies from Homebrew
+        run: |
+          tmux -V
+          nvim -v
+          exa --version
+          peco --version
+          ghq --version
+
+      - name: Install Fisher
+        run: |
+          curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+          fisher install IlanCosman/tide@v5
+          fisher install jethrokuan/z
+          fisher install jethrokuan/fzf
+          fisher install nickeb96/puffer-fish
+          fisher install nickeb96/puffer-fish
+
+      - name: Test Fisher
+        run: |
+          fisher --version
+
+      - name: Install Node.js
+        run: |
+          brew install node
+          brew install pnpm
+
+      - name: Test Node.js
+        run: |
+          node --version
+          npm --version
+          pnpm --version
