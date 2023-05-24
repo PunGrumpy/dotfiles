@@ -36,7 +36,7 @@ jobs:
 
       - name: Add Path Homebrew
         run: |
-          (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> /Users/runner/.bash_profile
+          (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> ~/.bashrc
           eval "$(/usr/local/bin/brew shellenv)"
 
       - name: Install Homebrew
