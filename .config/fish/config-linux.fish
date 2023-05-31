@@ -20,9 +20,3 @@ if test -n "$WSL_DISTRO_NAME"
   alias c: "cd /mnt/c"
   alias d: "cd /mnt/d"
 end
-
-if test -x /home/linuxbrew/.linuxbrew/bin/docker-color-output
-  alias dps "docker ps | docker-color-output"
-  alias di "docker images | docker-color-output"
-  alias dcps "docker compose ps | docker-color-output"
-end

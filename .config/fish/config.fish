@@ -75,3 +75,10 @@ if test -f "$HOME/.bun/bin/bun"
   set -x BUN_INSTALL "$HOME/.bun"
   set -x PATH $BUN_INSTALL/bin $PATH
 end
+
+# Docker
+if type -q dockercolorize
+  alias dps "docker ps | dockercolorize"
+  alias di "docker images | dockercolorize"
+  alias dcps "docker compose ps | dockercolorize"
+end
