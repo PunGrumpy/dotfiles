@@ -28,7 +28,6 @@ configstore
 scoop
 .ssh
 .ssh/*
-neofetch
 
 # Vim & NeoVim
 Session.vim
@@ -129,4 +128,5 @@ Pods/
 .config/yelp
 .config/chatgpt-nodejs/
 .config/cni/
+.config/dlv/
 .docker/
