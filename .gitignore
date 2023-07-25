@@ -79,6 +79,7 @@ Pods/
 .config/fish/functions/tide.fish
 .config/fish/functions/tide/
 .config/fish/functions/nvm.fish
+.config/fish/functions/fzf_*
 .config/fish/conf.d/_*
 .config/fish/conf.d/**_**
 .config/fish/conf.d/z*
