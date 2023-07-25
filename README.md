@@ -76,7 +76,6 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 - [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
 - [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 5: `fisher install ilancosman/tide@v5`
 - [z for fish](https://github.com/jethrokuan/z) - Directory jumping: `fisher install jethrokuan/z`
-- [Fzf for fish](https://github.com/jethrokuan/fzf) - Fuzzy finder: `fisher install jethrokuan/fzf`
 - [Puffer for fish](https://github.com/nickeb96/puffer-fish) - Text expander: `fisher install nickeb96/puffer-fish`
 - [Pisces for fish](https://github.com/laughedelic/pisces) - Paired symbols: `fisher install laughedelic/pisces`
 
