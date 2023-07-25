@@ -71,7 +71,7 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 - [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use Hack.
 - [Exa](https://the.exa.website/) - `ls` replacement
 - [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
-- [peco](https://github.com/peco/peco) - Interactive filtering
+- [fzf](https://github.com/PatrickF1/fzf.fish) - Interactive filtering
 - [Fish shell](https://fishshell.com/) - User-friendly shell
 - [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
 - [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 5: `fisher install ilancosman/tide@v5`
