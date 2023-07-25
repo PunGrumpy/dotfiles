@@ -71,11 +71,11 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 - [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use Hack.
 - [Exa](https://the.exa.website/) - `ls` replacement
 - [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
-- [fzf](https://github.com/PatrickF1/fzf.fish) - Interactive filtering
 - [Fish shell](https://fishshell.com/) - User-friendly shell
 - [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
 - [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 5: `fisher install ilancosman/tide@v5`
 - [z for fish](https://github.com/jethrokuan/z) - Directory jumping: `fisher install jethrokuan/z`
+- [Fzf for fish](https://github.com/PatrickF1/fzf.fish) - Interactive filtering `fisher install PatrickF1/fzf.fish`
 - [Puffer for fish](https://github.com/nickeb96/puffer-fish) - Text expander: `fisher install nickeb96/puffer-fish`
 - [Pisces for fish](https://github.com/laughedelic/pisces) - Paired symbols: `fisher install laughedelic/pisces`
 
