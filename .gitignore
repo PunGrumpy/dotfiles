@@ -130,4 +130,5 @@ Pods/
 .config/chatgpt-nodejs/
 .config/cni/
 .config/dlv/
+.config/ngrok/
 .docker/
