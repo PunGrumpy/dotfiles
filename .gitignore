@@ -37,6 +37,7 @@ Session.vim
 .vim/syntax/Dockerfile.vim
 .vim/snippets/
 .config/nvim/plugin/packer_compiled.lua
+.config/nvim/pack/github
 
 # Xcode
 build/
