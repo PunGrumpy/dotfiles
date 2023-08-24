@@ -25,7 +25,8 @@ null_ls.setup {
     null_ls.builtins.diagnostics.hadolint,
     null_ls.builtins.diagnostics.terraform_validate,
     null_ls.builtins.diagnostics.tfsec,
-    null_ls.builtins.diagnostics.ansiblelint
+    null_ls.builtins.diagnostics.ansiblelint,
+    null_ls.builtins.diagnostics.actionlint
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
