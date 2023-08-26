@@ -18,7 +18,6 @@ end
 if is_win then
   require('grumpy.windows')
 end
-
 if is_wsl then
   require('grumpy.wsl')
 end
