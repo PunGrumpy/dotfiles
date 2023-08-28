@@ -23,7 +23,10 @@ ts.setup {
     "swift",
     "css",
     "html",
-    "lua"
+    "lua",
+    "go",
+    "gosum",
+    "gomod",
   },
   autotag = {
     enable = true,
