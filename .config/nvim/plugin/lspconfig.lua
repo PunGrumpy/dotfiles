@@ -121,6 +121,14 @@ nvim_lsp.astro.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_dir = nvim_lsp.util.root_pattern("go.mod", "go.work", ".git"),
+}
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true,
