@@ -4,11 +4,11 @@ set -gx TERM xterm-256color
 
 # set title terminal and add 👻 emoji
 function fish_title
-  set -l title (basename (pwd))
-  if test -n "$SSH_CONNECTION"
-    set title "$title (SSH) 👻"
-  end
-  echo -n "$title"
+    set -l title (basename (pwd))
+    if test -n "$SSH_CONNECTION"
+        set title "$title (SSH) 👻"
+    end
+    echo -n "$title"
 end
 
 # theme
@@ -42,45 +42,40 @@ set -gx PATH $GOPATH/bin $PATH
 
 # NVM
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'
-  status --is-command-substitution; and return
+    status --is-command-substitution; and return
 
-  if test -f .nvmrc; and test -r .nvmrc;
-    nvm use
-  else
-  end
-end
-
-# Maven
-if test -d /opt/apache-maven-3.9.0
-  set -gx M2_HOME /opt/apache-maven-3.9.0
-  set -gx PATH $M2_HOME/bin $PATH
-end
-
-switch (uname)
-  case Darwin
-    source (dirname (status --current-filename))/config-osx.fish
-  case Linux
-    source (dirname (status --current-filename))/config-linux.fish
-  case '*'
-    source (dirname (status --current-filename))/config-windows.fish
-end
-
-set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
-if test -f $LOCAL_CONFIG
-  source $LOCAL_CONFIG
+    if test -f .nvmrc; and test -r .nvmrc
+        nvm use
+    else
+    end
 end
 
 # BunJS
 if test -f "$HOME/.bun/bin/bun"
-  set -x BUN_INSTALL "$HOME/.bun"
-  set -x PATH $BUN_INSTALL/bin $PATH
+    set -x BUN_INSTALL "$HOME/.bun"
+    set -x PATH $BUN_INSTALL/bin $PATH
 end
 
 # Docker
 if type -q dockercolorize
-  alias dps "docker ps | dockercolorize"
-  alias dpsa "docker ps -a | dockercolorize"
-  alias di "docker images | dockercolorize"
-  alias dcps "docker compose ps | dockercolorize"
-  alias dstats "docker stats --no-stream | dockercolorize"
+    alias dps "docker ps | dockercolorize"
+    alias dpsa "docker ps -a | dockercolorize"
+    alias di "docker images | dockercolorize"
+    alias dcps "docker compose ps | dockercolorize"
+    alias dstats "docker stats --no-stream | dockercolorize"
+end
+
+# Config for OS
+switch (uname)
+    case Darwin
+        source (dirname (status --current-filename))/config-osx.fish
+    case Linux
+        source (dirname (status --current-filename))/config-linux.fish
+    case '*'
+        source (dirname (status --current-filename))/config-windows.fish
+end
+
+set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
+if test -f $LOCAL_CONFIG
+    source $LOCAL_CONFIG
 end
