@@ -121,12 +121,32 @@ nvim_lsp.astro.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.prismals.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 nvim_lsp.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = nvim_lsp.util.root_pattern("go.mod", "go.work", ".git"),
+}
+
+nvim_lsp.dockerls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+nvim_lsp.docker_compose_language_service.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+nvim_lsp.terraformls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
