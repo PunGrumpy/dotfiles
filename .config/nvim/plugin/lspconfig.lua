@@ -144,6 +144,11 @@ nvim_lsp.docker_compose_language_service.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 nvim_lsp.helm_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities
