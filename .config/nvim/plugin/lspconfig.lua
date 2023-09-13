@@ -146,7 +146,16 @@ nvim_lsp.docker_compose_language_service.setup {
 
 nvim_lsp.yamlls.setup {
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose.yml",
+        ["https://raw.githubusercontent.com/projectriff/riff/main/riff-r2dbc-schema.json"] = "application.yml",
+        ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/master/all.json"] = "*.yaml"
+      }
+    }
+  }
 }
 
 nvim_lsp.helm_ls.setup {
