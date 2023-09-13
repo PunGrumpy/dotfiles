@@ -132,4 +132,5 @@ Pods/
 .config/cni/
 .config/dlv/
 .config/ngrok/
+.config/systemd
 .docker/
