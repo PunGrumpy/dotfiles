@@ -52,11 +52,18 @@ end
 set -gx PATH node_modules/.bin $PATH
 
 # Go
-set -g GOPATH $HOME/go
+set -g GOPATH $HOME/.go
 set -gx PATH $GOPATH/bin $PATH
 
 # Cargo
 set -gx PATH $HOME/.cargo/bin $PATH
+
+# BunJS
+set -x BUN_INSTALL "$HOME/.bun"
+set -gx PATH $BUN_INSTALL/bin $PATH
+
+# Anaconda
+set -gx PATH $HOME/.anaconda/bin $PATH
 
 # NVM
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'
@@ -66,12 +73,6 @@ function __check_rvm --on-variable PWD --description 'Do nvm stuff'
         nvm use
     else
     end
-end
-
-# BunJS
-if test -f "$HOME/.bun/bin/bun"
-    set -x BUN_INSTALL "$HOME/.bun"
-    set -x PATH $BUN_INSTALL/bin $PATH
 end
 
 # Docker
