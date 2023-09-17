@@ -62,11 +62,6 @@ set -gx PATH $HOME/.cargo/bin $PATH
 set -x BUN_INSTALL "$HOME/.bun"
 set -gx PATH $BUN_INSTALL/bin $PATH
 
-# Anaconda
-if test -f /home/grumpy/.anaconda/bin/conda
-    eval /home/grumpy/.anaconda/bin/conda "shell.fish" hook $argv | source
-end
-
 # NVM
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'
     status --is-command-substitution; and return
