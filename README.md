@@ -69,7 +69,7 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 
 - [Home Brew](https://brew.sh/)
 - [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use Hack.
-- [Exa](https://the.exa.website/) - `ls` replacement
+- [Eza](https://eza.rocks/) - `ls` replacement
 - [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
 - [Fish shell](https://fishshell.com/) - User-friendly shell
 - [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
