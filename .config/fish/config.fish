@@ -52,8 +52,7 @@ end
 set -gx PATH node_modules/.bin $PATH
 
 # Go
-set -g GOPATH $HOME/.go
-set -gx PATH $GOPATH/bin $PATH
+set -gx GOPATH $HOME/.go
 
 # Cargo
 set -gx PATH $HOME/.cargo/bin $PATH
