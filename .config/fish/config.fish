@@ -48,8 +48,11 @@ if test -f $LOCAL_CONFIG
     source $LOCAL_CONFIG
 end
 
-# NodeJS
+# Node
 set -gx PATH node_modules/.bin $PATH
+
+# Yarn
+set -gx PATH $HOME/.yarn/bin $PATH
 
 # Bun
 set -gx PATH $HOME/.bun/bin $PATH
