@@ -51,15 +51,17 @@ end
 # NodeJS
 set -gx PATH node_modules/.bin $PATH
 
+# Bun
+set -gx PATH $HOME/.bun/bin $PATH
+
+# Pnpm
+set -gx PATH $HOME/.pnpm-global/bin $PATH
+
 # Go
 set -gx GOPATH $HOME/.go
 
 # Cargo
 set -gx PATH $HOME/.cargo/bin $PATH
-
-# BunJS
-set -x BUN_INSTALL "$HOME/.bun"
-set -gx PATH $BUN_INSTALL/bin $PATH
 
 # NVM
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'
