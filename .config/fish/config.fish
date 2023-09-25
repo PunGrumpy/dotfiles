@@ -66,6 +66,9 @@ set -gx GOPATH $HOME/.go
 # Cargo
 set -gx PATH $HOME/.cargo/bin $PATH
 
+# Rye (Python)
+set -gx PATH $HOME/.rye/shims $PATH
+
 # NVM
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'
     status --is-command-substitution; and return
