@@ -92,7 +92,7 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 
 ## Git config
 
-- [Git commitizen](https://github.com/commitizen/cz-cli) - Commitizen helps you commit better messages `npm install -g commitizen` and `npm install -g cz-conventional-changelog`
+- [Git commitizen](https://github.com/commitizen/cz-cli) - Commitizen helps you commit better messages `bun install -g commitizen` and `bun install -g cz-conventional-changelog` and `bun install -g cz-emoji-conventional-message`
 
 ## ©️ Reference setting
 
