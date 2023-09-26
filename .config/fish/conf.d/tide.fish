@@ -19,3 +19,5 @@ set -g tide_git_stash_color 000000
 set -g tide_git_untracked_color 000000
 set -g tide_git_upstream_color 000000
 set -g tide_pwd_bg_color 444444
+set -g tide_docker_icon 
+set -g tide_kubectl_icon 󱃾
