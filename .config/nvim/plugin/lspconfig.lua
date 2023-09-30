@@ -150,9 +150,10 @@ nvim_lsp.yamlls.setup {
   settings = {
     yaml = {
       schemas = {
+        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+        ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "/.gitlab-ci.yml",
         ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose.yml",
-        ["https://raw.githubusercontent.com/projectriff/riff/main/riff-r2dbc-schema.json"] = "application.yml",
-        ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/master/all.json"] = "*.yaml"
+        kubenetes = "globPattern",
       }
     }
   }
