@@ -160,7 +160,9 @@ nvim_lsp.yamlls.setup {
 
 nvim_lsp.helm_ls.setup {
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
+  cmd = { "helm_ls", "serve" },
+  root_dir = nvim_lsp.util.root_pattern("Chart.yaml", "charts.yaml", "Chart.yml", "Chart.lock")
 }
 
 nvim_lsp.terraformls.setup {
