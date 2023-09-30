@@ -133,4 +133,5 @@ Pods/
 .config/dlv/
 .config/ngrok/
 .config/systemd
+.config/helm
 .docker/
