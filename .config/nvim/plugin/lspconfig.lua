@@ -153,6 +153,9 @@ nvim_lsp.helm_ls.setup {
 nvim_lsp.yamlls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  root_dir = function(fname)
+    return vim.fn.expand(fname):match('/templates/') and '' or nil
+  end,
   settings = {
     yaml = {
       schemas = {
