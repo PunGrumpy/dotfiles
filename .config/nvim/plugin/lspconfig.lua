@@ -144,18 +144,6 @@ nvim_lsp.docker_compose_language_service.setup {
   capabilities = capabilities
 }
 
-if not nvim_lsp.helm_ls then
-  nvim_lsp.helm_ls = {
-    default_config = {
-      cmd = { "helm_ls", "serve" },
-      filetypes = { "helm", "yaml" },
-      root_dir = function(fname)
-        return nvim_lsp.util.root_pattern('Chart.yaml')(fname)
-      end,
-    }
-  }
-end
-
 nvim_lsp.helm_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
