@@ -148,10 +148,9 @@ if not nvim_lsp.helm_ls then
   nvim_lsp.helm_ls = {
     default_config = {
       cmd = { "helm_ls", "serve" },
-      filetypes = { "helm" },
+      filetypes = { "helm", "yaml" },
       root_dir = function(fname)
-        return nvim_lsp.util.root_pattern('Chart.yaml', 'requirements.yaml', 'values.yaml', 'Chart.lock')(fname) or
-            nvim_lsp.util.path.dirname(fname)
+        return nvim_lsp.util.root_pattern('Chart.yaml')(fname)
       end,
     }
   }
