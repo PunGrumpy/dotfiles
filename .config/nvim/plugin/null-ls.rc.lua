@@ -25,11 +25,14 @@ null_ls.setup {
     }),
     null_ls.builtins.diagnostics.fish,
     null_ls.builtins.diagnostics.golangci_lint,
+    null_ls.builtins.diagnostics.staticcheck,
     null_ls.builtins.diagnostics.hadolint,
     null_ls.builtins.diagnostics.terraform_validate,
     null_ls.builtins.diagnostics.tfsec,
     null_ls.builtins.diagnostics.ansiblelint,
-    null_ls.builtins.diagnostics.actionlint
+    null_ls.builtins.diagnostics.actionlint,
+    null_ls.builtins.code_actions.gomodifytags,
+    null_ls.builtins.code_actions.impl,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
