@@ -15,7 +15,8 @@ end
 null_ls.setup {
   sources = {
     null_ls.builtins.formatting.prettierd,
-    null_ls.builtins.formatting.golines,
+    null_ls.builtins.formatting.gofmt,
+    -- null_ls.builtins.formatting.gofumpt, -- gofumpt is stricter than gofmt
     null_ls.builtins.formatting.terraform_fmt,
     null_ls.builtins.formatting.fish_indent,
     null_ls.builtins.formatting.prismaFmt,
