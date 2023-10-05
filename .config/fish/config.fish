@@ -66,9 +66,6 @@ set -gx GOPATH $HOME/.go
 # Cargo
 set -gx PATH $HOME/.cargo/bin $PATH
 
-# Oracle
-set -gx
-
 # NVM
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'
     status --is-command-substitution; and return
