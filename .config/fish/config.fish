@@ -48,6 +48,9 @@ if test -f $LOCAL_CONFIG
     source $LOCAL_CONFIG
 end
 
+# Kubectl
+set -gx KUBECONFIG ~/.kube/config $KUBECONFIG
+
 # Node
 set -gx PATH node_modules/.bin $PATH
 
