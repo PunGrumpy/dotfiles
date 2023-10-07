@@ -136,12 +136,14 @@ nvim_lsp.gopls.setup {
 
 nvim_lsp.dockerls.setup {
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
+  cmd = { "docker-langserver", "--stdio" },
 }
 
 nvim_lsp.docker_compose_language_service.setup {
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
+  cmd = { "docker-compose-language-server", "--stdio" },
 }
 
 nvim_lsp.helm_ls.setup {
