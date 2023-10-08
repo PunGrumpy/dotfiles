@@ -146,27 +146,27 @@ nvim_lsp.docker_compose_language_service.setup {
   cmd = { "docker-compose-language-server", "--stdio" },
 }
 
-nvim_lsp.helm_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = { "helm_ls", "serve" },
-}
-
--- Disable yaml language server it's broken when use helm
--- nvim_lsp.yamlls.setup {
+-- nvim_lsp.helm_ls.setup {
 --   on_attach = on_attach,
 --   capabilities = capabilities,
---   settings = {
---     yaml = {
---       schemas = {
---         ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
---         ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "/.gitlab-ci.yml",
---         ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose.yml",
---         kubenetes = "globPattern",
---       }
---     }
---   }
+--   cmd = { "helm_ls", "serve" },
 -- }
+
+-- Disable yaml language server it's broken when use helm
+nvim_lsp.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+        ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "/.gitlab-ci.yml",
+        ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose.yml",
+        kubenetes = "globPattern",
+      }
+    }
+  }
+}
 
 nvim_lsp.terraformls.setup {
   on_attach = on_attach,
