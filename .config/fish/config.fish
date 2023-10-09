@@ -72,29 +72,8 @@ function __check_rvm --on-variable PWD --description 'Do nvm stuff'
 
     if test -f .nvmrc; and test -r .nvmrc
         nvm use
-    else
     end
 end
 
-# Docker
-if type -q dockercolorize
-    alias dps "docker ps | dockercolorize"
-    alias dpsa "docker ps -a | dockercolorize"
-    alias di "docker images | dockercolorize"
-    alias dcps "docker compose ps | dockercolorize"
-    alias dstats "docker stats --no-stream | dockercolorize"
-end
-
-if type -q docker
-    alias d docker
-end
-
-# Kubernetes
-if type -q kubectl
-    alias k kubectl
-end
-
-if type -q kubectx
-    alias kctx kubectx
-    alias kns kubens
-end
+# Aliases Config
+source (dirname (status --current-filename))/config-aliases.fish
