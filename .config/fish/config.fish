@@ -84,3 +84,17 @@ if type -q dockercolorize
     alias dcps "docker compose ps | dockercolorize"
     alias dstats "docker stats --no-stream | dockercolorize"
 end
+
+if type -q docker
+    alias d docker
+end
+
+# Kubernetes
+if type -q kubectl
+    alias k kubectl
+end
+
+if type -q kubectx
+    alias kctx kubectx
+    alias kns kubens
+end

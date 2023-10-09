@@ -7,15 +7,6 @@ if type -q eza
     alias lla "ll -a"
 end
 
-if type -q kubectl
-    alias k kubectl
-end
-
-if type -q kubectx
-    alias kx kubectx
-    alias kns kubens
-end
-
 if test -n "$WSL_DISTRO_NAME"
     alias open xdg-open
     alias c: "cd /mnt/c"
