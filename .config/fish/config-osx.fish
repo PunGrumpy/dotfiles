@@ -7,6 +7,11 @@ if type -q kubectl
     alias k kubectl
 end
 
+if type -q kubectx
+    alias kctx kubectx
+    alias kns kubens
+end
+
 # Inkdrop
 set -gx INKDROP_HOME ~/.inkdrop
 
