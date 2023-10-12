@@ -134,4 +134,5 @@ Pods/
 .config/ngrok/
 .config/systemd
 .config/helm
+.config/argocd
 .docker/
