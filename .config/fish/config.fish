@@ -60,6 +60,9 @@ set -gx PATH $HOME/.bun/bin $PATH
 # Pnpm
 set -gx PATH $HOME/.pnpm-global/bin $PATH
 
+# Deno
+set -gx PATH $HOME/.deno/bin $PATH
+
 # Go
 set -gx GOPATH $HOME/.go
 
