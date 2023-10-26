@@ -136,4 +136,6 @@ Pods/
 .config/helm
 .config/argocd
 .config/turso
+.config/astro
+.config/gh
 .docker/
