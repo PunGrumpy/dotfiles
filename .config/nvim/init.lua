@@ -3,21 +3,14 @@ require('grumpy.highlights')
 require('grumpy.maps')
 require('grumpy.plugins')
 
-local has = vim.fn.has
-local is_mac = has "macunix"
-local is_linux = has "unix"
-local is_win = has "win32"
-local is_wsl = has "wsl"
+local os = vim.loop.os_uname().sysname
 
-if is_mac then
+if os == "Darwin" then
   require('grumpy.macos')
-end
-if is_linux then
+elseif os == "Linux" then
   require('grumpy.linux')
-end
-if is_win then
+elseif os == "Windows" then
   require('grumpy.windows')
-end
-if is_wsl then
-  require('grumpy.wsl')
+else
+  error("Unsupported OS: " .. os)
 end
