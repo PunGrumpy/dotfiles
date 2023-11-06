@@ -138,4 +138,5 @@ Pods/
 .config/turso
 .config/astro
 .config/gh
+.config/sao-nodejs/
 .docker/
