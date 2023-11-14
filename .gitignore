@@ -140,4 +140,5 @@ Pods/
 .config/astro
 .config/gh
 .config/sao-nodejs/
+.config/lazygit
 .docker/
