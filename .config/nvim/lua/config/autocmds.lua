@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		vim.opt.conceallevel = 0
 	end,
-})-- Turn off paste mode when leaving insert
+}) -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {
 	pattern = "*",
 	command = "set nopaste",
