@@ -12,7 +12,11 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
-				"prettier",
+				"gofumpt",
+				"goimports",
+				"gomodifytags",
+				"impl",
+				"golangci-lint",
 			})
 		end,
 	},
@@ -25,13 +29,11 @@ return {
 			---@type lspconfig.options
 			servers = {
 				cssls = {},
-
 				tailwindcss = {
 					root_dir = function(...)
 						return require("lspconfig.util").root_pattern(".git")(...)
 					end,
 				},
-
 				tsserver = {
 					root_dir = function(...)
 						return require("lspconfig.util").root_pattern(".git")(...)
@@ -62,9 +64,7 @@ return {
 						},
 					},
 				},
-
 				html = {},
-
 				yamlls = {
 					settings = {
 						yaml = {
@@ -78,7 +78,6 @@ return {
 						},
 					},
 				},
-
 				lua_ls = {
 					-- enabled = false,
 					single_file_support = true,
@@ -144,16 +143,12 @@ return {
 						},
 					},
 				},
-
-				prismals = {
-					enable = true,
-					disable = { "trailing-space" },
-				},
-
 				gopls = {
 					settings = {
 						gopls = {
 							gofumpt = true,
+							staticcheck = true,
+							semanticTokens = true,
 							codelenses = {
 								gc_details = false,
 								generate = true,
@@ -182,71 +177,17 @@ return {
 							},
 							usePlaceholders = true,
 							completeUnimported = true,
-							staticcheck = true,
 							directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-							semanticTokens = true,
 						},
 					},
 				},
-
-				dockerls = {
-					cmd = { "docker-langserver", "--stdio" },
-				},
-
-				docker_compose_language_service = {
-					cmd = { "docker-compose-language-server", "--stdio" },
-				},
-
-				terraformls = {
-					cmd = { "terraform-ls", "serve" },
-				},
+				dockerls = {},
+				docker_compose_language_service = {},
+				terraformls = {},
+				prismals = {},
+				ansiblels = {},
 			},
-			setup = {
-				tailwindcss = function(_, opts)
-					local tw = require("lspconfig.server_configurations.tailwindcss")
-					opts.filetypes = opts.filetypes or {}
-
-					-- Add default filetypes
-					vim.list_extend(opts.filetypes, tw.default_config.filetypes)
-
-					-- Remove excluded filetypes
-					-- @param ft string
-					opts.filetypes = vim.tbl_filter(function(ft)
-						return not vim.tbl_contains(tw.default_config.filetypes, ft)
-					end, opts.filetypes)
-
-					-- Add additional filetypes
-					vim.list_extend(opts.filetypes, opts.additional_filetypes or {})
-				end,
-
-				yamlls = function()
-					if vim.fn.has("nvim-0.10") == 0 then
-						require("lazyvim.util").lsp.on_attach(function(client, _)
-							if client.name == "yamlls" then
-								client.config.settings.yaml.schemaStore.enable = false
-							end
-						end)
-					end
-				end,
-
-				gopls = function(_, opts)
-					require("lazyvim.util").lsp.on_attach(function(client, _)
-						if client.name == "gopls" then
-							if not client.server_capabilities.semanticTokensProvider then
-								local semantic = client.config.capabilities.textDocument.semanticTokens
-								client.server_capabilities.semanticTokensProvider = {
-									full = true,
-									legend = {
-										tokenTypes = semantic.tokenTypes,
-										tokenModifiers = semantic.tokenModifiers,
-									},
-									range = true,
-								}
-							end
-						end
-					end)
-				end,
-			},
+			setup = {},
 		},
 	},
 }
