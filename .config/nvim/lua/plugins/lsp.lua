@@ -12,6 +12,7 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
+				"prettier",
 			})
 		end,
 	},
@@ -24,11 +25,13 @@ return {
 			---@type lspconfig.options
 			servers = {
 				cssls = {},
+
 				tailwindcss = {
 					root_dir = function(...)
 						return require("lspconfig.util").root_pattern(".git")(...)
 					end,
 				},
+
 				tsserver = {
 					root_dir = function(...)
 						return require("lspconfig.util").root_pattern(".git")(...)
@@ -59,7 +62,9 @@ return {
 						},
 					},
 				},
+
 				html = {},
+
 				yamlls = {
 					settings = {
 						yaml = {
@@ -73,6 +78,7 @@ return {
 						},
 					},
 				},
+
 				lua_ls = {
 					-- enabled = false,
 					single_file_support = true,
@@ -138,10 +144,12 @@ return {
 						},
 					},
 				},
+
 				prismals = {
 					enable = true,
 					disable = { "trailing-space" },
 				},
+
 				gopls = {
 					settings = {
 						gopls = {
@@ -180,19 +188,22 @@ return {
 						},
 					},
 				},
+
 				dockerls = {
 					cmd = { "docker-langserver", "--stdio" },
 				},
+
 				docker_compose_language_service = {
 					cmd = { "docker-compose-language-server", "--stdio" },
 				},
+
 				terraformls = {
 					cmd = { "terraform-ls", "serve" },
 				},
 			},
 			setup = {
 				tailwindcss = function(_, opts)
-					local tw = require("lspconfig.servers.tailwindcss")
+					local tw = require("lspconfig.server_configurations.tailwindcss")
 					opts.filetypes = opts.filetypes or {}
 
 					-- Add default filetypes
