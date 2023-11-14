@@ -1,4 +1,4 @@
-<div aling="center">
+<div align="center">
     <h1><code>🐙</code> PunGrumpy's Dotfiles</h1>
 </div>
 
