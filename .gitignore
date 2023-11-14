@@ -141,4 +141,5 @@ Pods/
 .config/gh
 .config/sao-nodejs/
 .config/lazygit
+.config/go
 .docker/
