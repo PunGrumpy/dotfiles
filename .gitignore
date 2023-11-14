@@ -36,6 +36,7 @@ Session.vim
 .vim/ftdetect/Dockerfile.vim
 .vim/syntax/Dockerfile.vim
 .vim/snippets/
+.luarc.json
 .config/nvim/plugin/packer_compiled.lua
 .config/nvim/pack/github
 
