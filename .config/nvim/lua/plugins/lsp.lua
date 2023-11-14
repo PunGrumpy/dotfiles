@@ -143,8 +143,42 @@ return {
 					disable = { "trailing-space" },
 				},
 				gopls = {
-					cmd = { "gopls", "serve" },
-					filetypes = { "go", "gomod", "gowork", "gotmpl" },
+					settings = {
+						gopls = {
+							gofumpt = true,
+							codelenses = {
+								gc_details = false,
+								generate = true,
+								regenerate_cgo = true,
+								run_govulncheck = true,
+								test = true,
+								tidy = true,
+								upgrade_dependency = true,
+								vendor = true,
+							},
+							hints = {
+								assignVariableTypes = true,
+								compositeLiteralFields = true,
+								compositeLiteralTypes = true,
+								constantValues = true,
+								functionTypeParameters = true,
+								parameterNames = true,
+								rangeVariableTypes = true,
+							},
+							analyses = {
+								fieldalignment = true,
+								nilness = true,
+								unusedparams = true,
+								unusedwrite = true,
+								useany = true,
+							},
+							usePlaceholders = true,
+							completeUnimported = true,
+							staticcheck = true,
+							directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+							semanticTokens = true,
+						},
+					},
 				},
 				dockerls = {
 					cmd = { "docker-langserver", "--stdio" },
@@ -156,7 +190,52 @@ return {
 					cmd = { "terraform-ls", "serve" },
 				},
 			},
-			setup = {},
+			setup = {
+				tailwindcss = function(_, opts)
+					local tw = require("lspconfig.servers.tailwindcss")
+					opts.filetypes = opts.filetypes or {}
+
+					-- Add default filetypes
+					vim.list_extend(opts.filetypes, tw.default_config.filetypes)
+
+					-- Remove excluded filetypes
+					-- @param ft string
+					opts.filetypes = vim.tbl_filter(function(ft)
+						return not vim.tbl_contains(tw.default_config.filetypes, ft)
+					end, opts.filetypes)
+
+					-- Add additional filetypes
+					vim.list_extend(opts.filetypes, opts.additional_filetypes or {})
+				end,
+
+				yamlls = function()
+					if vim.fn.has("nvim-0.10") == 0 then
+						require("lazyvim.util").lsp.on_attach(function(client, _)
+							if client.name == "yamlls" then
+								client.config.settings.yaml.schemaStore.enable = false
+							end
+						end)
+					end
+				end,
+
+				gopls = function(_, opts)
+					require("lazyvim.util").lsp.on_attach(function(client, _)
+						if client.name == "gopls" then
+							if not client.server_capabilities.semanticTokensProvider then
+								local semantic = client.config.capabilities.textDocument.semanticTokens
+								client.server_capabilities.semanticTokensProvider = {
+									full = true,
+									legend = {
+										tokenTypes = semantic.tokenTypes,
+										tokenModifiers = semantic.tokenModifiers,
+									},
+									range = true,
+								}
+							end
+						end
+					end)
+				end,
+			},
 		},
 	},
 }
