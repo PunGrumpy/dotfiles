@@ -1,6 +1,6 @@
 local M = {}
 
-function M.cowboy()
+function M.dolphin()
 	---@type table?
 	local id
 	local ok = true
@@ -13,8 +13,8 @@ function M.cowboy()
 				count = 0
 			end
 			if count >= 10 then
-				ok, id = pcall(vim.notify, "Hold it Cowboy!", vim.log.levels.WARN, {
-					icon = "🤠",
+				ok, id = pcall(vim.notify, "Wait, that's illegal!", vim.log.levels.WARN, {
+					icon = "🐬",
 					replace = id,
 					keep = function()
 						return count >= 10
