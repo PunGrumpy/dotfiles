@@ -1,4 +1,6 @@
-# PunGrumpy's dotfiles
+<div aling="center">
+    <h1><code>🐙</code> PunGrumpy's Dotfiles</h1>
+</div>
 
 <details open>
     <summary>Example Terminal 1</summary>
@@ -27,45 +29,24 @@
 
 **Recommend** : For Windows user you can find the color scheme for **Windows Terminal** in https://windowsterminalthemes.dev/
 
-## ⚙️ Contents
+## `⚙️` Contents
 
 - NeoVim config
-- git config
+- Git config
 - PowerShell config
 - Fish config
 - Tmux config
 
-## Neovim setup
+## `👽` NeoVim
 
-Requires [Neovim](https://neovim.io/) (>= 0.8)
+- [NeoVim](https://neovim.io/) >= 0.9.0 (needs to be built with [**LuaJIT**](https://luajit.org/luajit.html)).
+- [LazyVim](https://github.com/LazyVim/LazyVim) - Neovim config for the lazy
+- [Telescope](https://github.com/nvim-telescope/telescope.nvim) - Find, Filter, Preview, Pick. All lua, all the time
+  - [Ripgrep](https://github.com/BurntSushi/ripgrep) - Recursively searches directories for a regex pattern
+  - [FD](https://github.com/sharkdp/fd) - Fast and user-friendly alternative to find
+- [Solarized Osaka](https://github.com/craftzdog/solarized-osaka.nvim) - Solarized colorscheme for Neovim
 
-- [wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim) - A plugin manager for Neovim
-- [svrana/neosolarized.nvim](https://github.com/svrana/neosolarized.nvim) - A truecolor, solarized dark colorscheme
-- [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - A blazing fast and easy to configure Neovim statusline written in Lua
-- [onsails/lspkind-nvim](https://github.com/onsails/lspkind-nvim) - VSCode-like pictograms
-- [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Snippet Engine for Neovim written in Lua
-- [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - nvim-cmp source for neovim's built-in LSP
-- [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - nvim-cmp source for buffer words
-- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion engine plugin for neovim written in Lua
-- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - A collection of configurations for Neovim's built-in LSP
-- [jose-elias-alvarez/null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim) - Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
-- [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) - Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters
-- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
-- [glepnir/lspsaga.nvim](https://github.com/glepnir/lspsaga.nvim) - A light-weight lsp plugin based on neovim's built-in lsp with a highly performant UI
-- [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - [Treesitter](https://github.com/tree-sitter/tree-sitter) configurations and abstraction layer for Neovim
-- [kyazdani42/nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) - Lua `fork` of vim-web-devicons for neovim
-- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - A highly extendable fuzzy finder over lists
-- [nvim-telescope/telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim) - File Browser extension for telescope.nvim
-- [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Autopairs
-- [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) - Use treesitter to auto close and auto rename html tag
-- [norcalli/nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) - A high-performance color highlighter
-- [akinsho/nvim-bufferline.lua](https://github.com/akinsho/nvim-bufferline.lua) - A snazzy bufferline
-- [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git integration for buffers
-- [dinhhuy258/git.nvim](https://github.com/dinhhuy258/git.nvim) - A simple clone of the plugin vim-fugitive
-- [folke/zen-mode.nvim](https://github.com/folke/zen-mode.nvim) - Distraction-free mode
-- [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) - Markdown live preview
-
-## Shell setup (macOS & Linux)
+## `🐚` Shell setup (macOS & Linux)
 
 - [Home Brew](https://brew.sh/)
 - [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use Hack.
@@ -79,7 +60,7 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 - [Puffer for fish](https://github.com/nickeb96/puffer-fish) - Text expander `fisher install nickeb96/puffer-fish`
 - [Pisces for fish](https://github.com/laughedelic/pisces) - Paired symbols `fisher install laughedelic/pisces`
 
-## PowerShell setup (Windows)
+## `👧` PowerShell setup (Windows)
 
 - [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=th-th&gl=th)
 - [Scoop](https://scoop.sh/) - A command-line installer
@@ -90,10 +71,10 @@ Requires [Neovim](https://neovim.io/) (>= 0.8)
 - [z](https://www.powershellgallery.com/packages/z) - Directory jumper
 - [PSFzf](https://github.com/kelleyma49/PSFzf) - Fuzzy finder
 
-## Git config
+## `🦒` Git config
 
 - [Git commitizen](https://github.com/commitizen/cz-cli) - Commitizen helps you commit better messages `bun install -g commitizen` and `bun install -g cz-conventional-changelog` and `bun install -g cz-emoji-conventional-message`
 
-## ©️ Reference setting
+## `©️` Reference setting
 
 - [Takuya](https://github.com/craftzdog/dotfiles-public)
