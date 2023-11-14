@@ -3,9 +3,15 @@
 </div>
 
 <details open>
-    <summary>Example Terminal 1</summary>
-    <img src="./images/example-terminal-1.png"
-        alt="Example Terminal 1" />
+    <summary>NeoVim</summary>
+    <img src="./images/neovim/preview-1.png"
+        alt="NeoVim" />
+</details>
+
+<details>
+    <summary>Terminal Linux/OSX</summary>
+    <img src="./images/terminal/preview-1.png"
+        alt="Terminal Linux/OSX" />
     <p>This terminal use:</p>
     <ul>
         <li>color scheme <strong>Solarized Dark (Modded)</strong></li>
@@ -15,9 +21,9 @@
 </details>
 
 <details>
-    <summary>Example Terminal 2</summary>
-    <img src="./images/example-terminal-2.png"
-        alt="Example Terminal 2" />
+    <summary>Terminal Windows</summary>
+    <img src="./images/terminal/preview-2.png"
+        alt="Terminal Windows" />
     <p>This terminal use:</p>
     <ul>
         <li>color scheme <strong>One Half Dark (Modded)</strong></li>
