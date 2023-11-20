@@ -138,6 +138,9 @@ return {
 							keyOrdering = false,
 							schemas = {
 								["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+								["https://json.schemastore.org/dependabot-2.0.json"] = "./.github/dependabot.yml",
+								["https://json.schemastore.org/prometheus.json"] = "/prometheus.yml",
+								["https://json.schemastore.org/pull-request-labeler.json"] = "/.github/labeler.yml",
 								["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "/.gitlab-ci.yml",
 								["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "docker-compose.yml",
 								kubenetes = "glob_pattern",
