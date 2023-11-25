@@ -95,5 +95,21 @@
         <a href="https://github.com/craftzdog/dotfiles-public">📂</a>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/mathiasbynens">
+      <img src="https://avatars.githubusercontent.com/u/81942?v=4" width="100px;" alt="Mathias Bynens" />
+      <br />
+      <sub><b>Mathias Bynens</b></sub>
+      <br />
+      <a href="https://github.com/mathiasbynens/dotfiles">📂</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/paulirish">
+      <img src="https://avatars.githubusercontent.com/u/39191?v=4" width="100px;" alt="Paul Irish" />
+      <br />
+      <sub><b>Paul Irish</b></sub>
+      <br />
+      <a href="https://github.com/paulirish/dotfiles">📂</a>
+    </td>
   </tr>
 </table>
