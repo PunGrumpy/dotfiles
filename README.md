@@ -83,4 +83,17 @@
 
 ## `©️` Reference setting
 
-- [Takuya](https://github.com/craftzdog/dotfiles-public)
+<!-- - [Takuya](https://github.com/craftzdog/dotfiles-public) -->
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/craftzdog">
+        <img src="https://avatars.githubusercontent.com/u/1332805?v=4" width="100px;" alt="Takuya Matsuyama" />
+        <br />
+        <sub><b>Takuya Matsuyama</b></sub>
+        <br />
+        <a href="https://github.com/craftzdog/dotfiles-public">📂</a>
+      </a>
+    </td>
+  </tr>
+</table>
