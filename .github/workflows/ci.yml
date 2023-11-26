@@ -1,0 +1,28 @@
+name: 🤡 Continuous Integration
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    name: 🧪 Test on ${{ matrix.os }}
+    steps:
+      - name: 🛫 Checkout
+        uses: actions/checkout@v4
+      - name: ⚖️ Lint
+        uses: azohra/shell-linter@latest
+        with:
+          path: build.sh
+      - name: 🪼 Install
+        shell: bash
+        run: |
+          bash build.sh
