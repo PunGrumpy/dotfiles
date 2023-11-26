@@ -30,17 +30,10 @@ function PRINT_MESSAGE() {
     echo -e "${color}${message}${RESET}"
 }
 
-function COMMAND_EXISTS() {
-    command -v "$1" >/dev/null 2>&1
-}
-
-function FISH_COMMAND_EXISTS() {
-    fish -c "command -v $1" >/dev/null 2>&1
-}
-
 function CLEAR() {
+    sleep 1
     clear
-    sleep 0.5
+    sleep 1
 }
 
 CLEAR
@@ -62,7 +55,7 @@ PRINT_MESSAGE "${GREEN}" "📌 Checking dependencies..."
 CLEAR
 
 PRINT_MESSAGE "${GREEN}" "🌲 Checking Git..."
-if COMMAND_EXISTS "git"; then
+if command -v git &> /dev/null; then
     GIT=true
 else
     echo -e "${RED}Git is not installed.${RESET}"
@@ -72,7 +65,7 @@ fi
 CLEAR
 
 PRINT_MESSAGE "${GREEN}" "🕸 Checking Curl..."
-if COMMAND_EXISTS "curl"; then
+if command -v curl &> /dev/null; then
     CURL=true
 else
     echo -e "${RED}Curl is not installed.${RESET}"
@@ -145,23 +138,21 @@ PRINT_MESSAGE "${GREEN}" "🐚 Setting up shell..."
 CLEAR
 
 PRINT_MESSAGE "${GREEN}" "🐟 Setting up fish..."
-if COMMAND_EXISTS "fish"; then
-    PRINT_MESSAGE "${GREEN}" "🐟 Fish is installed."
+if ! command -v fish &> /dev/null; then
+    PRINT_MESSAGE "${GREEN}" "🐟 Installing fish..."
     chsh -s "$(which fish)"
 else
-    PRINT_MESSAGE "${RED}" "🐟 Fish is not installed."
-    exit 1
+    PRINT_MESSAGE "${GREEN}" "🐟 Fish is installed."
 fi
 
 CLAER
 
 PRINT_MESSAGE "${GREEN}" "🐠 Setting up fisher..."
-if FISH_COMMAND_EXISTS "fisher"; then
+if ! fish -c fisher --version &> /dev/null; then
     PRINT_MESSAGE "${GREEN}" "🐠 Installing fisher..."
     fish -c curl -sL $FISHER_URL | source && fisher install jorgebucaran/fisher
 else
-    PRINT_MESSAGE "${RED}" "🐠 Fisher is not installed."
-    exit 1
+    PRINT_MESSAGE "${GREEN}" "🐠 Fisher is installed."
 fi
 
 CLEAR
@@ -178,6 +169,8 @@ CLEAR
 # LINKS
 ##############################################
 PRINT_MESSAGE "${GREEN}" "🔗 Creating links..."
+
+rm -rf "$HOME/.config"
 
 ln -sf "$DOTFILES_PATH/.gitconfig" "$HOME/.gitconfig"
 ln -sf "$DOTFILES_PATH/.gitignore" "$HOME/.gitignore"
