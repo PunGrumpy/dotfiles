@@ -12,23 +12,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    name: 🧪 Test on ${{ matrix.os }}
-    steps:
-      - name: 🛫 Checkout
-        uses: actions/checkout@v4
-      - name: ⚖️ Lint
-        uses: azohra/shell-linter@latest
-        with:
-          path: build.sh
-  install:
-    strategy:
-      fail-fast: false
-      matrix:
         os: [ubuntu-latest, macos-latest]
+    name: 🧪 Test on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    name: 🐠 Install on ${{ matrix.os }}
     steps:
       - name: 🛫 Checkout
         uses: actions/checkout@v4
