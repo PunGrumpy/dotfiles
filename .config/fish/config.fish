@@ -50,6 +50,7 @@ set -gx PATH $HOME/.deno/bin $PATH
 
 # Go
 set -gx GOPATH $HOME/.go
+set -gx PATH $GOPATH/bin $PATH
 
 # Cargo
 set -gx PATH $HOME/.cargo/bin $PATH
