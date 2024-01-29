@@ -23,7 +23,7 @@ return {
 					group = function(_, match)
 						local utils = require("solarized-osaka.hsl")
 						--- @type string, string, string
-						local nh, ns, nl = match:match("hsl%((%d+),? (%d+)%%?,? (%d+)%%? %)")
+						local nh, ns, nl = match:match("hsl%((%d+),? (%d+)%%?,? (%d+)%%?%)")
 						--- @type number?, number?, number?
 						local h, s, l = tonumber(nh), tonumber(ns), tonumber(nl)
 						--- @type string
@@ -211,4 +211,3 @@ return {
 		end,
 	},
 }
-
