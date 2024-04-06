@@ -142,4 +142,6 @@ Pods/
 .config/sao-nodejs/
 .config/lazygit
 .config/go
+.config/act/
+.config/ggshield/
 .docker/
