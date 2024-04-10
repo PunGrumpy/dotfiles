@@ -96,6 +96,10 @@ Pods/
 # Alacritty
 .config/alacritty/*.bak
 
+# Lazygit
+.config/lazygit/development.log
+.config/lazygit/state.yml
+
 # Folder
 .config/Electron
 .config/yarn
@@ -140,7 +144,6 @@ Pods/
 .config/astro
 .config/gh
 .config/sao-nodejs/
-.config/lazygit
 .config/go
 .config/act/
 .config/ggshield/
