@@ -79,11 +79,11 @@
 
 ## `🦒` Git config
 
-- [Git commitizen](https://github.com/commitizen/cz-cli) - Commitizen helps you commit better messages `bun install -g commitizen` and `bun install -g cz-conventional-changelog` and `bun install -g cz-emoji-conventional-message`
+- [Git commitizen](https://github.com/commitizen/cz-cli) - Commitizen helps you commit better messages `bun install -g commitizen cz-conventional-changelog cz-emoji-conventional-message`
+- [Lazygit](https://github.com/jesseduffield/lazygit/) - Simple terminal UI for git commands `brew install lazygit`
 
 ## `©️` Reference setting
 
-<!-- - [Takuya](https://github.com/craftzdog/dotfiles-public) -->
 <table>
   <tr>
     <td align="center">
