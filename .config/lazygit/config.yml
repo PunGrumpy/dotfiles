@@ -1,7 +1,12 @@
 customCommands:
+  - key: "<c-p>"
+    description: "Push to Gerrit"
+    command: "git push origin HEAD:refs/for/{{.CheckedOutBranch.Name}}"
+    context: "global"
+    loadingText: "Pushing to Gerrit..."
   - key: "C"
-    command: "git cz"
     description: "Commit with Conventional Commits"
+    command: "git cz"
     context: "files"
     loadingText: "Committing with Conventional Commits..."
     subprocess: true
