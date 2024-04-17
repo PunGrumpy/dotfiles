@@ -1,5 +1,9 @@
 return {
 	{
+		"wakatime/vim-wakatime",
+	},
+
+	{
 		enabled = false,
 		"folke/flash.nvim",
 		---@type Flash.Config
