@@ -5,7 +5,7 @@
   name = PunGrumpy
   email = "gitea.cheesy842@passinbox.com"
 [user]
-	name = PunGrumpy
+  name = PunGrumpy
   email = "108584943+PunGrumpy@users.noreply.github.com"
 [init]
   author = PunGrumpy
@@ -13,6 +13,7 @@
 [core]
 	excludesfile = ~/.gitignore
 	editor = nvim
+  pager = delta
 	ignorecase = false
 	longpaths = true
 	autocrlf = false
@@ -61,11 +62,16 @@
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  required = true
+  process = git-lfs filter-process
 [ghq]
   root = ~/.ghq
+[delta]
+  navigate = true
+  features = side-by-side line-numbers decorations highlight-line
+[credential]
+  helper = cache
 [safe]
-    directory = *
+  directory = *
