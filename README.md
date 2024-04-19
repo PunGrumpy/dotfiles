@@ -81,6 +81,7 @@
 
 - [Git commitizen](https://github.com/commitizen/cz-cli) - Commitizen helps you commit better messages `bun install -g commitizen cz-conventional-changelog cz-emoji-conventional-message`
 - [Lazygit](https://github.com/jesseduffield/lazygit/) - Simple terminal UI for git commands `brew install lazygit`
+- [Delta](https://github.com/dandavison/delta) - Syntax-highlighting pager for git `brew install git-delta`
 
 ## `©️` Reference setting
 
