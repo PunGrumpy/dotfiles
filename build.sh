@@ -11,174 +11,172 @@ RESET='\033[0m'
 # VARIABLES
 ##############################################
 OS=$(uname -s)
-GITHUB_URL="https://github.com/PunGrumpy/dotfiles.git"
-FISHER_URL="https://git.io/fisher"
-HOMEBREW_URL="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
 DOTFILES_PATH="$HOME/.dotfiles"
-
-DOTFILES=false
-GIT=false
-CURL=false
+DOTFILES_URL="https://github.com/PunGrumpy/dotfiles.git"
+HOMEBREW_URL="https://raw.githubusercontent.com/Homebrew/install/master/install.sh"
+SHELL_CONFIG="fish" # Default shell configuration
 
 ##############################################
 # FUNCTIONS
 ##############################################
-function PRINT_MESSAGE() {
-    local color=$1
-    local message=$2
 
-    echo -e "${color}${message}${RESET}"
+# Function to print messages in color
+print_message() {
+	local color=$1
+	local message=$2
+	echo -e "${color}${message}${RESET}"
 }
 
-function CLEAR() {
-    sleep 1
-    clear
-    sleep 1
+# Function to clear screen
+clear_screen() {
+	sleep 1
+	clear
+	sleep 1
 }
 
-CLEAR
+# Function to check if a command is available
+check_command() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# Function to handle errors
+handle_error() {
+	local message="$1"
+	print_message "${RED}" "Error: $message"
+	exit 1
+}
+
+# Function to validate shell configuration input
+validate_shell_config() {
+	local shell_config="$1"
+	if [[ "$shell_config" != "bash" && "$shell_config" != "fish" ]]; then
+		handle_error "Invalid shell configuration. Please enter 'bash' or 'fish'."
+	fi
+}
+
+# Function to install dotfiles
+install_dotfiles() {
+	if [ -z "$DOTFILES_URL" ]; then
+		handle_error "Dotfiles URL is not provided."
+	fi
+
+	if [ -d "$DOTFILES_PATH" ]; then
+		print_message "${RED}" "⚠️ Dotfiles path already exists."
+		read -p "Do you want to remove the existing dotfiles path? (y/n): " input_remove
+
+		if [ "${input_remove,,}" == "y" ]; then
+			print_message "${GREEN}" "📂 Removing dotfiles path..."
+			rm -rf "$DOTFILES_PATH" || handle_error "Failed to remove dotfiles."
+			print_message "${GREEN}" "📂 Dotfiles path removed successfully."
+		else
+			print_message "${RED}" "⚠️ Dotfiles path not removed."
+		fi
+	fi
+
+	if [ ! -d "$DOTFILES_PATH" ]; then
+		print_message "${GREEN}" "📂 Cloning dotfiles..."
+		git clone "$DOTFILES_URL" "$DOTFILES_PATH" || handle_error "Failed to clone dotfiles."
+		print_message "${GREEN}" "📂 Dotfiles cloned successfully."
+	fi
+}
+
+# Function to symlink dotfiles
+symlink_dotfiles() {
+	local dotfiles=("$(find "$DOTFILES_PATH" -maxdepth 1 -name '.*' -type f)")
+
+	if [ ${#dotfiles[@]} -eq 0 ]; then
+		handle_error "No dotfiles found in '$DOTFILES_PATH'."
+	fi
+
+	for file in "${dotfiles[@]}"; do
+		local filename=$(basename "$file")
+		ln -sf "$file" "$HOME/$filename"
+	done
+
+	ln -sf "$DOTFILES_PATH/.config" "$HOME"
+	ln -sf "$DOTFILES_PATH/.scripts" "$HOME"
+	print_message "${GREEN}" "🔗 Creating symlinks... Done."
+}
+
+# Function to install Homebrew
+install_homebrew() {
+	print_message "${GREEN}" "🍺 Getting Homebrew..."
+	/bin/bash -c "$(curl -fsSL $HOMEBREW_URL)" || handle_error "Failed to install Homebrew."
+	print_message "${GREEN}" "🍺 Homebrew installed successfully."
+}
+
+# Function to source shell configuration
+source_shell_config() {
+	if [ "$SHELL_CONFIG" == "fish" ]; then
+		print_message "${GREEN}" "🐟 Setting up Fish..."
+		check_command fish || handle_error "Fish shell is not installed."
+		local brew_shellenv="/usr/local/bin/brew shellenv"
+		if [ "$OS" != "Darwin" ]; then
+			brew_shellenv="/home/linuxbrew/.linuxbrew/bin/brew shellenv"
+		fi
+		echo "eval ($brew_shellenv)" >>~/.config/fish/config.fish
+		print_message "${GREEN}" "🐟 Fisher is installed."
+	else
+		print_message "${GREEN}" "📝 Setting up Bash..."
+		local shellenv_command="\$(/usr/local/bin/brew shellenv)"
+		if [ "$OS" != "Darwin" ]; then
+			shellenv_command="\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+		fi
+		echo "eval \"$shellenv_command\"" >>~/.bash_profile
+		print_message "${GREEN}" "📝 Bash setup completed."
+	fi
+}
+
+# Function to install brew bundle
+install_brew_bundle() {
+	print_message "${GREEN}" "📦 Installing Brewfile..."
+	if [ -f "$DOTFILES_PATH/Brewfile" ]; then
+		brew bundle --file="$DOTFILES_PATH/Brewfile" || handle_error "Failed to install Brewfile."
+		print_message "${GREEN}" "📦 Brewfile installed successfully."
+	else
+		print_message "${RED}" "⚠️ Brewfile not found."
+	fi
+}
+
 ##############################################
-# DOTFILES PATH
+# MAIN SCRIPT
 ##############################################
-PRINT_MESSAGE "${GREEN}" "📂 Checking dotfiles path..."
 
-if [ -d "$DOTFILES_PATH" ]; then
-    DOTFILES=true
-    PRINT_MESSAGE "${RED}" "⚠️ Dotfiles path already exists."
-fi
+# Clear screen
+clear_screen
 
-##############################################
-# DEPENDENCIES
-##############################################
-PRINT_MESSAGE "${GREEN}" "📌 Checking dependencies..."
+# Ask for dotfiles URL
+read -p "Enter the URL for dotfiles repository (default: $DOTFILES_URL): " input_url
+DOTFILES_URL=${input_url:-$DOTFILES_URL}
 
-CLEAR
+# Ask for shell configuration
+read -p "Enter the shell configuration (bash/fish): " input_shell
+SHELL_CONFIG=${input_shell:-$SHELL_CONFIG}
 
-PRINT_MESSAGE "${GREEN}" "🌲 Checking Git..."
-if command -v git &> /dev/null; then
-    GIT=true
-else
-    echo -e "${RED}Git is not installed.${RESET}"
-    exit 1
-fi
+# Validate shell configuration input
+validate_shell_config "$SHELL_CONFIG"
 
-CLEAR
+# Install dotfiles
+install_dotfiles
 
-PRINT_MESSAGE "${GREEN}" "🕸 Checking Curl..."
-if command -v curl &> /dev/null; then
-    CURL=true
-else
-    echo -e "${RED}Curl is not installed.${RESET}"
-    exit 1
-fi
+# Symlink dotfiles
+symlink_dotfiles
 
-CLEAR
-##############################################
-# INSTALLATION
-##############################################
-PRINT_MESSAGE "${GREEN}" "📦 Installing..."
+# Check dependencies
+print_message "${GREEN}" "📌 Checking dependencies..."
+check_command git || handle_error "Git is not installed."
+check_command curl || handle_error "Curl is not installed."
 
-CLEAR
+# Install Homebrew
+install_homebrew
 
-if [ "$DOTFILES" = false ]; then
-    PRINT_MESSAGE "${GREEN}" "📂 Creating dotfiles path..."
+# Source shell configuration
+source_shell_config
 
-    git clone --quiet "$GITHUB_URL" "$DOTFILES_PATH"
+# Install Brewfile
+install_brew_bundle
 
-    if [ $? -eq 0 ]; then
-        PRINT_MESSAGE "${GREEN}" "📂 Dotfiles installed successfully."
-    else
-        PRINT_MESSAGE "${RED}" "📂 Dotfiles installation failed."
-        exit 1
-    fi
-fi
-
-CLEAR
-
-PRINT_MESSAGE "${GREEN}" "🍺 Getting Homebrew..."
-/bin/bash -c "$(curl -fsSL $HOMEBREW_URL)"
-
-if [ $? -eq 0 ]; then
-    PRINT_MESSAGE "${GREEN}" "🍺 Homebrew installed successfully."
-else
-    PRINT_MESSAGE "${RED}" "🍺 Homebrew installation failed."
-    exit 1
-fi
-
-CLEAR
-
-PRINT_MESSAGE "${GREEN}" "🍺 Source Homebrew..."
-if [ "$OS" = "Linux" ]; then
-    test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-    test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile
-    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
-elif [ "$OS" = "Darwin" ]; then
-    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zprofile
-fi
-
-CLEAR
-
-PRINT_MESSAGE "${GREEN}" "🍺 Installing Homebrew packages..."
-brew bundle --file="$DOTFILES_PATH/Brewfile"
-
-if [ $? -eq 0 ]; then
-    PRINT_MESSAGE "${GREEN}" "🍺 Homebrew packages installed successfully."
-else
-    PRINT_MESSAGE "${RED}" "🍺 Homebrew packages installation failed."
-    exit 1
-fi
-
-CLEAR
-##############################################
-# SHELL
-##############################################
-PRINT_MESSAGE "${GREEN}" "🐚 Setting up shell..."
-
-CLEAR
-
-PRINT_MESSAGE "${GREEN}" "🐟 Setting up fish..."
-if ! command -v fish &> /dev/null; then
-    PRINT_MESSAGE "${GREEN}" "🐟 Installing fish..."
-    chsh -s "$(which fish)"
-else
-    PRINT_MESSAGE "${GREEN}" "🐟 Fish is installed."
-fi
-
-CLAER
-
-PRINT_MESSAGE "${GREEN}" "🐠 Setting up fisher..."
-if ! fish -c fisher --version &> /dev/null; then
-    PRINT_MESSAGE "${GREEN}" "🐠 Installing fisher..."
-    fish -c curl -sL $FISHER_URL | source && fisher install jorgebucaran/fisher
-else
-    PRINT_MESSAGE "${GREEN}" "🐠 Fisher is installed."
-fi
-
-CLEAR
-
-PRINT_MESSAGE "${GREEN}" "🐡 Installing fisher packages..."
-fish -c fisher install ilancosman/tide@v5
-fish -c fisher install jethrokuan/z
-fish -c fisher install PatrickF1/fzf.fish
-fish -c fisher install nickeb96/puffer-fish
-fish -c fisher install laughedelic/pisces
-
-CLEAR
-##############################################
-# LINKS
-##############################################
-PRINT_MESSAGE "${GREEN}" "🔗 Creating links..."
-
-rm -rf "$HOME/.config"
-
-ln -sf "$DOTFILES_PATH/.gitconfig" "$HOME/.gitconfig"
-ln -sf "$DOTFILES_PATH/.gitignore" "$HOME/.gitignore"
-ln -sf "$DOTFILES_PATH/.czrc" "$HOME/.czrc"
-ln -sf "$DOTFILES_PATH/.config" "$HOME/.config"
-
-CLEAR
-##############################################
-# END
-##############################################
-PRINT_MESSAGE "${GREEN}" "🎉 Installation completed."
+# Installation completed
+print_message "${GREEN}" "🎉 Installation completed."
+print_message "${GREEN}" "🐠 Please install Fisher manually for Fish shell configuration."
+print_message "${GREEN}" "🚀 Please restart your terminal to apply changes."
