@@ -92,6 +92,9 @@ symlink_dotfiles() {
 	fi
 
 	for file in "${dotfiles[@]}"; do
+		if [ "$(basename "$file")" == ".git" ]; then
+			continue
+		fi
 		local filename=$(basename "$file")
 		ln -sf "$file" "$HOME/$filename"
 	done
