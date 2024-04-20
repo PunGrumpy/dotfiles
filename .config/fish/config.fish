@@ -1,8 +1,10 @@
+# Disable fish greeting
 set fish_greeting ""
 
+# Set terminal type
 set -gx TERM xterm-256color
 
-# set title terminal and add 👻 emoji
+# Customize terminal title with directory name and SSH indicator
 function fish_title
     set -l title (basename (pwd))
     if test -n "$SSH_CONNECTION"
@@ -11,24 +13,25 @@ function fish_title
     echo -n "$title"
 end
 
-# theme
+# Theme settings
 set -g theme_color_scheme terminal-dark
 set -g fish_prompt_pwd_dir_length 1
 set -g theme_display_user yes
 set -g theme_hide_hostname no
 set -g theme_hostname always
 
-# aliases
+# Aliases
 alias ls "ls -p -G"
 alias la "ls -A"
 alias ll "ls -l"
 alias lla "ll -A"
 alias g git
 alias vim nvim
-command -qv nvim && alias vim nvim
 
+# Set default editor
 set -gx EDITOR nvim
 
+# Add custom bin directories to PATH
 set -gx PATH bin $PATH
 set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
@@ -55,7 +58,7 @@ set -gx PATH $GOPATH/bin $PATH
 # Cargo
 set -gx PATH $HOME/.cargo/bin $PATH
 
-# Config for OS
+# Load OS-specific configurations
 switch (uname)
     case Darwin
         source (dirname (status --current-filename))/config-osx.fish
@@ -65,11 +68,11 @@ switch (uname)
         source (dirname (status --current-filename))/config-windows.fish
 end
 
+# Load local configurations if available
 set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
 if test -f $LOCAL_CONFIG
     source $LOCAL_CONFIG
 end
 
-
-# Aliases Config
+# Load additional aliases configuration
 source (dirname (status --current-filename))/config-aliases.fish
