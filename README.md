@@ -83,6 +83,14 @@
 - [Lazygit](https://github.com/jesseduffield/lazygit/) - Simple terminal UI for git commands `brew install lazygit`
 - [Delta](https://github.com/dandavison/delta) - Syntax-highlighting pager for git `brew install git-delta`
 
+## `🏗️` Build
+
+```bash
+wget -O - https://raw.githubusercontent.com/PunGrumpy/dotfiles/main/build.sh | bash
+# or
+curl -fsSL https://raw.githubusercontent.com/PunGrumpy/dotfiles/main/build.sh | bash
+```
+
 ## `©️` Reference setting
 
 <table>
