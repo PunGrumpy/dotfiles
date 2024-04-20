@@ -27,6 +27,11 @@ print_message() {
 	echo -e "${color}${message}${RESET}"
 }
 
+# Function to welcome user
+welcome_user() {
+	print_message "${GREEN}" "👋 Welcome ${USER} to dotfiles setup script."
+}
+
 # Function to clear screen
 clear_screen() {
 	sleep 1
@@ -36,7 +41,7 @@ clear_screen() {
 
 # Function to check if a command is available
 check_command() {
-    command -v "$1" >/dev/null 2>&1
+	command -v "$1" >/dev/null 2>&1
 }
 
 # Function to handle errors
@@ -73,16 +78,14 @@ install_dotfiles() {
 		fi
 	fi
 
-	if [ ! -d "$DOTFILES_PATH" ]; then
-		print_message "${GREEN}" "📂 Cloning dotfiles..."
-		git clone "$DOTFILES_URL" "$DOTFILES_PATH" || handle_error "Failed to clone dotfiles."
-		print_message "${GREEN}" "📂 Dotfiles cloned successfully."
-	fi
+	print_message "${GREEN}" "📂 Cloning dotfiles..."
+	git clone "$DOTFILES_URL" "$DOTFILES_PATH" || handle_error "Failed to clone dotfiles."
+	print_message "${GREEN}" "📂 Dotfiles cloned successfully."
 }
 
 # Function to symlink dotfiles
 symlink_dotfiles() {
-	local dotfiles=("$(find "$DOTFILES_PATH" -maxdepth 1 -name '.*' -type f)")
+	local dotfiles=($(find "$DOTFILES_PATH" -maxdepth 1 -name '.*' -type f))
 
 	if [ ${#dotfiles[@]} -eq 0 ]; then
 		handle_error "No dotfiles found in '$DOTFILES_PATH'."
@@ -102,29 +105,12 @@ symlink_dotfiles() {
 install_homebrew() {
 	print_message "${GREEN}" "🍺 Getting Homebrew..."
 	/bin/bash -c "$(curl -fsSL $HOMEBREW_URL)" || handle_error "Failed to install Homebrew."
-	print_message "${GREEN}" "🍺 Homebrew installed successfully."
-}
-
-# Function to source shell configuration
-source_shell_config() {
-	if [ "$SHELL_CONFIG" == "fish" ]; then
-		print_message "${GREEN}" "🐟 Setting up Fish..."
-		check_command fish || handle_error "Fish shell is not installed."
-		local brew_shellenv="/usr/local/bin/brew shellenv"
-		if [ "$OS" != "Darwin" ]; then
-			brew_shellenv="/home/linuxbrew/.linuxbrew/bin/brew shellenv"
-		fi
-		echo "eval ($brew_shellenv)" >>~/.config/fish/config.fish
-		print_message "${GREEN}" "🐟 Fisher is installed."
+	if [ "$OS" == "Darwin" ]; then
+		eval "$(/opt/homebrew/bin/brew shellenv)"
 	else
-		print_message "${GREEN}" "📝 Setting up Bash..."
-		local shellenv_command="\$(/usr/local/bin/brew shellenv)"
-		if [ "$OS" != "Darwin" ]; then
-			shellenv_command="\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-		fi
-		echo "eval \"$shellenv_command\"" >>~/.bash_profile
-		print_message "${GREEN}" "📝 Bash setup completed."
+		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 	fi
+	print_message "${GREEN}" "🍺 Homebrew installed successfully."
 }
 
 # Function to install brew bundle
@@ -138,9 +124,44 @@ install_brew_bundle() {
 	fi
 }
 
+# Function to source shell configuration
+source_shell_config() {
+	if [ "$SHELL_CONFIG" == "bash" ]; then
+		print_message "${GREEN}" "🐚 Sourcing bash configuration..."
+		if [ "$OS" == "Darwin" ]; then
+			echo "eval \"\$(/opt/homebrew/bin/brew shellenv)\"" >>"$HOME/.bash_profile"
+		else
+			echo "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"" >>"$HOME/.bash_profile"
+		fi
+		source "$HOME/.bash_profile" || handle_error "Failed to source bash configuration."
+		print_message "${GREEN}" "🐚 Bash configuration sourced successfully."
+	elif [ "$SHELL_CONFIG" == "fish" ]; then
+		print_message "${GREEN}" "🐠 Sourcing fish configuration..."
+		source "$DOTFILES_PATH/.config/fish/config.fish" || handle_error "Failed to source fish configuration."
+		print_message "${GREEN}" "🐠 Fish configuration sourced successfully."
+	fi
+
+	if [ "$SHELL_CONFIG" == "fish" ]; then
+		if ! check_command fish; then
+			print_message "${RED}" "⚠️ Fish shell is not installed."
+		fi
+	fi
+
+	if [ "$SHELL_CONFIG" == "bash" ]; then
+		if ! check_command bash; then
+			print_message "${RED}" "⚠️ Bash shell is not installed."
+		fi
+	fi
+
+	print_message "${GREEN}" "🐚 Shell configuration sourced successfully."
+}
+
 ##############################################
 # MAIN SCRIPT
 ##############################################
+
+# Welcome user
+welcome_user
 
 # Clear screen
 clear_screen
@@ -170,11 +191,11 @@ check_command curl || handle_error "Curl is not installed."
 # Install Homebrew
 install_homebrew
 
-# Source shell configuration
-source_shell_config
-
 # Install Brewfile
 install_brew_bundle
+
+# Source shell configuration
+source_shell_config
 
 # Installation completed
 print_message "${GREEN}" "🎉 Installation completed."
