@@ -42,3 +42,7 @@ if type -q ansible
     alias a ansible
     alias ap ansible-playbook
 end
+
+# Python
+alias python python3
+alias pip pip3
