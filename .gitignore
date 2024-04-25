@@ -147,4 +147,5 @@ Pods/
 .config/go
 .config/act/
 .config/ggshield/
+.config/wslu/
 .docker/
