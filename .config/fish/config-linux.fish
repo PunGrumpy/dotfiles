@@ -5,7 +5,7 @@ end
 
 # WSL
 if test -n "$WSL_DISTRO_NAME"
-    alias open xdg-open
+    alias open wslview
     alias c: "cd /mnt/c"
     alias d: "cd /mnt/d"
 end
