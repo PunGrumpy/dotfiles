@@ -1,6 +1,15 @@
 #!/bin/bash
 
 ##############################################
+# Dotfiles Setup Script
+# Author: PunGrumpy
+# Description: This script is used to setup dotfiles on a new machine. (macOS/Linux)
+# Usage: bash build.sh
+# GitHub: https://github.com/PunGrumpy/dotfiles
+# License: MIT
+##############################################
+
+##############################################
 # COLORS
 ##############################################
 RED='\033[0;31m'
@@ -37,6 +46,20 @@ clear_screen() {
 	sleep 1
 	clear
 	sleep 1
+}
+
+# Function to check if internet is available
+check_internet() {
+	ping -q -c 1 -W 1 google.com >/dev/null
+}
+
+# Function to enable non-interactive mode
+enable_non_interactive() {
+	read -p "Do you want to enable non-interactive mode? (y/n): " input_non_interactive
+	if [ "${input_non_interactive,,}" == "y" ]; then
+		export DEBIAN_FRONTEND=noninteractive
+		print_message "${GREEN}" "🔒 Non-interactive mode enabled."
+	fi
 }
 
 # Function to check if a command is available
@@ -136,11 +159,11 @@ source_shell_config() {
 		else
 			echo "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"" >>"$HOME/.bash_profile"
 		fi
-		source "$HOME/.bash_profile" || handle_error "Failed to source bash configuration."
+		$SHELL -l || handle_error "Failed to source bash configuration."
 		print_message "${GREEN}" "🐚 Bash configuration sourced successfully."
 	elif [ "$SHELL_CONFIG" == "fish" ]; then
 		print_message "${GREEN}" "🐠 Sourcing fish configuration..."
-		source "$DOTFILES_PATH/.config/fish/config.fish" || handle_error "Failed to source fish configuration."
+		$SHELL -l || handle_error "Failed to source fish configuration."
 		print_message "${GREEN}" "🐠 Fish configuration sourced successfully."
 	fi
 
@@ -165,6 +188,21 @@ source_shell_config() {
 
 # Welcome user
 welcome_user
+
+# Clear screen
+clear_screen
+
+# Check internet connection
+print_message "${GREEN}" "🌐 Checking internet connection..."
+if ! check_internet; then
+	handle_error "No internet connection."
+fi
+
+# Clear screen
+clear_screen
+
+# Enable non-interactive mode
+enable_non_interactive
 
 # Clear screen
 clear_screen
