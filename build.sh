@@ -150,38 +150,6 @@ install_brew_bundle() {
 	fi
 }
 
-# Function to source shell configuration
-source_shell_config() {
-	if [ "$SHELL_CONFIG" == "bash" ]; then
-		print_message "${GREEN}" "🐚 Sourcing bash configuration..."
-		if [ "$OS" == "Darwin" ]; then
-			echo "eval \"\$(/opt/homebrew/bin/brew shellenv)\"" >>"$HOME/.bash_profile"
-		else
-			echo "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"" >>"$HOME/.bash_profile"
-		fi
-		$SHELL -l || handle_error "Failed to source bash configuration."
-		print_message "${GREEN}" "🐚 Bash configuration sourced successfully."
-	elif [ "$SHELL_CONFIG" == "fish" ]; then
-		print_message "${GREEN}" "🐠 Sourcing fish configuration..."
-		$SHELL -l || handle_error "Failed to source fish configuration."
-		print_message "${GREEN}" "🐠 Fish configuration sourced successfully."
-	fi
-
-	if [ "$SHELL_CONFIG" == "fish" ]; then
-		if ! check_command fish; then
-			print_message "${RED}" "⚠️ Fish shell is not installed."
-		fi
-	fi
-
-	if [ "$SHELL_CONFIG" == "bash" ]; then
-		if ! check_command bash; then
-			print_message "${RED}" "⚠️ Bash shell is not installed."
-		fi
-	fi
-
-	print_message "${GREEN}" "🐚 Shell configuration sourced successfully."
-}
-
 ##############################################
 # MAIN SCRIPT
 ##############################################
@@ -234,9 +202,6 @@ install_homebrew
 
 # Install Brewfile
 install_brew_bundle
-
-# Source shell configuration
-source_shell_config
 
 # Installation completed
 print_message "${GREEN}" "🎉 Installation completed."
