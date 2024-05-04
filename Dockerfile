@@ -22,6 +22,8 @@ RUN apt update && \
     apt autoclean autopurge autoremove --yes && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/* /tmp/* /var/tmp/*
 
+FROM base as config
+
 ARG USERNAME=pungrumpy
 RUN useradd -m ${USERNAME} && \
     usermod -aG sudo ${USERNAME} && \
@@ -42,5 +44,20 @@ RUN curl -sL https://git.io/fisher | source && \
     PatrickF1/fzf.fish \
     nickeb96/puffer-fish \
     laughedelic/pisces
+
+FROM config as final
+
+ARG USERNAME=pungrumpy
+WORKDIR /home/${USERNAME}
+
+SHELL ["/home/linuxbrew/.linuxbrew/bin/fish", "-c"]
+
+COPY --from=config /home/${USERNAME}/.dotfiles /home/${USERNAME}/.dotfiles
+COPY --from=config /home/${USERNAME}/.config /home/${USERNAME}/.config
+COPY --from=config /home/${USERNAME}/.scripts /home/${USERNAME}/.scripts
+COPY --from=config /home/${USERNAME}/.gitconfig /home/${USERNAME}/.gitconfig
+COPY --from=config /home/${USERNAME}/.gitignore /home/${USERNAME}/.gitignore
+COPY --from=config /home/${USERNAME}/.czrc /home/${USERNAME}/.czrc
+COPY --from=config /home/linuxbrew/.linuxbrew /home/linuxbrew/.linuxbrew
 
 ENTRYPOINT ["/home/linuxbrew/.linuxbrew/bin/fish"]
