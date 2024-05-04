@@ -41,7 +41,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.metadata.outputs.tags }}:latest
+          tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
       - name: 📦 Generate artifact attestation
         uses: actions/attest-build-provenance@v1
