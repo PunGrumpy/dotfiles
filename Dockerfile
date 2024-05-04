@@ -3,6 +3,8 @@ ARG UBUNTU_VERSION=24.04
 FROM ubuntu:${UBUNTU_VERSION} as base
 
 LABEL maintainer="PunGrumpy <108584943+PunGrumpy@users.noreply.github.com>"
+LABEL org.opencontainers.image.description="Docker image for PunGrumpy's development environment"
+LABEL org.opencontainers.image.source="https://github.com/PunGrumpy/dotfiles/blob/docker/Dockerfile"
 
 ENV DEBIAN_FRONTEND=noninteractive \
     LANG=C.UTF-8 \
