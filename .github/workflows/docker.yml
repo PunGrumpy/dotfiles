@@ -6,6 +6,12 @@ on:
   pull_request:
     branches:
       - docker
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual run'
+        required: true
+        default: 'Manual run'
 
 env:
   REGISTRY: ghcr.io
