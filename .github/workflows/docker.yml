@@ -14,9 +14,11 @@ env:
 permissions:
   contents: read
   packages: write
+  attestations: write
 
 jobs:
   build-and-push:
+    name: 🚀 Build and push Docker image
     runs-on: ubuntu-latest
     steps:
       - name: 🛎️ Checkout
@@ -43,4 +45,5 @@ jobs:
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.metadata.outputs.digest }}
           push-to-registry: true
