@@ -48,11 +48,6 @@ clear_screen() {
 	sleep 1
 }
 
-# Function to check if internet is available
-check_internet() {
-	ping -q -c 1 -W 1 google.com >/dev/null
-}
-
 # Function to enable non-interactive mode
 enable_non_interactive() {
 	read -p "Do you want to enable non-interactive mode? (y/n): " input_non_interactive
@@ -159,12 +154,6 @@ welcome_user
 
 # Clear screen
 clear_screen
-
-# Check internet connection
-print_message "${GREEN}" "🌐 Checking internet connection..."
-if ! check_internet; then
-	handle_error "No internet connection."
-fi
 
 # Clear screen
 clear_screen
