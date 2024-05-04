@@ -91,6 +91,20 @@ wget -O - https://raw.githubusercontent.com/PunGrumpy/dotfiles/main/build.sh | b
 curl -fsSL https://raw.githubusercontent.com/PunGrumpy/dotfiles/main/build.sh | bash
 ```
 
+## `🐳` Playground
+
+```bash
+docker run -it --rm --name dotfiles-pungrumpy \
+  -v $HOME/.config:/home/pungrumpy/.config \
+  -v $HOME/.gitconfig:/home/pungrumpy/.gitconfig \
+  -v $HOME/.gitignore:/home/pungrumpy/.gitignore \
+  -v $HOME/.czrc:/home/pungrumpy/.czrc \
+  -v $HOME/.scripts:/home/pungrumpy/.scripts \
+  ghcr.io/pungrumpy/dotfiles:docker
+```
+
+[More info](https://github.com/PunGrumpy/dotfiles/tree/docker?tab=readme-ov-file) about Docker image
+
 ## `©️` Reference setting
 
 <table>
