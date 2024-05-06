@@ -48,15 +48,6 @@ clear_screen() {
 	sleep 1
 }
 
-# Function to enable non-interactive mode
-enable_non_interactive() {
-	read -p "Do you want to enable non-interactive mode? (y/n): " input_non_interactive
-	if [ "${input_non_interactive,,}" == "y" ]; then
-		export DEBIAN_FRONTEND=noninteractive
-		print_message "${GREEN}" "🔒 Non-interactive mode enabled."
-	fi
-}
-
 # Function to check if a command is available
 check_command() {
 	command -v "$1" >/dev/null 2>&1
@@ -149,17 +140,11 @@ install_brew_bundle() {
 # MAIN SCRIPT
 ##############################################
 
+# Clear screen
+clear_screen
+
 # Welcome user
 welcome_user
-
-# Clear screen
-clear_screen
-
-# Clear screen
-clear_screen
-
-# Enable non-interactive mode
-enable_non_interactive
 
 # Clear screen
 clear_screen
