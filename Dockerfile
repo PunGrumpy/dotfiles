@@ -45,4 +45,7 @@ RUN curl -sL https://git.io/fisher | source && \
     nickeb96/puffer-fish \
     laughedelic/pisces
 
+RUN echo /home/linuxbrew/.linuxbrew/bin/fish | sudo tee -a /etc/shells && \
+    sudo chsh -s /home/linuxbrew/.linuxbrew/bin/fish ${USERNAME}
+
 ENTRYPOINT ["/home/linuxbrew/.linuxbrew/bin/fish"]
