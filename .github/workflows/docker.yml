@@ -41,6 +41,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: latest
       - name: 🏗️ Build Docker image
         id: build
         uses: docker/build-push-action@v5
