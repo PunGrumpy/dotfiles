@@ -1,4 +1,4 @@
-ARG UBUNTU_VERSION=24.04
+ARG UBUNTU_VERSION=24.10
 
 FROM ubuntu:${UBUNTU_VERSION} as base
 
@@ -44,8 +44,5 @@ RUN curl -sL https://git.io/fisher | source && \
     PatrickF1/fzf.fish \
     nickeb96/puffer-fish \
     laughedelic/pisces
-
-RUN echo /home/linuxbrew/.linuxbrew/bin/fish | sudo tee -a /etc/shells && \
-    sudo chsh -s /home/linuxbrew/.linuxbrew/bin/fish ${USERNAME}
 
 ENTRYPOINT ["/home/linuxbrew/.linuxbrew/bin/fish"]
