@@ -21,7 +21,7 @@ docker run -it --rm -v $HOME:/pungrumpy -w /pungrumpy ghcr.io/pungrumpy/dotfiles
 To build the image, run the following command:
 
 ```bash
-docker buildx build -t ghcr.io/pungrumpy/dotfiles:latest . --build-arg UBUNTU_VERSION=24.04 --build-arg USERNAME=$(whoami)
+docker buildx build -t dotfiles ghcr.io/pungrumpy/dotfiles:latest . --build-arg UBUNTU_VERSION=24.10 --build-arg USERNAME=$(whoami)
 ```
 
 ### 🧪 Running the Image
