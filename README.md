@@ -9,7 +9,7 @@ This Docker image provides a convenient way to manage and use dotfiles in a Dock
 To get started, run the following command:
 
 ```bash
-docker run -it --rm -v $HOME:/pungrumpy -w /pungrumpy ghcr.io/pungrumpy/dotfiles:docker
+docker run -it --rm -v $HOME:/pungrumpy -w /pungrumpy ghcr.io/pungrumpy/dotfiles:latest
 ```
 
 ### 📦 Prerequisites
@@ -21,7 +21,7 @@ docker run -it --rm -v $HOME:/pungrumpy -w /pungrumpy ghcr.io/pungrumpy/dotfiles
 To build the image, run the following command:
 
 ```bash
-docker buildx build -t ghcr.io/pungrumpy/dotfiles:docker . --build-arg UBUNTU_VERSION=24.04 --build-arg USERNAME=$(whoami)
+docker buildx build -t ghcr.io/pungrumpy/dotfiles:latest . --build-arg UBUNTU_VERSION=24.04 --build-arg USERNAME=$(whoami)
 ```
 
 ### 🧪 Running the Image
@@ -35,7 +35,7 @@ docker run -it --rm --name dotfiles \
   -v $HOME/.gitignore:/home/pungrumpy/.gitignore \
   -v $HOME/.czrc:/home/pungrumpy/.czrc \
   -v $HOME/.scripts:/home/pungrumpy/.scripts \
-  ghcr.io/pungrumpy/dotfiles:docker
+  ghcr.io/pungrumpy/dotfiles:latest
 ```
 
 ### 🧹 Cleaning Up
@@ -43,13 +43,13 @@ docker run -it --rm --name dotfiles \
 To clean up, run the following command:
 
 ```bash
-docker rmi ghcr.io/pungrumpy/dotfiles:docker
+docker rmi ghcr.io/pungrumpy/dotfiles:latest
 ```
 
 ### 📝 Notes
 
 - Ensure that the dotfiles you want to use are present in the corresponding directories on your local system (`$HOME/.config`, `$HOME/.gitconfig`, etc.).
-- Replace `ghcr.io/pungrumpy/dotfiles:docker` with the actual image name and tag if you have customized your Docker image.
+- Replace `ghcr.io/pungrumpy/dotfiles:latest` with the actual image name and tag if you have customized your Docker image.
 
 ## 📜 License
 
