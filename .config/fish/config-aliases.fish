@@ -19,6 +19,9 @@ end
 
 # Kubernetes
 if type -q kubectl
+    if type -q kubecolor
+        alias kubectl kubecolor
+    end
     alias k kubectl
 end
 
