@@ -1,14 +1,15 @@
-<div align="center">
+<div>
+  <div align="center">
     <h1><code>🐙</code> PunGrumpy's Dotfiles</h1>
-</div>
+  </div>
 
-<details open>
+  <details open>
     <summary>NeoVim</summary>
     <img src="./images/neovim/preview-1.png"
         alt="NeoVim" />
-</details>
+  </details>
 
-<details>
+  <details>
     <summary>Terminal Linux/OSX</summary>
     <img src="./images/terminal/preview-1.png"
         alt="Terminal Linux/OSX" />
@@ -18,9 +19,9 @@
         <li>fish</li>
         <li>tmux</li>
     </ul>
-</details>
+  </details>
 
-<details>
+  <details>
     <summary>Terminal Windows</summary>
     <img src="./images/terminal/preview-2.png"
         alt="Terminal Windows" />
@@ -29,11 +30,14 @@
         <li>color scheme <strong>One Half Dark (Modded)</strong></li>
         <li>powershell</li>
     </ul>
-</details>
+  </details>
+</div>
 
-**Warning** : Don't bindly use my setting unless you know what that entails. Use at your own risk!
+> [!WARNING]
+> Don't bindly use my setting unless you know what that entails. Use at your own risk!
 
-**Recommend** : For Windows user you can find the color scheme for **Windows Terminal** in https://windowsterminalthemes.dev/
+> [!TIP]
+> For Windows user you can find the color scheme for **Windows Terminal** in <https://windowsterminalthemes.dev/>
 
 ## `⚙️` Contents
 
@@ -100,7 +104,7 @@ docker run -it --rm --name dotfiles-pungrumpy \
   -v $HOME/.gitignore:/home/pungrumpy/.gitignore \
   -v $HOME/.czrc:/home/pungrumpy/.czrc \
   -v $HOME/.scripts:/home/pungrumpy/.scripts \
-  ghcr.io/pungrumpy/dotfiles:docker
+  ghcr.io/pungrumpy/dotfiles:latest
 ```
 
 [More info](https://github.com/PunGrumpy/dotfiles/tree/docker?tab=readme-ov-file) about Docker image
