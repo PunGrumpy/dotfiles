@@ -64,7 +64,7 @@
 - [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
 - [Fish shell](https://fishshell.com/) - User-friendly shell
 - [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
-- [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 5 `fisher install ilancosman/tide@v5`
+- [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 6 `fisher install ilancosman/tide@v6`
 - [z for fish](https://github.com/jethrokuan/z) - Directory jumping `fisher install jethrokuan/z`
 - [Fzf for fish](https://github.com/PatrickF1/fzf.fish) - Interactive filtering `fisher install PatrickF1/fzf.fish`
 - [Puffer for fish](https://github.com/nickeb96/puffer-fish) - Text expander `fisher install nickeb96/puffer-fish`
