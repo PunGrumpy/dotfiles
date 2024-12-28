@@ -213,5 +213,24 @@ return {
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("file_browser")
 		end,
+
+		{
+			"saghen/blink.cmp",
+			opts = {
+				completion = {
+					menu = {
+						winblend = vim.o.pumblend,
+					},
+					documentation = {
+						winblend = vim.o.pumblend,
+					},
+				},
+				signature = {
+					window = {
+						winblend = vim.o.pumblend,
+					},
+				},
+			},
+		},
 	},
 }
