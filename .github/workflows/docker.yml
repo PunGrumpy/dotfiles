@@ -19,7 +19,7 @@ on:
         required: false
         default: '.'
   schedule:
-    - cron: '0 17 * * 1' # Every Monday at 00:00 GMT+7
+    - cron: '0 10 * * 1' # Every Monday (GMT+7)
 
 env:
   REGISTRY: ghcr.io
