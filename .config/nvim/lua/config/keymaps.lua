@@ -70,3 +70,24 @@ end)
 keymap.set("n", "<leader>i", function()
 	require("pungrumpy.lsp").toggleInlayHints()
 end)
+
+-- Check if running on WSL
+local function is_wsl()
+	return os.getenv("WSL_DISTRO_NAME") ~= nil
+end
+
+-- Configure clipboard for WSL using clip.exe
+if is_wsl() then
+	vim.g.clipboard = {
+		name = "clip",
+		copy = {
+			["+"] = "clip.exe",
+			["*"] = "clip.exe",
+		},
+		paste = {
+			["+"] = "powershell.exe -NoProfile -Command Get-Clipboard",
+			["*"] = "powershell.exe -NoProfile -Command Get-Clipboard",
+		},
+		cache_enabled = 1,
+	}
+end
