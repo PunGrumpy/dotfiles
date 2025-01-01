@@ -1,6 +1,6 @@
 local M = {}
 
-function M.dolphin()
+function M.ghosty()
 	---@type table?
 	local id
 	local ok = true

@@ -1,6 +1,6 @@
 local discipline = require("pungrumpy.discipline")
 
-discipline.dolphin()
+discipline.ghosty()
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
