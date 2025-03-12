@@ -58,9 +58,6 @@ set -gx PATH $GOPATH/bin $PATH
 # Cargo
 set -gx PATH $HOME/.cargo/bin $PATH
 
-# Ruby
-status --is-interactive; and rbenv init - --no-rehash fish | source
-
 # Load OS-specific configurations
 switch (uname)
     case Darwin
