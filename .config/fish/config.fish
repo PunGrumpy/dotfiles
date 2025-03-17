@@ -27,6 +27,7 @@ alias ll "ls -l"
 alias lla "ll -A"
 alias g git
 alias vim nvim
+alias c claude
 
 # Set default editor
 set -gx EDITOR nvim
