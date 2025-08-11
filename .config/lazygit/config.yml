@@ -10,3 +10,5 @@ customCommands:
     context: "files"
     loadingText: "Committing with Conventional Commits..."
     output: terminal
+gui:
+  mouseEvents: false
