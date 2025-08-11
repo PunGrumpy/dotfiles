@@ -28,6 +28,7 @@ alias lla "ll -A"
 alias g git
 alias vim nvim
 alias c claude
+alias claude-yolo "claude --dangerously-skip-permissions"
 
 # Set default editor
 set -gx EDITOR nvim
