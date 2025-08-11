@@ -9,4 +9,4 @@ customCommands:
     command: "git cz"
     context: "files"
     loadingText: "Committing with Conventional Commits..."
-    subprocess: true
+    output: terminal
