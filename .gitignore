@@ -101,6 +101,9 @@ Pods/
 # Claude Code
 .claude/*.local.json
 
+# Cursor CLI
+.config/cursor/
+
 # Folder
 .config/Electron
 .config/yarn
