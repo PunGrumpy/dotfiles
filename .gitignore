@@ -62,11 +62,6 @@ DerivedData
 # CocoaPods
 Pods/
 
-# Atom.io
-.atom/packages/save-session
-.atom/compile-cache
-.atom/storage
-
 # Fish local config
 .config/fish/config-local.fish
 .config/fish/fish_variables.x86_64
@@ -100,6 +95,11 @@ Pods/
 # Lazygit
 .config/lazygit/development.log
 .config/lazygit/state.yml
+.config/nvim/lazy-lock.json
+.config/nvim/lazyvim.json
+
+# Claude Code
+.claude/*.local.json
 
 # Folder
 .config/Electron
