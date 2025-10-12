@@ -12,7 +12,6 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
-				"golangci-lint",
 				"snyk",
 				"trivy",
 			})
