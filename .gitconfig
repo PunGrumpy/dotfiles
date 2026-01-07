@@ -54,9 +54,9 @@
 [hub]
   protocol = https
 [diff]
-  tool = nvimdiff
-[difftool "nvimdiff"]
-	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+  tool = critique
+[difftool "critique"]
+	cmd = critique \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "nvimdiff"]
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
