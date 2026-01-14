@@ -53,6 +53,11 @@
   add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 [hub]
   protocol = https
+# [diff]
+#   tool = nvimdiff
+# [difftool "nvimdiff"]
+# 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+# 	path = 
 [diff]
   tool = critique
 [difftool "critique"]
