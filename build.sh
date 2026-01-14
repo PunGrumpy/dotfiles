@@ -113,6 +113,45 @@ symlink_dotfiles() {
 	print_message "${GREEN}" "🔗 Creating symlinks... Done."
 }
 
+# Function to setup Cursor symlinks
+setup_cursor_symlinks() {
+	local cursor_dir="$HOME/.cursor"
+	local opencode_skill="$DOTFILES_PATH/.config/opencode/skill"
+	local opencode_command="$DOTFILES_PATH/.config/opencode/command"
+
+	# Check if opencode config exists
+	if [ ! -d "$opencode_skill" ] || [ ! -d "$opencode_command" ]; then
+		print_message "${RED}" "⚠️ OpenCode config not found. Skipping Cursor symlinks."
+		return
+	fi
+
+	# Create .cursor directory if it doesn't exist
+	if [ ! -d "$cursor_dir" ]; then
+		mkdir -p "$cursor_dir"
+	fi
+
+	# Create .cursor/.cursor directory for commands
+	mkdir -p "$cursor_dir/.cursor"
+
+	# Backup existing skills/commands if they exist and are not symlinks
+	if [ -e "$cursor_dir/skills" ] && [ ! -L "$cursor_dir/skills" ]; then
+		local backup_dir="$cursor_dir.backup-$(date +%Y%m%d-%H%M%S)"
+		print_message "${GREEN}" "📦 Backing up existing Cursor config to $backup_dir..."
+		mkdir -p "$backup_dir"
+		[ -d "$cursor_dir/skills" ] && cp -a "$cursor_dir/skills" "$backup_dir/" 2>/dev/null || true
+		[ -d "$cursor_dir/.cursor/commands" ] && cp -a "$cursor_dir/.cursor/commands" "$backup_dir/.cursor/" 2>/dev/null || true
+	fi
+
+	# Create symlinks
+	rm -rf "$cursor_dir/skills"
+	ln -sf "$opencode_skill" "$cursor_dir/skills"
+
+	rm -rf "$cursor_dir/.cursor/commands"
+	ln -sf "$opencode_command" "$cursor_dir/.cursor/commands"
+
+	print_message "${GREEN}" "🔗 Cursor symlinks created successfully."
+}
+
 # Function to install Homebrew
 install_homebrew() {
 	print_message "${GREEN}" "🍺 Getting Homebrew..."
@@ -165,6 +204,9 @@ install_dotfiles
 
 # Symlink dotfiles
 symlink_dotfiles
+
+# Setup Cursor symlinks
+setup_cursor_symlinks
 
 # Check dependencies
 print_message "${GREEN}" "📌 Checking dependencies..."
