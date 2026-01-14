@@ -87,6 +87,11 @@
 - [Lazygit](https://github.com/jesseduffield/lazygit/) - Simple terminal UI for git commands `brew install lazygit`
 - [Delta](https://github.com/dandavison/delta) - Syntax-highlighting pager for git `brew install git-delta`
 
+## `🤖` AI Config
+
+- [OpenCode](http://opencode.ai/) - AI-powered terminal, code editor, and more
+- [Cursor](https://www.cursor.com/) - AI-powered code editor
+
 ## `🏗️` Build
 
 ```bash
