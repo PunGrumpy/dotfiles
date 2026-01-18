@@ -130,24 +130,21 @@ setup_cursor_symlinks() {
 		mkdir -p "$cursor_dir"
 	fi
 
-	# Create .cursor/.cursor directory for commands
-	mkdir -p "$cursor_dir/.cursor"
-
 	# Backup existing skills/commands if they exist and are not symlinks
 	if [ -e "$cursor_dir/skills" ] && [ ! -L "$cursor_dir/skills" ]; then
 		local backup_dir="$cursor_dir.backup-$(date +%Y%m%d-%H%M%S)"
 		print_message "${GREEN}" "📦 Backing up existing Cursor config to $backup_dir..."
 		mkdir -p "$backup_dir"
 		[ -d "$cursor_dir/skills" ] && cp -a "$cursor_dir/skills" "$backup_dir/" 2>/dev/null || true
-		[ -d "$cursor_dir/.cursor/commands" ] && cp -a "$cursor_dir/.cursor/commands" "$backup_dir/.cursor/" 2>/dev/null || true
+		[ -d "$cursor_dir/commands" ] && cp -a "$cursor_dir/commands" "$backup_dir/" 2>/dev/null || true
 	fi
 
 	# Create symlinks
 	rm -rf "$cursor_dir/skills"
 	ln -sf "$opencode_skill" "$cursor_dir/skills"
 
-	rm -rf "$cursor_dir/.cursor/commands"
-	ln -sf "$opencode_command" "$cursor_dir/.cursor/commands"
+	rm -rf "$cursor_dir/commands"
+	ln -sf "$opencode_command" "$cursor_dir/commands"
 
 	print_message "${GREEN}" "🔗 Cursor symlinks created successfully."
 }
