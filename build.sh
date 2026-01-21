@@ -116,11 +116,11 @@ symlink_dotfiles() {
 # Function to setup Cursor symlinks
 setup_cursor_symlinks() {
 	local cursor_dir="$HOME/.cursor"
-	local opencode_skill="$DOTFILES_PATH/.config/opencode/skill"
-	local opencode_command="$DOTFILES_PATH/.config/opencode/command"
+	local opencode_skills="$DOTFILES_PATH/.config/opencode/skills"
+	local opencode_commands="$DOTFILES_PATH/.config/opencode/commands"
 
 	# Check if opencode config exists
-	if [ ! -d "$opencode_skill" ] || [ ! -d "$opencode_command" ]; then
+	if [ ! -d "$opencode_skills" ] || [ ! -d "$opencode_commands" ]; then
 		print_message "${RED}" "⚠️ OpenCode config not found. Skipping Cursor symlinks."
 		return
 	fi
@@ -141,10 +141,10 @@ setup_cursor_symlinks() {
 
 	# Create symlinks
 	rm -rf "$cursor_dir/skills"
-	ln -sf "$opencode_skill" "$cursor_dir/skills"
+	ln -sf "$opencode_skills" "$cursor_dir/skills"
 
 	rm -rf "$cursor_dir/commands"
-	ln -sf "$opencode_command" "$cursor_dir/commands"
+	ln -sf "$opencode_commands" "$cursor_dir/commands"
 
 	print_message "${GREEN}" "🔗 Cursor symlinks created successfully."
 }
