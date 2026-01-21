@@ -113,19 +113,48 @@ symlink_dotfiles() {
 	print_message "${GREEN}" "🔗 Creating symlinks... Done."
 }
 
-# Function to setup Cursor symlinks
+# Function to setup Cursor and OpenCode symlinks
 setup_cursor_symlinks() {
 	local cursor_dir="$HOME/.cursor"
-	local opencode_skills="$DOTFILES_PATH/.config/opencode/skills"
-	local opencode_commands="$DOTFILES_PATH/.config/opencode/commands"
+	local agents_source="$DOTFILES_PATH/.agents"
+	local agents_home="$HOME/.agents"
+	local opencode_dir="$DOTFILES_PATH/.config/opencode"
 
-	# Check if opencode config exists
-	if [ ! -d "$opencode_skills" ] || [ ! -d "$opencode_commands" ]; then
-		print_message "${RED}" "⚠️ OpenCode config not found. Skipping Cursor symlinks."
+	# Check if .dotfiles/.agents exists (source of truth)
+	if [ ! -d "$agents_source" ]; then
+		print_message "${RED}" "⚠️ .dotfiles/.agents directory not found. Skipping symlinks."
 		return
 	fi
 
-	# Create .cursor directory if it doesn't exist
+	# Ensure .agents/skills and .agents/commands exist in source
+	if [ ! -d "$agents_source/skills" ]; then
+		mkdir -p "$agents_source/skills"
+		print_message "${GREEN}" "📁 Created .dotfiles/.agents/skills directory"
+	fi
+
+	if [ ! -d "$agents_source/commands" ]; then
+		mkdir -p "$agents_source/commands"
+		print_message "${GREEN}" "📁 Created .dotfiles/.agents/commands directory"
+	fi
+
+	# 1. Create symlink ~/.agents -> .dotfiles/.agents
+	if [ -e "$agents_home" ] && [ ! -L "$agents_home" ]; then
+		local backup_dir="$agents_home.backup-$(date +%Y%m%d-%H%M%S)"
+		print_message "${GREEN}" "📦 Backing up existing ~/.agents to $backup_dir..."
+		mv "$agents_home" "$backup_dir"
+	fi
+	[ -L "$agents_home" ] && rm "$agents_home" || true
+	ln -sf "$agents_source" "$agents_home"
+	print_message "${GREEN}" "🔗 Created symlink: ~/.agents -> .dotfiles/.agents"
+
+	# 2. Create symlinks in .config/opencode/
+	[ -e "$opencode_dir/skills" ] && rm -rf "$opencode_dir/skills" || true
+	[ -e "$opencode_dir/commands" ] && rm -rf "$opencode_dir/commands" || true
+	ln -sf "$agents_source/skills" "$opencode_dir/skills"
+	ln -sf "$agents_source/commands" "$opencode_dir/commands"
+	print_message "${GREEN}" "🔗 Created symlinks in .config/opencode/"
+
+	# 3. Create .cursor directory if it doesn't exist
 	if [ ! -d "$cursor_dir" ]; then
 		mkdir -p "$cursor_dir"
 	fi
@@ -139,12 +168,13 @@ setup_cursor_symlinks() {
 		[ -d "$cursor_dir/commands" ] && cp -a "$cursor_dir/commands" "$backup_dir/" 2>/dev/null || true
 	fi
 
-	# Create symlinks
+	# 4. Create symlinks in ~/.cursor/
 	rm -rf "$cursor_dir/skills"
-	ln -sf "$opencode_skills" "$cursor_dir/skills"
+	ln -sf "$agents_source/skills" "$cursor_dir/skills"
 
 	rm -rf "$cursor_dir/commands"
-	ln -sf "$opencode_commands" "$cursor_dir/commands"
+	ln -sf "$agents_source/commands" "$cursor_dir/commands"
+	print_message "${GREEN}" "🔗 Created symlinks in ~/.cursor/"
 
 	print_message "${GREEN}" "🔗 Cursor symlinks created successfully."
 }
