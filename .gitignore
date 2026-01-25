@@ -76,3 +76,6 @@ cursor/
 
 # Agents
 .agents/
+skills
+commands
+agents
