@@ -28,7 +28,6 @@ find "$DOTFILES" -maxdepth 1 -name '.*' -type f ! -name '.git' -exec ln -sf {} "
 ln -sf "$DOTFILES/.config" "$HOME/.config"
 ln -sf "$DOTFILES/.scripts" "$HOME/.scripts"
 
-
 # Check dependencies
 msg "📌 Checking dependencies..."
 has git || err "Git not installed"
@@ -49,6 +48,18 @@ if [ -f "$DOTFILES/Brewfile" ]; then
 	brew bundle --file="$DOTFILES/Brewfile" || err "Failed to install Brewfile"
 else
 	msg "⚠️ Brewfile not found"
+fi
+
+# Install Agents
+if has bunx; then
+	msg "🧠 Installing agent skills..."
+	bunx add-skill vercel-labs/agent-skills --agent cursor opencode --all
+	bunx add-skill vercel/turborepo --agent cursor opencode --all
+	bunx add-skill anthropics/skills --agent cursor opencode --skill skill-creator frontend-design --global --yes
+	bunx add-skill ibelick/ui-skills --agent cursor opencode --all
+	bunx add-skill git@github.com:PunGrumpy/agents.git --agent cursor opencode --all
+else
+	msg "⚠️ bunx not found, skipping agent skills install"
 fi
 
 msg "🎉 Installation completed"
