@@ -73,3 +73,6 @@ Pods/
 
 # Cursor
 cursor/
+
+# Agents
+.agents/

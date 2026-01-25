@@ -28,35 +28,6 @@ find "$DOTFILES" -maxdepth 1 -name '.*' -type f ! -name '.git' -exec ln -sf {} "
 ln -sf "$DOTFILES/.config" "$HOME/.config"
 ln -sf "$DOTFILES/.scripts" "$HOME/.scripts"
 
-# Setup Cursor/OpenCode symlinks
-if [ -d "$DOTFILES/.agents" ]; then
-	msg "🔗 Setting up Cursor symlinks..."
-	AGENTS="$DOTFILES/.agents"
-	OPencode_DIR="$DOTFILES/.config/opencode"
-	CURSOR_DIR="$HOME/.cursor"
-	
-	mkdir -p "$AGENTS"/{skills,commands} "$CURSOR_DIR"
-	
-	# Backup and symlink ~/.agents
-	[ -e "$HOME/.agents" ] && [ ! -L "$HOME/.agents" ] && \
-		mv "$HOME/.agents" "$HOME/.agents.backup-$(date +%Y%m%d-%H%M%S)"
-	ln -sf "$AGENTS" "$HOME/.agents"
-	
-	# Backup Cursor config if exists and not symlink
-	[ -e "$CURSOR_DIR/skills" ] && [ ! -L "$CURSOR_DIR/skills" ] && {
-		BACKUP="$CURSOR_DIR.backup-$(date +%Y%m%d-%H%M%S)"
-		mkdir -p "$BACKUP"
-		[ -d "$CURSOR_DIR/skills" ] && cp -a "$CURSOR_DIR/skills" "$BACKUP/" 2>/dev/null || true
-		[ -d "$CURSOR_DIR/commands" ] && cp -a "$CURSOR_DIR/commands" "$BACKUP/" 2>/dev/null || true
-	}
-	
-	# Symlink to .config/opencode/ and ~/.cursor/
-	for dir in "$OPencode_DIR" "$CURSOR_DIR"; do
-		rm -rf "$dir"/{skills,commands}
-		ln -sf "$AGENTS/skills" "$dir/skills"
-		ln -sf "$AGENTS/commands" "$dir/commands"
-	done
-fi
 
 # Check dependencies
 msg "📌 Checking dependencies..."
