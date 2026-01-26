@@ -82,3 +82,5 @@ opencode/agents
 # Agents
 .agents/
 
+# Hive
+.hive/
