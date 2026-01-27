@@ -75,9 +75,9 @@ Pods/
 cursor/
 
 # Opencode
-opencode/skills
-opencode/commands
-opencode/agents
+opencode/skills/
+opencode/commands/
+opencode/agents/
 
 # Agents
 .agents/
