@@ -53,11 +53,13 @@ fi
 # Install Agents
 if has bunx; then
 	msg "🧠 Installing agent skills..."
-	bunx add-skill vercel-labs/agent-skills --agent cursor opencode --all
-	bunx add-skill vercel/turborepo --agent cursor opencode --all
-	bunx add-skill anthropics/skills --agent cursor opencode --skill skill-creator frontend-design --global --yes
-	bunx add-skill ibelick/ui-skills --agent cursor opencode --all
-	bunx add-skill git@github.com:PunGrumpy/agents.git --agent cursor opencode --all
+	bunx skills add vercel-labs/agent-skills --all --global
+	bunx skills add vercel-labs/agent-browser --all --global
+	bunx skills add vercel-labs/next-skills --all --global
+	bunx skills add vercel/turborepo --all --global
+	bunx skills add anthropics/skills --skill skill-creator frontend-design --all --global
+	bunx skills add ibelick/ui-skills --all --global
+	bunx skills add git@github.com:PunGrumpy/agents.git --all --global
 else
 	msg "⚠️ bunx not found, skipping agent skills install"
 fi
