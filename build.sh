@@ -62,6 +62,7 @@ if has bunx; then
   bunx skills add vercel/turborepo --agent cursor opencode --all --global
   bunx skills add anthropics/skills --skill skill-creator frontend-design --agent cursor opencode --all --global
   bunx skills add ibelick/ui-skills --agent cursor opencode --all --global
+  bunx raphaelsalaja/serinterface-wikii --agent cursor opencode --all --global
   bunx skills add git@github.com:PunGrumpy/agents.git --agent cursor opencode --all --global
 else
   msg "⚠️ bunx not found, skipping agent skills install"
