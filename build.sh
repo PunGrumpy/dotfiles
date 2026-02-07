@@ -60,6 +60,7 @@ if has bunx; then
   bunx skills add vercel-labs/agent-browser --agent cursor opencode --global --yes
   bunx skills add vercel-labs/next-skills --agent cursor opencode --global --yes
   bunx skills add vercel/turborepo --agent cursor opencode --global --yes
+  bunx skills add vercel/components.build --agent cursor opencode --global --yes
   bunx skills add anthropics/skills --skill skill-creator frontend-design --agent cursor opencode --global --yes
   bunx skills add ibelick/ui-skills --agent cursor opencode --global --yes
   bunx skills add raphaelsalaja/userinterface-wiki --agent cursor opencode --global --yes
