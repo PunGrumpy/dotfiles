@@ -64,6 +64,7 @@ if has bunx; then
   bunx skills add anthropics/skills --skill skill-creator frontend-design --agent cursor opencode --global --yes
   bunx skills add ibelick/ui-skills --agent cursor opencode --global --yes
   bunx skills add raphaelsalaja/userinterface-wiki --agent cursor opencode --global --yes
+  bunx skills add joyco-studio/skills --agent cursor opencode --global --yes
   bunx skills add git@github.com:PunGrumpy/agents.git --agent cursor opencode --global --yes
 else
   msg "⚠️ bunx not found, skipping agent skills install"
