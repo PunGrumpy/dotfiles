@@ -12,8 +12,7 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
-				"snyk",
-				"trivy",
+				"biome",
 			})
 		end,
 	},
