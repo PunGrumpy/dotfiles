@@ -13,6 +13,8 @@ return {
 				"typescript-language-server",
 				"css-lsp",
 				"biome",
+				"oxlint",
+				"oxfmt",
 			})
 		end,
 	},
