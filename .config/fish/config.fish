@@ -50,6 +50,9 @@ set -gx PATH $HOME/.bun/bin $PATH
 # Pnpm
 set -gx PATH $HOME/.pnpm-global/bin $PATH
 
+# Vite Plus
+set -gx PATH $HOME/.vite-plus/bin $PATH
+
 # Deno
 set -gx PATH $HOME/.deno/bin $PATH
 
