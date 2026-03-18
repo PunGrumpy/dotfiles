@@ -65,6 +65,7 @@ if has bunx; then
   bunx skills add joyco-studio/skills --agent cursor --global --yes
   bunx skills add millionco/react-doctor --agent cursor --global --yes
   bunx skills add emilkowalski/skill --agent cursor --global --yes
+  bunx skills add raphaelsalaja/userinterface-wiki --agent cursor --global --yes
   bunx skills add git@github.com:PunGrumpy/agents.git --agent cursor --global --yes
 else
   msg "⚠️ bunx not found, skipping agent skills install"
