@@ -56,17 +56,14 @@ fi
 # Install Agents
 if has bunx; then
   msg "🧠 Installing agent skills..."
-  bunx skills add vercel-labs/agent-skills --agent cursor --global --yes
-  bunx skills add vercel-labs/agent-browser --agent cursor --global --yes
-  bunx skills add vercel-labs/next-skills --agent cursor --global --yes
-  bunx skills add vercel/turborepo --agent cursor --global --yes
-  bunx skills add vercel/components.build --agent cursor --global --yes
-  bunx skills add anthropics/skills --skill skill-creator frontend-design --agent cursor --global --yes
-  bunx skills add joyco-studio/skills --agent cursor --global --yes
-  bunx skills add millionco/react-doctor --agent cursor --global --yes
-  bunx skills add emilkowalski/skill --agent cursor --global --yes
-  bunx skills add raphaelsalaja/userinterface-wiki --agent cursor --global --yes
-  bunx skills add git@github.com:PunGrumpy/agents.git --agent cursor --global --yes
+  bunx skills add vercel-labs/agent-skills --global --yes --agent cursor --skill vercel-react-best-practices web-design-guidelines vercel-composition-patterns
+  bunx skills add vercel-labs/next-skills --global --yes --agent cursor --skill next-cache-components
+  bunx skills add vercel/turborepo --global --yes --agent cursor --skill turborepo
+  bunx skills add coreyhaines31/marketingskills --global --yes --agent cursor --skill seo-audit
+  bunx skills add shadcn/ui --global --yes --agent cursor --skill shadcn
+  bunx skills add joyco-studio/skills --global --yes --agent cursor
+  bunx skills add emilkowalski/skill --global --yes --agent cursor
+  bunx skills add git@github.com:PunGrumpy/agents.git --global --yes --agent cursor
 else
   msg "⚠️ bunx not found, skipping agent skills install"
 fi
