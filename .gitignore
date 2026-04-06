@@ -71,16 +71,13 @@ Pods/
 .config/nvim/lazy-lock.json
 .config/nvim/lazyvim.json
 
-# Cursor
-cursor/
-
 # Opencode
 opencode/skills/
 opencode/commands/
 opencode/agents/
 
 # Agents
-.agents/
+# .agents/
 
 # Hive
 .hive/
