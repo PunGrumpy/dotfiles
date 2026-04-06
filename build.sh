@@ -60,6 +60,7 @@ if has bunx; then
   bunx skills add vercel-labs/next-skills --global --yes --agent cursor --skill next-cache-components
   bunx skills add vercel/turborepo --global --yes --agent cursor --skill turborepo
   bunx skills add coreyhaines31/marketingskills --global --yes --agent cursor --skill seo-audit
+  bunx skills add mattpocock/skills --global --yes --agent cursor --skill grill-me write-a-prd qa
   bunx skills add shadcn/ui --global --yes --agent cursor --skill shadcn
   bunx skills add joyco-studio/skills --global --yes --agent cursor
   bunx skills add emilkowalski/skill --global --yes --agent cursor
