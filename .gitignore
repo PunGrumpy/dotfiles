@@ -81,3 +81,9 @@ opencode/agents/
 
 # Hive
 .hive/
+
+# Antigravity
+.antigravitycli/
+
+# Claude Code
+**/.claude/settings.local.json
