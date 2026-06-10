@@ -62,9 +62,10 @@ if has bunx; then
   bunx skills add coreyhaines31/marketingskills --global --yes --agent cursor --skill seo-audit
   bunx skills add mattpocock/skills --global --yes --agent cursor --skill grill-me
   bunx skills add shadcn/ui --global --yes --agent cursor --skill shadcn
-  bunx skills add factory-ai/factory-plugins --global --yes --agent cursor
+  bunx skills add shadcn/improve --global --yes --agent cursor --skill improve
   bunx skills add joyco-studio/skills --global --yes --agent cursor
   bunx skills add emilkowalski/skill --global --yes --agent cursor
+  bunx skills add index-how/vocabulary --global --yes --agent cursor
   bunx skills add git@github.com:PunGrumpy/agents.git --global --yes --agent cursor
 else
   msg "⚠️ bunx not found, skipping agent skills install"
