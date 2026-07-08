@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: 🛫 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: 🔎 GitGuardian Scanning
         uses: GitGuardian/gg-shield-action@master
         env:
@@ -30,6 +30,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: 🛫 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: 🔎 Trufflehog Scanning
         uses: trufflesecurity/trufflehog@main
