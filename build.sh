@@ -45,6 +45,15 @@ if ! has brew; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+# Trust Brew tap
+if has brew; then
+  msg "🔒 Trusting Brew tap..."
+  brew trust --tap oven-sh/bun
+  brew trust --tap hashicorp/tap
+else
+  msg "⚠️ Homebrew not installed"
+fi
+
 # Install Brewfile
 if [ -f "$DOTFILES/Brewfile" ]; then
   msg "📦 Installing Brewfile..."
