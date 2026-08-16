@@ -58,9 +58,6 @@
 [difftool "nvimdiff"]
   cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
   path =
-[difftool "critique"]
-	cmd = critique \"$LOCAL\" \"$REMOTE\"
-	path = 
 [mergetool "nvimdiff"]
 	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
