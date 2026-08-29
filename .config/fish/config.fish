@@ -48,7 +48,8 @@ set -gx PATH $HOME/.yarn/bin $PATH
 set -gx PATH $HOME/.bun/bin $PATH
 
 # Pnpm
-set -gx PATH $HOME/.pnpm-global/bin $PATH
+set -gx PNPM_HOME $HOME/.local/share/pnpm
+set -gx PATH $PNPM_HOME/bin $PATH
 
 # Vite Plus
 set -gx PATH $HOME/.vite-plus/bin $PATH
