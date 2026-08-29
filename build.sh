@@ -66,10 +66,10 @@ fi
 if has bunx; then
   msg "🧠 Installing agent skills..."
   bunx skills add mattpocock/skills --skill grill-me --global --yes --agent cursor
-  bunx skills add joyco-studio/skills --skill pr-description-writer --global --yes --agent cursor
   bunx skills add vercel-labs/agent-skills --skill writing-guidelines --global --yes --agent cursor
   bunx skills add shadcn/improve --skill improve --global --yes --agent cursor
   bunx skills add vercel/turborepo --skill turborepo --global --yes --agent cursor
+  bunx skills add cursor/plugins --skill unslop --global --yes --agent cursor
   bunx skills add jakubkrehel/skills --skill better-interface better-ui better-typography better-colors better-layout better-accessibility better-writing interface-review variant explain-interface --global --yes --agent cursor
   bunx skills add millionco/react-doctor --skill react-doctor improve-react improve-threejs performance deslop --global --yes --agent cursor
   bunx skills add millionco/react-doctor --skill animation-best-practices --global --yes --agent cursor
