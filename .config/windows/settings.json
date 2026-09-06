@@ -68,6 +68,29 @@
       "selectionBackground": "#FFFFFF",
       "white": "#F1F1F1",
       "yellow": "#3D2AFF"
+    },
+    {
+      "background": "#0A0A0A",
+      "black": "#000000",
+      "blue": "#52A8FF",
+      "brightBlack": "#676767",
+      "brightBlue": "#52A8FF",
+      "brightCyan": "#00AA95",
+      "brightGreen": "#00AC3A",
+      "brightPurple": "#9440D5",
+      "brightRed": "#F32E40",
+      "brightWhite": "#EDEDED",
+      "brightYellow": "#FFAE00",
+      "cursorColor": "#EDEDED",
+      "cyan": "#00AA95",
+      "foreground": "#EDEDED",
+      "green": "#00AC3A",
+      "name": "Vercel",
+      "purple": "#9440D5",
+      "red": "#F32E40",
+      "selectionBackground": "#1A1A1A",
+      "white": "#A0A0A0",
+      "yellow": "#FFAE00"
     }
   ]
 }
