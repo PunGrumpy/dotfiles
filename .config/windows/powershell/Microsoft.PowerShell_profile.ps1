@@ -207,5 +207,16 @@ function Update-System {
 
 Set-Alias -Name update -Value Update-System
 
+# Chocolatey Profile
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+    Import-Module "$ChocolateyProfile"
+}
+
+# Command Not Found (PowerToys / WinGet)
+if (Get-Module -ListAvailable -Name Microsoft.WinGet.CommandNotFound) {
+    Import-Module -Name Microsoft.WinGet.CommandNotFound
+}
+
 # Clear PowerShell logo
 Clear-Host
