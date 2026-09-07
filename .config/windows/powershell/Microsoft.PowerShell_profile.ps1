@@ -36,6 +36,9 @@ function Get-LSColor {
 }
 
 # Aliases
+# `ls` ships as an AllScope alias on Windows PowerShell 5.1 and cannot be overridden in place
+if (Test-Path alias:ls) { Remove-Item alias:ls -Force }
+
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name ls -Value eza
 Set-Alias -Name ll -Value Get-LSColor
