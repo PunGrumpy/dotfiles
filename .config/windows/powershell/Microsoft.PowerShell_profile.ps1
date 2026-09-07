@@ -179,5 +179,33 @@ function ln {
     }
 }
 
+# Update system packages and developer tooling
+function Update-System {
+    [CmdletBinding()]
+    param()
+
+    $useSudo = $null -ne (Get-Command sudo -ErrorAction SilentlyContinue)
+
+    if (Get-Command scoop -ErrorAction SilentlyContinue) {
+        Write-Host "==> scoop" -ForegroundColor Cyan
+        scoop update --all
+        scoop cleanup --all --cache
+    }
+
+    if (Get-Command winget -ErrorAction SilentlyContinue) {
+        Write-Host "==> winget" -ForegroundColor Cyan
+        $wingetArgs = @('upgrade', '--all', '--include-unknown')
+        if ($useSudo) { sudo winget @wingetArgs } else { winget @wingetArgs }
+    }
+
+    if (Get-Command bun -ErrorAction SilentlyContinue) {
+        Write-Host "==> bun" -ForegroundColor Cyan
+        bun update -g --latest
+        bunx skills update -g
+    }
+}
+
+Set-Alias -Name update -Value Update-System
+
 # Clear PowerShell logo
 Clear-Host
