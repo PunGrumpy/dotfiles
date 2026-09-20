@@ -211,7 +211,7 @@ function Update-System {
     }
 }
 
-Set-Alias -Name upd -Value Update-System
+function update { Update-System }
 
 # Chocolatey Profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
