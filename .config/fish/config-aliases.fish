@@ -49,3 +49,12 @@ end
 # Python
 alias python python3
 alias pip pip3
+
+# OpenCode
+if type -q opencode
+    alias oc "env OPENCODE_EXPERIMENTAL_WORKSPACES=true opencode"
+end
+
+# Git
+alias gc "git commit -m"
+alias gcm "git checkout main && git pull"
