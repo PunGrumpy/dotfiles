@@ -1,3 +1,5 @@
+set -q git_branch_prefix; or set -g git_branch_prefix pungrumpy
+
 # Bun
 set -gx BUN_INSTALL $HOME/.bun
 
