@@ -7,6 +7,11 @@ for brew_prefix in /opt/homebrew /usr/local $HOME/homebrew
 end
 set -e brew_prefix
 
+# Homebrew casks
+if not id -Gn | string match -qr '\badmin\b'
+    set -gx HOMEBREW_CASK_OPTS "--appdir=$HOME/Applications"
+end
+
 # Inkdrop
 set -gx INKDROP_HOME ~/.inkdrop
 
