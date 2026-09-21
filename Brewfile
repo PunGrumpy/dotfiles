@@ -40,3 +40,7 @@ brew "hashicorp/tap/hcp"
 brew "hashicorp/tap/vagrant"
 brew "hashicorp/tap/vault"
 brew "oven-sh/bun/bun"
+
+# Casks
+cask "ghostty"
+cask "font-geist-mono-nerd-font"
