@@ -1,3 +1,12 @@
+# Homebrew
+for brew_prefix in /opt/homebrew /usr/local $HOME/homebrew
+    if test -x $brew_prefix/bin/brew
+        eval ($brew_prefix/bin/brew shellenv fish)
+        break
+    end
+end
+set -e brew_prefix
+
 # Inkdrop
 set -gx INKDROP_HOME ~/.inkdrop
 
