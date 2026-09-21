@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DOCK_ITEMS=(
+  "/System/Applications/Apps.app"
+  "/Applications/Safari.app"
+  "${HOME}/Applications/Aside.app"
+  "/Applications/Microsoft Teams.app"
+  "${HOME}/Applications/Visual Studio Code.app"
+  "${HOME}/Applications/Ghostty.app"
+)
+
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  echo "Skipping Dock configuration; not macOS"
+  exit 0
+fi
+
+if ! command -v dockutil >/dev/null 2>&1; then
+  echo "Skipping Dock configuration; dockutil is not installed (brew install dockutil)"
+  exit 0
+fi
+
+echo "Configuring Dock..."
+dockutil --remove all --no-restart
+
+for app_path in "${DOCK_ITEMS[@]}"; do
+  if [[ ! -d "${app_path}" ]]; then
+    echo "Skipping Dock item ${app_path}; app not found"
+    continue
+  fi
+  dockutil --add "${app_path}" --no-restart
+done
+
+killall Dock >/dev/null 2>&1 || true
+echo "Dock configured."

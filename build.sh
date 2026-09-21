@@ -62,6 +62,15 @@ else
   msg "⚠️ Brewfile not found"
 fi
 
+# Configure macOS Dock
+if [ "$(uname -s)" == "Darwin" ] && [ -x "$DOTFILES/.scripts/dock" ]; then
+  read -p "Reconfigure the macOS Dock? (y/n): " dock_ans
+  if [[ "${dock_ans,,}" == "y" ]]; then
+    msg "🚢 Configuring Dock..."
+    "$DOTFILES/.scripts/dock"
+  fi
+fi
+
 # Install Agents
 if has bunx; then
   msg "🧠 Installing agent skills..."
