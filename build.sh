@@ -71,6 +71,7 @@ if has bunx; then
   bunx skills add vercel/turborepo --skill turborepo --global --yes --agent cursor
   bunx skills add cursor/plugins --skill architect technical-writing typescript-best-practices unslop --global --yes --agent cursor
   bunx skills add millionco/react-doctor --skill react-doctor improve-react improve-threejs performance deslop --global --yes --agent cursor
+  bunx skills add rauchg/skills --skill ui-recording-timeline --global --yes --agent cursor
   bunx skills add emilkowalski/skills --skill emil-design-eng review-animations --global --yes --agent cursor
   bunx skills add gustavo-fior/craft --skill craft-design-engineering --global --yes --agent cursor
   bunx skills add git@github.com:PunGrumpy/agents.git --global --yes --agent cursor
