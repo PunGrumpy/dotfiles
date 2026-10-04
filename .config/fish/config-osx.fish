@@ -18,6 +18,15 @@ if test -S $op_agent
     set -gx SSH_AUTH_SOCK $op_agent
 end
 
+# Homebrew completions
+if test -d (brew --prefix)"/share/fish/completions"
+    set -p fish_complete_path (brew --prefix)/share/fish/completions
+end
+
+if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+    set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+end
+
 # Inkdrop
 set -gx INKDROP_HOME ~/.inkdrop
 
