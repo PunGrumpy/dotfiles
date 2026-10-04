@@ -64,6 +64,8 @@
   rebase = false
 [safe]
   directory = *
+[gpg "ssh"]
+  allowedSignersFile = ~/.config/git/allowed_signers
 [credential]
   helper = cache
 [include]
