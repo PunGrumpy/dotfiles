@@ -65,10 +65,11 @@
 - [Fish shell](https://fishshell.com/) - User-friendly shell
 - [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
 - [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 6 `fisher install ilancosman/tide@v6`
-- [z for fish](https://github.com/jethrokuan/z) - Directory jumping `fisher install jethrokuan/z`
+- [zoxide for fish](https://github.com/kidonng/zoxide.fish) - Directory jumping `fisher install kidonng/zoxide.fish`
 - [Fzf for fish](https://github.com/PatrickF1/fzf.fish) - Interactive filtering `fisher install PatrickF1/fzf.fish`
 - [Puffer for fish](https://github.com/nickeb96/puffer-fish) - Text expander `fisher install nickeb96/puffer-fish`
 - [Pisces for fish](https://github.com/laughedelic/pisces) - Paired symbols `fisher install laughedelic/pisces`
+- [nvm.fish](https://github.com/jorgebucaran/nvm.fish) - Node.js version manager `fisher install jorgebucaran/nvm.fish`
 
 ## `👧` PowerShell setup (Windows)
 
