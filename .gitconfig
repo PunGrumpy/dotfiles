@@ -72,3 +72,5 @@
   path = ~/.config/git/delta.gitconfig
 [include]
   path = ~/.config/git/github.gitconfig
+[includeIf "hasconfig:remote.*.url:**/**gitlab.nipa.cloud**/**"]
+  path = ~/.config/git/nipa-gitlab.gitconfig
