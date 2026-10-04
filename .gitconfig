@@ -1,16 +1,8 @@
-[github]
-  name = PunGrumpy
-  email = "108584943+PunGrumpy@users.noreply.github.com"
-[user]
-  name = PunGrumpy
-  email = "108584943+PunGrumpy@users.noreply.github.com"
-	signingkey = ~/.ssh/id_ed25519-github-signing.pub
 [gpg]
 	format = ssh
 [commit]
 	gpgsign = true
 [init]
-  author = PunGrumpy
   defaultBranch = main
 [core]
 	excludesfile = ~/.gitignore
@@ -70,10 +62,11 @@
   root = ~/Developments/.ghq
 [pull]
   rebase = false
-[credential]
-  helper = cache
 [safe]
   directory = *
-
+[credential]
+  helper = cache
 [include]
   path = ~/.config/git/delta.gitconfig
+[include]
+  path = ~/.config/git/github.gitconfig
