@@ -45,6 +45,7 @@ brew "oven-sh/bun/bun"
 brew "dockutil"
 
 # Casks
+cask "1password"
 cask "1password-cli"
 cask "ghostty"
 cask "font-geist-mono-nerd-font"
