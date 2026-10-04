@@ -12,7 +12,6 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
-				"biome",
 				"oxlint",
 				"oxfmt",
 			})
@@ -31,6 +30,7 @@ return {
 				dockerls = {},
 				docker_compose_language_service = {},
 				html = {},
+				biome = {},
 				lua_ls = {
 					-- enabled = false,
 					single_file_support = true,
