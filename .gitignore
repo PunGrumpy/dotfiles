@@ -66,6 +66,7 @@ Pods/
 .config/fish/functions
 .config/fish/completions
 .config/fish/conf.d/_tide*
+.config/fish/fish_plugins
 
 # Karabiner
 .config/karabiner/automatic_backups
