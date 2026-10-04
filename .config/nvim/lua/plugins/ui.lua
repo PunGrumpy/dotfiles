@@ -88,13 +88,15 @@ return {
 	-- filename
 	{
 		"b0o/incline.nvim",
-		dependencies = require("pungrumpy.theme").is_vercel and {} or { "craftzdog/solarized-osaka.nvim" },
 		event = "BufReadPre",
 		priority = 1200,
 		config = function()
 			require("incline").setup({
 				highlight = {
-					groups = require("pungrumpy.theme").incline_groups(),
+					groups = {
+						InclineNormal = { guibg = "#c472fb", guifg = "#000000" },
+						InclineNormalNC = { guifg = "#a1a1a1", guibg = "#1a1a1a" },
+					},
 				},
 				window = { margin = { vertical = 0, horizontal = 1 } },
 				hide = {
