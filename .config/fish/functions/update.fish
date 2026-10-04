@@ -11,6 +11,8 @@ function update --description "Update system packages and developer tooling"
         brew update; and brew upgrade; and brew cleanup
     end
 
+    type -q pipx; and pipx upgrade-all
+
     type -q fisher; and fisher update
 
     if type -q bun
