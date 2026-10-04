@@ -54,7 +54,7 @@
       "brightBlue": "#47a8ff",
       "brightCyan": "#00aa95",
       "brightGreen": "#00ac3a",
-      "brightPurple": "#c472fb",
+      "brightPurple": "#9440d5",
       "brightRed": "#f13242",
       "brightWhite": "#ededed",
       "brightYellow": "#ffae00",
@@ -63,10 +63,10 @@
       "foreground": "#ededed",
       "green": "#00ac3a",
       "name": "Vercel",
-      "purple": "#c472fb",
+      "purple": "#9440d5",
       "red": "#f13242",
-      "selectionBackground": "#1f3e70",
-      "white": "#a1a1a1",
+      "selectionBackground": "#ededed",
+      "white": "#a0a0a0",
       "yellow": "#ffae00"
     }
   ]
