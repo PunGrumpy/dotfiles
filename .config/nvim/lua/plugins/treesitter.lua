@@ -15,6 +15,7 @@ return {
 				"gitignore",
 				"graphql",
 				"hcl",
+				"helm",
 				"http",
 				"java",
 				"json",
