@@ -15,7 +15,7 @@
         alt="Terminal Linux/OSX" />
     <p>This terminal use:</p>
     <ul>
-        <li>color scheme <strong>Solarized Dark (Modded)</strong></li>
+        <li>color scheme <strong>Vercel</strong></li>
         <li>fish</li>
         <li>tmux</li>
     </ul>
@@ -27,7 +27,7 @@
         alt="Terminal Windows" />
     <p>This terminal use:</p>
     <ul>
-        <li>color scheme <strong>One Half Dark (Modded)</strong></li>
+        <li>color scheme <strong>Vercel</strong></li>
         <li>powershell</li>
     </ul>
   </details>
@@ -47,21 +47,6 @@
 - Fish config
 - Tmux config
 
-## `🎨` Theme
-
-One switch, `DOTFILES_THEME`, colors everything that ships a palette here (tide, eza, tmux, nvim).
-It is set in `.config/fish/conf.d/00-theme.fish`:
-
-| Value             | Where it is the default | Terminal                                   |
-| ----------------- | ----------------------- | ------------------------------------------ |
-| `vercel`          | macOS, Linux            | Ghostty (`.config/ghostty/config`)         |
-| `solarized-osaka` | Windows / WSL           | Windows Terminal "Solarized Osaka" scheme  |
-
-Per-theme files live next to each tool: `.config/fish/tide/<theme>.fish`, `.config/eza/themes/<theme>/`,
-`.config/tmux/themes/<theme>.conf`, and `lua/pungrumpy/theme.lua` in nvim.
-To pin a machine to the other theme, run `set -U DOTFILES_THEME solarized-osaka` in fish (it is stored
-in the untracked `fish_variables`) and open a new terminal.
-
 ## `👽` NeoVim
 
 - [NeoVim](https://neovim.io/) >= 0.9.0 (needs to be built with [**LuaJIT**](https://luajit.org/luajit.html)).
@@ -69,9 +54,7 @@ in the untracked `fish_variables`) and open a new terminal.
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim) - Find, Filter, Preview, Pick. All lua, all the time
   - [Ripgrep](https://github.com/BurntSushi/ripgrep) - Recursively searches directories for a regex pattern
   - [FD](https://github.com/sharkdp/fd) - Fast and user-friendly alternative to find
-- Colorscheme follows `DOTFILES_THEME` (see [Theme](#-theme)):
-  [github-nvim-theme](https://github.com/projekt0n/github-nvim-theme) recolored to Vercel Dark, or
-  [Solarized Osaka](https://github.com/craftzdog/solarized-osaka.nvim) on Windows/WSL
+- [github-nvim-theme](https://github.com/projekt0n/github-nvim-theme) - Recolored to Vercel Dark
 
 ## `🐚` Shell setup (macOS & Linux)
 

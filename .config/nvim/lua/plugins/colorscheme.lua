@@ -1,5 +1,3 @@
-local theme = require("pungrumpy.theme")
-
 local colors = {
 	bg = "#000000",
 	fg = "#ededed",
@@ -21,19 +19,7 @@ local colors = {
 
 return {
 	{
-		"craftzdog/solarized-osaka.nvim",
-		enabled = not theme.is_vercel,
-		lazy = true,
-		priority = 1000,
-		opts = function()
-			return {
-				transparent = true,
-			}
-		end,
-	},
-	{
 		"projekt0n/github-nvim-theme",
-		enabled = theme.is_vercel,
 		lazy = false,
 		priority = 1000,
 		config = function()
