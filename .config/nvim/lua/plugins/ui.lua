@@ -88,14 +88,16 @@ return {
 	-- filename
 	{
 		"b0o/incline.nvim",
+		dependencies = { "PunGrumpy/vercel.nvim" },
 		event = "BufReadPre",
 		priority = 1200,
 		config = function()
+			local colors = require("vercel.colors").setup()
 			require("incline").setup({
 				highlight = {
 					groups = {
-						InclineNormal = { guibg = "#c472fb", guifg = "#000000" },
-						InclineNormalNC = { guifg = "#a1a1a1", guibg = "#1a1a1a" },
+						InclineNormal = { guibg = colors.purple, guifg = colors.black },
+						InclineNormalNC = { guifg = colors.fg_dark, guibg = colors.bg_highlight },
 					},
 				},
 				window = { margin = { vertical = 0, horizontal = 1 } },
