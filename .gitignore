@@ -60,7 +60,7 @@ Pods/
 
 # Fish local config
 .config/fish/conf.d
-.config/fish/fish_variables
+.config/fish/fish_variables*
 .config/fish/config-local.fish
 .config/fish/fish_variables.x86_64
 .config/fish/functions
@@ -98,3 +98,14 @@ opencode/agents/
 
 # Antigravity
 .antigravitycli
+
+# GitHub Copilot auth
+.config/github-copilot/
+
+# 1Password CLI
+.config/op/
+
+# Local secrets
+.config/nipa/
+.config/opencode/service.json
+.config/configstore/
