@@ -54,7 +54,7 @@
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim) - Find, Filter, Preview, Pick. All lua, all the time
   - [Ripgrep](https://github.com/BurntSushi/ripgrep) - Recursively searches directories for a regex pattern
   - [FD](https://github.com/sharkdp/fd) - Fast and user-friendly alternative to find
-- [github-nvim-theme](https://github.com/projekt0n/github-nvim-theme) - Recolored to Vercel Dark
+- [vercel.nvim](https://github.com/PunGrumpy/vercel.nvim) - Vercel's Geist colors for Neovim
 
 ## `🐚` Shell setup (macOS & Linux)
 
