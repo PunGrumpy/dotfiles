@@ -46,6 +46,10 @@ if type -q ansible
     alias ap ansible-playbook
 end
 
+if type -q kolla-ansible
+    alias ka kolla-ansible
+end
+
 # Python
 alias python python3
 alias pip pip3
@@ -53,6 +57,11 @@ alias pip pip3
 # OpenCode
 if type -q opencode
     alias oc "env OPENCODE_EXPERIMENTAL_WORKSPACES=true opencode"
+end
+
+# OpenStack
+if type -q openstack
+    alias os openstack
 end
 
 # Git
