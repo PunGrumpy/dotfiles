@@ -102,6 +102,9 @@ opencode/agents/
 # GitHub Copilot auth
 .config/github-copilot/
 
+# GitHub CLI
+.config/gh/
+
 # 1Password CLI
 .config/op/
 
