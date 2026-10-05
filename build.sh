@@ -74,18 +74,30 @@ fi
 # Install Agents
 if has bunx; then
   msg "🧠 Installing agent skills..."
-  bunx skills add mattpocock/skills --skill grill-me --global --yes --agent cursor
-  bunx skills add vercel-labs/agent-skills --skill writing-guidelines --global --yes --agent cursor
-  bunx skills add shadcn/improve --skill improve --global --yes --agent cursor
-  bunx skills add vercel/turborepo --skill turborepo --global --yes --agent cursor
-  bunx skills add cursor/plugins --skill architect technical-writing typescript-best-practices unslop --global --yes --agent cursor
-  bunx skills add millionco/react-doctor --skill react-doctor improve-react improve-threejs performance deslop --global --yes --agent cursor
-  bunx skills add rauchg/skills --skill ui-recording-timeline --global --yes --agent cursor
-  bunx skills add emilkowalski/skills --skill emil-design-eng review-animations --global --yes --agent cursor
-  bunx skills add gustavo-fior/craft --skill craft-design-engineering --global --yes --agent cursor
-  bunx skills add git@github.com:PunGrumpy/agents.git --global --yes --agent cursor
+  skill() { bunx skills add "$@" --global --yes --agent cursor; }
+  skill mattpocock/skills --skill grill-me
+  skill vercel-labs/agent-skills --skill writing-guidelines
+  skill shadcn/improve --skill improve
+  skill vercel/turborepo --skill turborepo
+  skill millionco/react-doctor --skill react-doctor improve-react improve-threejs performance deslop
+  skill rauchg/skills --skill ui-recording-timeline
+  skill emilkowalski/skills --skill emil-design-eng review-animations
+  skill gustavo-fior/craft --skill craft-design-engineering
+  skill git@github.com:PunGrumpy/agents.git
 else
   msg "⚠️ bunx not found, skipping agent skills install"
+fi
+
+# Install Claude Code plugins
+if has claude; then
+  msg "🔌 Installing Claude Code plugins..."
+  claude plugin marketplace add PunGrumpy/agents
+  claude plugin install pstack@pungrumpy --scope user -y
+  settings="$HOME/.claude/settings.json"
+  tmp=$(mktemp)
+  jq '.extraKnownMarketplaces.pungrumpy.autoUpdate = true' "$settings" >"$tmp" && mv "$tmp" "$settings"
+else
+  msg "⚠️ claude not found, skipping Claude Code plugins install"
 fi
 
 msg "🎉 Installation completed"
