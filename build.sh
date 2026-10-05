@@ -83,7 +83,7 @@ if has bunx; then
   skill rauchg/skills --skill ui-recording-timeline
   skill emilkowalski/skills --skill emil-design-eng review-animations
   skill gustavo-fior/craft --skill craft-design-engineering
-  skill git@github.com:PunGrumpy/agents.git
+  skill git@github.com:PunGrumpy/agents.git --skill cli-builder devops-engineer style-transfer system-design testing-patterns
 else
   msg "⚠️ bunx not found, skipping agent skills install"
 fi
