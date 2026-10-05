@@ -88,18 +88,6 @@ else
   msg "⚠️ bunx not found, skipping agent skills install"
 fi
 
-# Install Claude Code plugins
-if has claude; then
-  msg "🔌 Installing Claude Code plugins..."
-  claude plugin marketplace add PunGrumpy/agents
-  claude plugin install pstack@pungrumpy --scope user -y
-  settings="$HOME/.claude/settings.json"
-  tmp=$(mktemp)
-  jq '.extraKnownMarketplaces.pungrumpy.autoUpdate = true' "$settings" >"$tmp" && mv "$tmp" "$settings"
-else
-  msg "⚠️ claude not found, skipping Claude Code plugins install"
-fi
-
 msg "🎉 Installation completed"
 msg "🐠 Install Fisher manually for Fish shell"
 msg "🚀 Restart your terminal to apply changes"
