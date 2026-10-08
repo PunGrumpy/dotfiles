@@ -1,16 +1,11 @@
 # Homebrew
-for brew_prefix in /opt/homebrew /usr/local $HOME/homebrew
+for brew_prefix in /opt/homebrew /usr/local
     if test -x $brew_prefix/bin/brew
         eval ($brew_prefix/bin/brew shellenv fish)
         break
     end
 end
 set -e brew_prefix
-
-# Homebrew casks
-if not id -Gn | string match -qr '\badmin\b'
-    set -gx HOMEBREW_CASK_OPTS "--appdir=$HOME/Applications"
-end
 
 # 1Password SSH agent
 set -l op_agent "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"

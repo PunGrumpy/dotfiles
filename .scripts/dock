@@ -4,10 +4,15 @@ set -euo pipefail
 DOCK_ITEMS=(
   "/System/Applications/Apps.app"
   "/Applications/Safari.app"
-  "${HOME}/Applications/Aside.app"
+  "/Applications/Aside.app"
+  "/Applications/ClickUp.app"
   "/Applications/Microsoft Teams.app"
-  "${HOME}/Applications/Visual Studio Code.app"
-  "${HOME}/Applications/Ghostty.app"
+  "/Applications/Discord.app"
+  "/Applications/Visual Studio Code.app"
+  "/Applications/T3 Code (Nightly).app"
+  "/Applications/Ghostty.app"
+  "/Applications/Notion.app"
+  "/Applications/Spotify.app"
 )
 
 if [[ "$(uname -s)" != "Darwin" ]]; then
