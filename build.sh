@@ -62,6 +62,15 @@ else
   msg "⚠️ Brewfile not found"
 fi
 
+# Set login shell
+if shell_path="$(command -v "$SHELL")"; then
+  msg "🐚 Setting ${SHELL} as login shell..."
+  grep -qxF "$shell_path" /etc/shells || echo "$shell_path" | sudo tee -a /etc/shells >/dev/null
+  chsh -s "$shell_path" || msg "⚠️ chsh failed, run: chsh -s $shell_path"
+else
+  msg "⚠️ ${SHELL} not found, skipping login shell"
+fi
+
 # Configure macOS Dock
 if [ "$(uname -s)" == "Darwin" ] && [ -x "$DOTFILES/.scripts/dock" ]; then
   read -p "Reconfigure the macOS Dock? (y/n): " dock_ans
