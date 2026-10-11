@@ -8,7 +8,7 @@ function update --description "Update system packages and developer tooling"
     end
 
     if type -q brew
-        set -lx SUDO_ASKPASS /usr/bin/false
+        sudo -v; or return 1
         brew update; and brew upgrade; and brew cleanup
     end
 
