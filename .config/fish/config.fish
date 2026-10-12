@@ -51,9 +51,6 @@ set -gx PATH $HOME/.bun/bin $PATH
 set -gx PNPM_HOME $HOME/.local/share/pnpm
 set -gx PATH $PNPM_HOME/bin $PATH
 
-# Vite Plus
-set -gx PATH $HOME/.vite-plus/bin $PATH
-
 # Deno
 set -gx PATH $HOME/.deno/bin $PATH
 
@@ -73,6 +70,9 @@ switch (uname)
     case '*'
         source (dirname (status --current-filename))/config-windows.fish
 end
+
+# Vite+ shims take precedence over Homebrew
+fish_add_path -g --move --path $HOME/.local/share/vite-plus/bin
 
 # Load local configurations if available
 set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
