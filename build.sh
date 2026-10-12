@@ -48,8 +48,8 @@ fi
 # Trust Brew tap
 if has brew; then
   msg "🔒 Trusting Brew tap..."
-  brew trust --tap oven-sh/bun
   brew trust --tap hashicorp/tap
+  brew trust --tap anomalyco/tap
 else
   msg "⚠️ Homebrew not installed"
 fi
@@ -78,6 +78,13 @@ if [ "$(uname -s)" == "Darwin" ] && [ -x "$DOTFILES/.scripts/dock" ]; then
     msg "🚢 Configuring Dock..."
     "$DOTFILES/.scripts/dock"
   fi
+fi
+
+# Set up Vite+ shims (node, bun, pnpm)
+if has vp; then
+  msg "⚡ Setting up Vite+ shims..."
+  vp env setup
+  export PATH="$HOME/.local/share/vite-plus/bin:$PATH"
 fi
 
 # Install Agents
