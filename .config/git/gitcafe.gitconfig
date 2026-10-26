@@ -1,0 +1,5 @@
+# name/email come from github.gitconfig; only the signing key differs
+# git.cafe shows SSH-signed commits as unverified (unknown_error) as of
+# 2026-10-21, ours and other users' alike.
+[user]
+  signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBsLRSxM3kLVc0g3EZa+i13Oer5q4pNDyuS2MXsvqD+e
