@@ -106,14 +106,15 @@ curl -fsSL https://raw.githubusercontent.com/PunGrumpy/dotfiles/main/build.sh | 
 Code lives on its own APFS volume (`/Volumes/Dev`, no Spotlight, no fseventsd log), and `~/Developments` links to it.
 
 ```bash
-# old Mac: quit T3 Code and Claude Code, then
+# old Mac: quit T3 Code, Codex and Claude Code, then back up into ~/agents-bak-DATE (asks for a passphrase)
 ~/.scripts/migrate/agents-export.sh
 
 # new Mac
 ~/.scripts/migrate/dev-volume.sh create   # then tick "Remember password" in Disk Utility
-rsync -aH OLD_MAC:/Volumes/Dev/{Developments,t3-worktrees} /Volumes/Dev/   # or git clone
+dec() { openssl enc -d -aes-256-cbc -pbkdf2 -iter 600000 -in "$1" | zstd -dc | tar -x -C "$2"; }
+dec agents-bak-DATE/dev.tar.zst.enc /Volumes/Dev
 ~/.scripts/migrate/dev-volume.sh link     # projects, T3 worktrees, package caches
-tar -xzf agents-*.tgz -C ~
+dec agents-bak-DATE/home.tar.zst.enc ~
 ~/.scripts/migrate/agents-rewrite-paths.sh /Users/OLD /Users/NEW   # only if the home path changed
 ```
 

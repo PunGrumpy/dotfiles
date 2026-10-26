@@ -58,6 +58,9 @@ DerivedData
 # CocoaPods
 Pods/
 
+# OpenStack credentials (clouds.yaml / secure.yaml) — never commit
+.config/openstack/
+
 # Fish local config
 .config/fish/conf.d
 .config/fish/fish_variables*
@@ -108,6 +111,14 @@ opencode/agents/
 
 # 1Password CLI
 .config/op/
+.config/1Password/
+
+# CLI state, tokens and telemetry ids
+.config/cagent/
+.config/gitcafe/
+.config/sanity/
+.config/vite-plus/
+.config/whoburnedmore/
 
 # Local secrets
 .config/nipa/
