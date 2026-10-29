@@ -1,4 +1,4 @@
-background="#000000"
+theme="vercel-dark.ghostty"
 font-family="GeistMono Nerd Font"
 window-padding-x="10"
 window-padding-balance="true"
