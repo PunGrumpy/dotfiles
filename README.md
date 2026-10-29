@@ -15,7 +15,7 @@
         alt="Terminal Linux/OSX" />
     <p>This terminal use:</p>
     <ul>
-        <li>color scheme <strong>Vercel</strong></li>
+        <li>color scheme <strong>Vercel Dark</strong></li>
         <li>fish</li>
         <li>tmux</li>
     </ul>
@@ -27,7 +27,7 @@
         alt="Terminal Windows" />
     <p>This terminal use:</p>
     <ul>
-        <li>color scheme <strong>Vercel</strong></li>
+        <li>color scheme <strong>Vercel Dark</strong></li>
         <li>powershell</li>
     </ul>
   </details>
