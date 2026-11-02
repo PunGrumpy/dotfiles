@@ -96,9 +96,11 @@ if has bunx; then
   skill shadcn/improve --skill improve
   skill vercel/turborepo --skill turborepo
   skill millionco/react-doctor --skill react-doctor improve-react improve-threejs performance deslop
-  skill rauchg/skills --skill ui-recording-timeline
+  skill t3dotgg/tstack
+  skill rauchg/skills
   skill emilkowalski/skills --skill emil-design-eng review-animations
-  skill gustavo-fior/craft --skill craft-design-engineering
+  skill benjitaylor/skills
+  skill gustavo-fior/craft
   skill git@github.com:PunGrumpy/agents.git --skill cli-builder dx-design rust-best-practices style-transfer system-design testing-patterns
 else
   msg "⚠️ bunx not found, skipping agent skills install"
