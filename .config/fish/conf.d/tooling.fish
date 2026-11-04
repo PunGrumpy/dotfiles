@@ -6,6 +6,9 @@ set -gx BUN_INSTALL $HOME/.bun
 # OpenCode
 fish_add_path -g $HOME/.opencode/bin
 
+# Docker Desktop
+fish_add_path -g --append $HOME/.docker/bin
+
 # fnm
 set -gx FNM_LOGLEVEL quiet
 
