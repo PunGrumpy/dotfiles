@@ -114,6 +114,7 @@ opencode/agents/
 .config/1Password/
 
 # CLI state, tokens and telemetry ids
+.config/anthropic/
 .config/cagent/
 .config/gitcafe/
 .config/sanity/
