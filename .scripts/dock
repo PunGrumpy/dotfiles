@@ -6,13 +6,14 @@ DOCK_ITEMS=(
   "/Applications/Safari.app"
   "/Applications/Aside.app"
   "/Applications/Microsoft Teams.app"
+  "/Applications/Slack.app"
   "/Applications/Discord.app"
   "/Applications/Visual Studio Code.app"
   "/Applications/T3 Code (Nightly).app"
   "/Applications/Ghostty.app"
+  "/Applications/Rex Beta.app"
   "/Applications/Notion.app"
   "/Applications/Typefully.app"
-  "/Applications/Spotify.app"
 )
 
 if [[ "$(uname -s)" != "Darwin" ]]; then
