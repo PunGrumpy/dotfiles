@@ -85,3 +85,5 @@
   path = ~/.config/git/gitcafe.gitconfig
 [includeIf "hasconfig:remote.*.url:**/**opendev.org**/**"]
   path = ~/.config/git/opendev.gitconfig
+[includeIf "hasconfig:remote.*.url:**/**opensdn.io**/**"]
+  path = ~/.config/git/opensdn.gitconfig
