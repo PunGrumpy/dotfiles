@@ -1,0 +1,4 @@
+[tools]
+go = "latest"
+python = "latest"
+rust = "latest"

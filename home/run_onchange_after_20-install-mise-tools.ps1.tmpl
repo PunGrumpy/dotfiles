@@ -1,0 +1,7 @@
+{{- if eq .chezmoi.os "windows" -}}
+# mise config hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+$ErrorActionPreference = 'Stop'
+
+$env:PATH = "$HOME\scoop\shims;$env:PATH"
+mise install
+{{- end }}

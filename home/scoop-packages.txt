@@ -5,6 +5,7 @@ fd
 fzf
 gh
 lazygit
+mise
 neovim
 psfzf
 ripgrep
