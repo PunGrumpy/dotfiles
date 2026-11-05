@@ -1,0 +1,8 @@
+# OpenSDN upstream (opensdn.io / gerrit.opensdn.io). Name and email match
+# the Gerrit account PunGrumpy; signed with the 1Password "OpenSDN" key.
+[user]
+  name = Noppakorn Kaewsalabnil
+  email = hello@pungrumpy.com
+  signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICs23idqVZL4932L8mroN9ntgJCPymBJmblkz72h6EqZ
+[gitreview]
+  username = PunGrumpy

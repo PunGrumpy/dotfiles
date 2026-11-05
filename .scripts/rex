@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# Rex keeps theme, font and appearance in app preferences, not in init.lua.
+# This script reproduces those preferences so a new machine matches ~/.config/ghostty/config.
+set -euo pipefail
+
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  echo "Skipping Rex configuration; not macOS"
+  exit 0
+fi
+
+APP="/Applications/Rex Beta.app"
+if [[ ! -d "$APP" ]]; then
+  echo "Skipping Rex configuration; $APP not found (download the beta from https://www.superlogical.com/rex)"
+  exit 0
+fi
+
+REX="$APP/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex"
+D=com.superlogical.rex
+THEMES="$HOME/.config/rex/themes"
+
+# Workspace.customThemes is a JSON blob stored as binary data, so read it through plistlib.
+theme_imported() {
+  defaults export $D - 2>/dev/null | python3 -I -c '
+import sys, plistlib, json
+d = plistlib.loads(sys.stdin.buffer.read())
+names = {t["name"] for t in json.loads(d.get("Workspace.customThemes", b"[]"))}
+sys.exit(0 if sys.argv[1] in names else 1)' "$1"
+}
+
+echo "Configuring Rex preferences..."
+defaults write $D Workspace.terminalFontName -string "GeistMono Nerd Font"
+defaults write $D Workspace.terminalFontPointSize -float 16
+defaults write $D Workspace.terminalAllowsLigatures -bool false
+defaults write $D Workspace.terminalCursorStyle -string block
+defaults write $D Workspace.terminalCursorStyleForced -bool true
+defaults write $D Workspace.terminalCursorBlinkIntervalMilliseconds -int 0
+defaults write $D Workspace.terminalPaddingColor -string extend
+defaults write $D Workspace.appearance -string dark
+defaults write $D Workspace.showsPaneHeaders -bool false
+defaults write $D Workspace.inactivePaneFadeMode -string none
+defaults write $D Workspace.usesStandardInactiveWindowPaneStyles -bool false
+defaults write $D rex.client.remoteControl -bool true
+
+# The app reads preferences at launch, so restart it. Sessions live on the server and survive.
+if pgrep -xq Rex; then
+  osascript -e 'tell application "Rex Beta" to quit' >/dev/null 2>&1 || true
+  sleep 2
+fi
+open -a "Rex Beta"
+
+client=""
+for _ in $(seq 1 20); do
+  sleep 1
+  client=$("$REX" client ls 2>/dev/null | awk 'NR>1 && /app/ && !/lost/ {print $NF}' | tail -1)
+  [[ -n "$client" ]] && break
+done
+
+if [[ -n "$client" ]]; then
+  for theme in "$THEMES"/*.ghostty; do
+    name=$(basename "$theme" .ghostty)
+    if theme_imported "$name"; then
+      echo "Theme $name already imported"
+    else
+      "$REX" -C "$client" do client.theme.import "path=$theme"
+      echo "Imported theme $name"
+    fi
+  done
+  "$REX" config reload >/dev/null
+  echo "Reloaded ~/.config/rex/init.lua"
+else
+  echo "Rex app did not connect; import the theme from Settings > Themes and run 'rex config reload' manually"
+fi
+
+if ! "$REX" skill status 2>/dev/null | grep -q 'skill   current'; then
+  "$REX" skill setup --agent claude --agent codex
+fi
+echo "Rex configured."
