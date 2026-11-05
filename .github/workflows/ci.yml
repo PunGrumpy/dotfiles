@@ -1,0 +1,219 @@
+name: 🔁 CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Only PRs share a group, so a push to main is never cancelled or replaced in the queue.
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  plan:
+    name: 🧭 Plan
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    outputs:
+      home: ${{ steps.changes.outputs.home }}
+      bootstrap: ${{ steps.changes.outputs.bootstrap }}
+      scoop: ${{ steps.changes.outputs.scoop }}
+    steps:
+      - name: 🧭 Decide which jobs the changed files need
+        id: changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          workflow='\.github/workflows/ci\.yml'
+          # Bootstrap runs the run_*.sh.tmpl scripts on Linux. Each script is hashed against, or reads,
+          # one of these inputs, and the check step looks for the tools they install.
+          bootstrap='run_.*\.sh\.tmpl$|Brewfile$|apt-packages\.txt$|\.chezmoi(ignore|data|external|templates/brew-env\.sh)'
+          bootstrap+='|dot_config/(mise/|git/|fish/(config|conf\.d/|fish_plugins))|dot_gitconfig\.tmpl$'
+          declare -A patterns=(
+            [home]="^(home/|\.chezmoiroot$|$workflow$)"
+            [bootstrap]="^(home/($bootstrap)|\.chezmoiroot$|$workflow$)"
+            [scoop]="^(home/scoop-packages\.txt|$workflow)$"
+          )
+
+          if [ "$EVENT" = pull_request ]; then
+            files="$(gh api "repos/$REPO/pulls/$PR/files" --paginate --jq '.[] | .filename, .previous_filename // empty')"
+          fi
+
+          for name in "${!patterns[@]}"; do
+            if [ "$EVENT" != pull_request ] || grep -qE "${patterns[$name]}" <<<"$files"; then
+              echo "$name=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "$name=false" >> "$GITHUB_OUTPUT"
+            fi
+          done
+          cat "$GITHUB_OUTPUT"
+
+  gitleaks:
+    name: 💧 Gitleaks
+    needs: plan
+    if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛫 Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: 🔎 Gitleaks Scanning
+        uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_VERSION: 8.30.1
+
+  trufflehog:
+    name: 🐗 Trufflehog
+    needs: plan
+    if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛫 Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: 🔎 Trufflehog Scanning
+        uses: trufflesecurity/trufflehog@main
+
+  gitguardian:
+    name: 🦉 GitGuardian
+    needs: plan
+    if: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛫 Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: 🔎 GitGuardian Scanning
+        uses: GitGuardian/gg-shield-action@master
+        env:
+          GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
+          GITHUB_PUSH_BASE_SHA: ${{ github.event.before }}
+          GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+
+  validate:
+    name: 🔎 Validate (${{ matrix.os }})
+    needs: [plan, gitleaks, trufflehog, gitguardian]
+    if: ${{ !cancelled() && !failure() && needs.plan.outputs.home == 'true' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: 🛫 Checkout
+        uses: actions/checkout@v7
+      - name: 📦 Install chezmoi
+        if: runner.os != 'Windows'
+        run: |
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: 📦 Install chezmoi (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          iex "&{$(irm 'https://get.chezmoi.io/ps1')} -b '$HOME\bin'"
+          "$HOME\bin" | Out-File -Append -Encoding utf8 $env:GITHUB_PATH
+      - name: 🏠 Apply the files to an empty directory
+        run: |
+          target="$RUNNER_TEMP/home"
+          mkdir -p "$target"
+          echo "CHEZMOI_ARGS=--source=$GITHUB_WORKSPACE --destination=$target --config=$RUNNER_TEMP/chezmoi.toml --persistent-state=$RUNNER_TEMP/state.boltdb --no-tty" >> "$GITHUB_ENV"
+          touch "$RUNNER_TEMP/chezmoi.toml"
+          chezmoi --source="$GITHUB_WORKSPACE" --destination="$target" --config="$RUNNER_TEMP/chezmoi.toml" --persistent-state="$RUNNER_TEMP/state.boltdb" --no-tty apply --exclude=scripts
+          chezmoi --source="$GITHUB_WORKSPACE" --destination="$target" --config="$RUNNER_TEMP/chezmoi.toml" --persistent-state="$RUNNER_TEMP/state.boltdb" --no-tty verify --exclude=scripts
+          find "$target" -type f | wc -l
+      - name: 🧪 Check that bash scripts parse
+        if: runner.os != 'Windows'
+        run: |
+          for script in home/run_*.sh.tmpl; do
+            rendered="$(chezmoi $CHEZMOI_ARGS execute-template < "$script")"
+            if [ -n "$rendered" ]; then
+              bash -n <<<"$rendered"
+              echo "ok $script"
+            fi
+          done
+      - name: 🧪 Check that PowerShell scripts parse
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Get-ChildItem home/run_*.ps1.tmpl | ForEach-Object {
+            $rendered = chezmoi --source=$env:GITHUB_WORKSPACE --config="$env:RUNNER_TEMP/chezmoi.toml" --persistent-state="$env:RUNNER_TEMP/state.boltdb" execute-template (Get-Content -Raw $_.FullName)
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseInput(($rendered -join "`n"), [ref]$null, [ref]$errors) | Out-Null
+            if ($errors) { throw "$($_.Name): $errors" }
+            "ok $($_.Name)"
+          }
+      - name: 🪣 Check that the Scoop packages exist
+        if: runner.os == 'Windows' && needs.plan.outputs.scoop == 'true'
+        shell: pwsh
+        run: |
+          iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
+          "$HOME\scoop\shims" | Out-File -Append -Encoding utf8 $env:GITHUB_PATH
+          $env:PATH = "$HOME\scoop\shims;$env:PATH"
+          scoop bucket add extras
+          scoop bucket add nerd-fonts
+          $missing = Get-Content home/scoop-packages.txt | Where-Object { -not (scoop search $_ 6>&1 | Select-String -SimpleMatch $_) }
+          if ($missing) { throw "not found in Scoop: $($missing -join ', ')" }
+
+  # Does not wait for validate: the macOS runner can queue for minutes, and bootstrap is the slowest job.
+  bootstrap:
+    name: 🚀 Bootstrap (ubuntu-latest)
+    needs: [plan, gitleaks, trufflehog, gitguardian]
+    if: ${{ !cancelled() && !failure() && needs.plan.outputs.bootstrap == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: 🛫 Checkout
+        uses: actions/checkout@v7
+      - name: 🚀 Apply with the run scripts
+        env:
+          NONINTERACTIVE: "1"
+        run: |
+          sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
+          "$HOME/.local/bin/chezmoi" --source="$GITHUB_WORKSPACE" --no-tty apply --force
+      - name: ✅ Check the result
+        shell: /home/linuxbrew/.linuxbrew/bin/fish -l {0}
+        run: |
+          type -q nvim
+          and type -q mise
+          and type -q gwq
+          and type -q tmux
+          and fisher list | string match -q 'ilancosman/tide*'
+          and mise ls --current go python rust
+          and git config --get alias.st
+          and type -q git-cz
+          and test -d ~/.config/tmux/plugins/tpm
+
+  # The one check a branch rule can require: skipped jobs pass, failed or cancelled ones do not.
+  ci-ok:
+    name: ✅ CI OK
+    needs: [plan, gitleaks, trufflehog, gitguardian, validate, bootstrap]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: ✅ Fail when any job failed or was cancelled
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          jq -r 'to_entries[] | "\(.key): \(.value.result)"' <<<"$NEEDS"
+          jq -e 'all(.[]; .result != "failure" and .result != "cancelled")' <<<"$NEEDS" >/dev/null
