@@ -45,5 +45,4 @@ brew "dockutil"
 # Casks
 cask "1password"
 cask "1password-cli"
-cask "ghostty@tip"
 cask "font-geist-mono-nerd-font"

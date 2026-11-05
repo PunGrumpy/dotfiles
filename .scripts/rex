@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Rex keeps theme, font and appearance in app preferences, not in init.lua.
-# This script reproduces those preferences so a new machine matches ~/.config/ghostty/config.
+# This script writes those preferences on a new machine.
 set -euo pipefail
 
 if [[ "$(uname -s)" != "Darwin" ]]; then
