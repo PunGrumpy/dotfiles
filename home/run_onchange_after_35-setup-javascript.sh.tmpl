@@ -1,0 +1,11 @@
+{{- if ne .chezmoi.os "windows" -}}
+#!/bin/bash
+set -euo pipefail
+
+{{ template "brew-env.sh" }}
+
+vp env setup
+export PATH="$HOME/.local/share/vite-plus/bin:$HOME/.bun/bin:$PATH"
+
+bun add -g commitizen cz-git
+{{- end }}

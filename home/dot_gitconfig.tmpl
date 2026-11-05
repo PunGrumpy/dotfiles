@@ -20,31 +20,6 @@
   interactive = auto
   grep = auto
   ui = auto
-[alias]
-  a = "!git status --short | peco | awk '{print $2}' | xargs git add"
-  d = diff
-  co = checkout
-  ci = commit
-  ca = commit -a
-  ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
-  pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
-  st = status
-  sw = switch
-  br = branch
-  ba = branch -a
-  bm = branch --merged
-  bn = branch --no-merged
-  df = "!git hist | peco | awk '{print $2}' | xargs -I {} git diff {}^ {}"
-  hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
-  llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
-  open = "!gh browse"
-  type = cat-file -t
-  dump = cat-file -p
-  find = "!f() { git log --pretty=format:\"%h %cd [%cn] %s%d\" --date=relative -S'pretty' -S\"$@\" | peco | awk '{print $1}' | xargs -I {} git diff {}^ {}; }; f"
-  # edit conflicted file on merge
-  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
-  # add conflicted file on merge
-  add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 [diff]
   tool = nvimdiff
 [difftool "nvimdiff"]
@@ -58,8 +33,6 @@
   smudge = git-lfs smudge -- %f
   required = true
   process = git-lfs filter-process
-[ghq]
-  root = ~/Developments/.ghq
 [pull]
   rebase = false
 [safe]
@@ -79,6 +52,10 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !{{ if eq .chezmoi.os "darwin" }}/opt/homebrew/bin/{{ end }}gh auth git-credential
+[include]
+  path = ~/.config/git/aliases.gitconfig
+[include]
+  path = ~/.config/git/ghq.gitconfig
 [include]
   path = ~/.config/git/delta.gitconfig
 [include]
