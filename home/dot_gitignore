@@ -66,11 +66,6 @@ nvim.lazy
 .luarc.json
 nvim-pack-lock.json
 
-# Opencode
-opencode/skills/
-opencode/commands/
-opencode/agents/
-
 # Agents
 # .agents/
 

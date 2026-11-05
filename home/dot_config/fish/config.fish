@@ -39,9 +39,6 @@ set -q git_branch_prefix; or set -g git_branch_prefix pungrumpy
 # Eza
 set -gx EZA_CONFIG_DIR $HOME/.config/eza
 
-# OpenCode
-fish_add_path -g $HOME/.opencode/bin
-
 # Docker Desktop
 fish_add_path -g --append $HOME/.docker/bin
 

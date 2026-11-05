@@ -54,11 +54,6 @@ end
 alias python python3
 alias pip pip3
 
-# OpenCode
-if type -q opencode
-    alias oc "env OPENCODE_EXPERIMENTAL_WORKSPACES=true opencode"
-end
-
 # OpenStack
 if type -q openstack
     alias os openstack
