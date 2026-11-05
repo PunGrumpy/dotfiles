@@ -10,8 +10,7 @@
    - Install [oh-my-posh](https://ohmyposh.dev/docs/installation) (Not updated anymore)
    - Install [Starship](https://starship.rs/guide/#%F0%9F%9A%80-installation) (Recommended)
 4. Install [Nerd Fonts](https://www.nerdfonts.com/font-downloads) (Recommended: Hack Nerd Font)
-5. Run `chezmoi init --apply PunGrumpy`. It writes the profile for `pwsh` and `powershell` to `Documents`, and to `OneDrive\Documents` when that folder exists. Windows gets the shell config, the Git config and the mise runtimes. Neovim runs without the config, and the other development tools stay in WSL.
+5. Run `chezmoi init --apply PunGrumpy`. It writes the profile for `pwsh` and `powershell` to `Documents`, and to `OneDrive\Documents` when that folder exists. Windows gets the terminal appearance only: Windows Terminal, the PowerShell profile, Starship, eza and the font. Development tools and the Git config stay in WSL.
 
 > [!NOTE]
-> I've customize color scheme for Windows Terminal, you can find it in `windows/settings.json` file.
-> If you want to use it, you can copy the content and replace it with your settings.json file.
+> chezmoi manages the Windows Terminal `settings.json`. After you change a setting in the app, run `chezmoi re-add` to keep the change.

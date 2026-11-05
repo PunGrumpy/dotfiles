@@ -1,0 +1,165 @@
+{
+  "$help": "https://aka.ms/terminal-documentation",
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "actions": [],
+  "copyFormatting": "none",
+  "copyOnSelect": false,
+  "defaultProfile": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+  "keybindings": [
+    {
+      "id": "Terminal.CopyToClipboard",
+      "keys": "ctrl+c"
+    },
+    {
+      "id": "Terminal.PasteFromClipboard",
+      "keys": "ctrl+v"
+    },
+    {
+      "id": "Terminal.DuplicatePaneAuto",
+      "keys": "alt+shift+d"
+    }
+  ],
+  "newTabMenu": [
+    {
+      "type": "remainingProfiles"
+    }
+  ],
+  "profiles": {
+    "defaults": {
+      "bellStyle": "none",
+      "colorScheme": "Solarized Osaka",
+      "font": {
+        "face": "GeistMono Nerd Font",
+        "size": 12
+      },
+      "useAcrylic": true
+    },
+    "list": [
+      {
+        "colorScheme": "Vesper",
+        "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+        "hidden": false,
+        "icon": "%USERPROFILE%\\.config\\windows-terminal\\icon-2.png",
+        "name": "PowerShell",
+        "opacity": 100,
+        "source": "Windows.Terminal.PowershellCore"
+      },
+      {
+        "colorScheme": "Vercel",
+        "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+        "hidden": false,
+        "icon": "%USERPROFILE%\\.config\\windows-terminal\\icon-1.png",
+        "name": "Ubuntu",
+        "opacity": 100,
+        "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
+      }
+      // {
+      //   "colorScheme": "Xcad",
+      //   "hidden": false,
+      //   "icon": "%USERPROFILE%\\.config\\windows-terminal\\icon-4.png",
+      //   "name": "DigitalAllThings Th 1",
+      //   "opacity": 100,
+      //   "commandline": "ssh th1-dat"
+      // }
+    ]
+  },
+  "rendering.disablePartialInvalidation": true,
+  "rendering.graphicsAPI": "direct3d11",
+  "rendering.software": true,
+  "schemes": [
+    {
+      "background": "#001B21",
+      "black": "#002B36",
+      "blue": "#268BD2",
+      "brightBlack": "#073642",
+      "brightBlue": "#839496",
+      "brightCyan": "#93A1A1",
+      "brightGreen": "#586E75",
+      "brightPurple": "#6C71C4",
+      "brightRed": "#CB4B16",
+      "brightWhite": "#FDF6E3",
+      "brightYellow": "#657B83",
+      "cursorColor": "#FFFFFF",
+      "cyan": "#2AA198",
+      "foreground": "#839496",
+      "green": "#859900",
+      "name": "Solarized Osaka",
+      "purple": "#D33682",
+      "red": "#DC322F",
+      "selectionBackground": "#FFFFFF",
+      "white": "#EEE8D5",
+      "yellow": "#B58900"
+    },
+    {
+      "background": "#101010",
+      "black": "#101010",
+      "blue": "#A0A0A0",
+      "brightBlack": "#505050",
+      "brightBlue": "#A0A0A0",
+      "brightCyan": "#99FFE4",
+      "brightGreen": "#99FFE4",
+      "brightPurple": "#FF8080",
+      "brightRed": "#FF8080",
+      "brightWhite": "#FFFFFF",
+      "brightYellow": "#FFCFA8",
+      "cursorColor": "#FFFFFF",
+      "cyan": "#99FFE4",
+      "foreground": "#FFFFFF",
+      "green": "#99FFE4",
+      "name": "Vesper",
+      "purple": "#FF7300",
+      "red": "#FF8080",
+      "selectionBackground": "#FFC799",
+      "white": "#FFFFFF",
+      "yellow": "#FFC799"
+    },
+    {
+      "background": "#1B1B1B",
+      "black": "#121212",
+      "blue": "#2B4FFF",
+      "brightBlack": "#666666",
+      "brightBlue": "#5C78FF",
+      "brightCyan": "#5AC8FF",
+      "brightGreen": "#905AFF",
+      "brightPurple": "#5EA2FF",
+      "brightRed": "#BA5AFF",
+      "brightWhite": "#FFFFFF",
+      "brightYellow": "#685AFF",
+      "cursorColor": "#FFFFFF",
+      "cyan": "#28B9FF",
+      "foreground": "#F1F1F1",
+      "green": "#7129FF",
+      "name": "Xcad",
+      "purple": "#2883FF",
+      "red": "#A52AFF",
+      "selectionBackground": "#FFFFFF",
+      "white": "#F1F1F1",
+      "yellow": "#3D2AFF"
+    },
+    {
+      "background": "#000000",
+      "black": "#1a1a1a",
+      "blue": "#52a9ff",
+      "brightBlack": "#8f8f8f",
+      "brightBlue": "#97c9fe",
+      "brightCyan": "#4be6d3",
+      "brightGreen": "#83e293",
+      "brightPurple": "#d7a4ff",
+      "brightRed": "#fe7573",
+      "brightWhite": "#ffffff",
+      "brightYellow": "#ffc983",
+      "cursorColor": "#ededed",
+      "cyan": "#0ac5b3",
+      "foreground": "#ededed",
+      "green": "#63c174",
+      "name": "Vercel",
+      "purple": "#bf7af0",
+      "red": "#e5484d",
+      "selectionBackground": "#ededed",
+      "white": "#a0a0a0",
+      "yellow": "#f1a10d"
+    }
+  ],
+  "theme": "dark",
+  "themes": []
+}

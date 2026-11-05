@@ -45,15 +45,22 @@ Session.vim
 .config/btop
 .config/dockercolorize
 .config/fish
+.config/git
 .config/gwq
 .config/lazygit
+.config/mise
 .config/nvim
+.czrc
+.gitconfig
+.gitignore
 .scripts
 {{- if not (stat (joinPath .chezmoi.homeDir "OneDrive/Documents")) }}
 OneDrive
 {{- end }}
 {{- else }}
 .config/starship.toml
+.config/windows-terminal
+AppData
 Documents
 OneDrive
 {{- end }}
