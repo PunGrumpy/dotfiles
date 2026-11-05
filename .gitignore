@@ -1,1 +1,5 @@
 .DS_Store
+Brewfile.lock.json
+home/dot_config/nvim/nvim-pack-lock.json
+home/dot_config/nvim/lua/pungrumpy/plugins/local.lua
+tmp

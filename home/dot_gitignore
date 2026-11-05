@@ -1,40 +1,26 @@
 *.o
-\#*#
-*#
-.#*
 .*~
 *~
 .DS_Store
 *.sw[po]
-tags
-TAGS
-.svn
 *.dSYM
 *.log
 *.dvi
 *.aux
 *.elc
-.zshrc.local
 .python-version
-samples
 .netrwhist
 .bundle
 /vendor/bundle
 Gemfile.lock
 node_modules
-bower_components
-fishd.*
-Brewfile.lock.json
+
 .env*
 *.bak
 
-# Vim
+# Vim/Neovim
 Session.vim
-.vim/bundle/
-.vimrc_sample
-.vim/ftdetect/Dockerfile.vim
-.vim/syntax/Dockerfile.vim
-.vim/snippets/
+vimsession
 
 # Xcode
 build/
@@ -58,16 +44,8 @@ DerivedData
 # CocoaPods
 Pods/
 
-# Vim
-vimsession
-packer_compiled.lua
-nvim.old
-nvim.lazy
-.luarc.json
-nvim-pack-lock.json
-
 # Agents
-# .agents/
+settings.local.json
 
 # Claude Code
 .claude/*.local.json
