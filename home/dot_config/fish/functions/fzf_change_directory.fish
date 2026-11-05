@@ -13,7 +13,7 @@ function fzf_change_directory
     begin
         echo $HOME/.config
         find $(ghq root) -maxdepth 4 -type d -name .git | sed 's/\/\.git//'
-        type -q gwq; and fd . (gwq config get worktree.basedir | string replace '~' $HOME) -t d --max-depth 3 --min-depth 3
+        type -q gwq; and fd . (gwq config get worktree.basedir | string replace '~' $HOME)/ -t d --max-depth 2 --min-depth 2
         ls -ad */ | perl -pe "s#^#$PWD/#" | grep -v \.git
         ls -ad $HOME/Developments/*/* | grep -v \.git
     end | sed -e 's/\/$//' | awk '!a[$0]++' | _fzf_change_directory $argv

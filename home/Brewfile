@@ -45,6 +45,7 @@ brew "tree-sitter-cli"
 brew "tfsec"
 brew "vite-plus"
 brew "wget"
+brew "zoxide"
 brew "hashicorp/tap/hcp"
 brew "hashicorp/tap/vault"
 

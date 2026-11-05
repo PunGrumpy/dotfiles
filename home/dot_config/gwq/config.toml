@@ -1,6 +1,6 @@
 [worktree]
-basedir = "~/Developments/gwq"
+basedir = "~/.t3/worktrees"
 auto_mkdir = true
 
 [naming]
-template = "{{.Host}}/{{.Owner}}/{{.Repository}}@{{.Branch}}"
+template = "{{.Repository}}/{{.Branch}}"
