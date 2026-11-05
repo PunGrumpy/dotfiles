@@ -22,9 +22,9 @@ keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
 keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 
 -- Terminals send Enter as <C-m>, so keep Enter working in quickfix, help and other special buffers.
-map("n", "<C-m>", function()
+keymap.set("n", "<C-m>", function()
 	return vim.bo.buftype == "" and "<C-i>" or "<CR>"
-end, { expr = true, desc = "Jump forward" })
+end, { expr = true, silent = true, desc = "Jump forward" })
 
 keymap.set("n", "te", ":tabedit<CR>")
 keymap.set("n", "<tab>", ":tabnext<CR>", opts)
