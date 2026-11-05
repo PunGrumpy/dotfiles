@@ -70,7 +70,7 @@
 - [Fzf for fish](https://github.com/PatrickF1/fzf.fish) - Interactive filtering `fisher install PatrickF1/fzf.fish`
 - [Puffer for fish](https://github.com/nickeb96/puffer-fish) - Text expander `fisher install nickeb96/puffer-fish`
 - [Pisces for fish](https://github.com/laughedelic/pisces) - Paired symbols `fisher install laughedelic/pisces`
-- [nvm.fish](https://github.com/jorgebucaran/nvm.fish) - Node.js version manager `fisher install jorgebucaran/nvm.fish`
+- [mise](https://mise.jdx.dev/) - Version manager for Go, Python and Rust. [Vite+](https://viteplus.dev/) manages Node.js, Bun and pnpm
 
 ## `👧` PowerShell setup (Windows)
 

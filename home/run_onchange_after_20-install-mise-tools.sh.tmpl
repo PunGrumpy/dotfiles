@@ -1,0 +1,9 @@
+{{- if ne .chezmoi.os "windows" -}}
+#!/bin/bash
+# mise config hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+set -euo pipefail
+
+{{ template "brew-env.sh" }}
+
+mise install
+{{- end }}

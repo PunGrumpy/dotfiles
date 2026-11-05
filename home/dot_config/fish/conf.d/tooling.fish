@@ -9,8 +9,8 @@ fish_add_path -g $HOME/.opencode/bin
 # Docker Desktop
 fish_add_path -g --append $HOME/.docker/bin
 
-# fnm
-set -gx FNM_LOGLEVEL quiet
+# mise
+type -q mise; and mise activate fish | source
 
 # Eza
 set -gx EZA_CONFIG_DIR $HOME/.config/eza
