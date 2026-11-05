@@ -1,6 +1,23 @@
 #!/bin/bash
-tmux split-window -h -l 20%
-tmux select-pane -L
-tmux split-window -v -l 30%
-tmux split-window -h -l 66%
-tmux split-window -h -l 50%
+set -euo pipefail
+
+if [ -n "${TMUX:-}" ]; then
+  tmux split-window -h -l 20%
+  tmux select-pane -L
+  tmux split-window -v -l 30%
+  tmux split-window -h -l 66%
+  tmux split-window -h -l 50%
+  exit
+fi
+
+if [ -z "${REX_BLOCK:-}" ]; then
+  echo "ide: run this inside Rex or tmux" >&2
+  exit 1
+fi
+
+rex() { "/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex" "$@"; }
+
+rex split -s "$REX_SESSION" -b "$REX_BLOCK" --split=right --ratio 20 >/dev/null
+bottom=$(rex split -s "$REX_SESSION" -b "$REX_BLOCK" --split=below --ratio 30)
+middle=$(rex split -s "$REX_SESSION" -b "$bottom" --split=right --ratio 66)
+rex split -s "$REX_SESSION" -b "$middle" --split=right --ratio 50 >/dev/null
