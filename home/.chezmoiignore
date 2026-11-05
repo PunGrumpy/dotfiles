@@ -54,13 +54,9 @@ Session.vim
 .gitconfig
 .gitignore
 .scripts
-{{- if not (stat (joinPath .chezmoi.homeDir "OneDrive/Documents")) }}
-OneDrive
-{{- end }}
 {{- else }}
+.config/powershell
 .config/starship.toml
 .config/windows-terminal
 AppData
-Documents
-OneDrive
 {{- end }}
