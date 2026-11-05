@@ -2,6 +2,35 @@ Brewfile
 apt-packages.txt
 scoop-packages.txt
 winget.json
+Brewfile.lock.json
+.DS_Store
+Session.vim
+
+# Fish state and plugin files
+.config/fish/config-local.fish
+.config/fish/fish_variables*
+.config/fish/completions/
+.config/fish/conf.d/_tide_init.fish
+.config/fish/conf.d/fzf.fish
+.config/fish/conf.d/pisces.fish
+.config/fish/conf.d/puffer_fish_key_bindings.fish
+.config/fish/conf.d/vite-plus.fish
+.config/fish/conf.d/zoxide.fish
+.config/fish/functions/_*
+.config/fish/functions/__*
+.config/fish/functions/bass.fish
+.config/fish/functions/fisher.fish
+.config/fish/functions/fish_prompt.fish
+.config/fish/functions/fish_mode_prompt.fish
+.config/fish/functions/fzf_configure_bindings.fish
+.config/fish/functions/tide
+.config/fish/functions/tide.fish
+
+# App state
+.config/lazygit/state.yml
+.config/tmux/plugins/
+.config/nvim/nvim-pack-lock.json
+.config/nvim/lua/pungrumpy/plugins/local.lua
 
 {{- if ne .chezmoi.os "darwin" }}
 .config/rex
