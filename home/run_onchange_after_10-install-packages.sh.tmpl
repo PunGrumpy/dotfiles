@@ -1,0 +1,17 @@
+{{- if ne .chezmoi.os "windows" -}}
+#!/bin/bash
+# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+set -euo pipefail
+
+{{ template "brew-env.sh" }}
+
+if ! command -v brew >/dev/null 2>&1; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+{{ template "brew-env.sh" }}
+
+brew trust --tap hashicorp/tap
+brew trust --tap anomalyco/tap
+brew bundle --file="{{ joinPath .chezmoi.sourceDir "Brewfile" }}"
+{{- end }}

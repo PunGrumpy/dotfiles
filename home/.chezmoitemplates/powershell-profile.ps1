@@ -1,6 +1,9 @@
 # Set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
 
+# Read config from ~/.config, like the other platforms
+$env:XDG_CONFIG_HOME = "$HOME\.config"
+
 # Load prompt config
 Invoke-Expression (&starship init powershell)
 

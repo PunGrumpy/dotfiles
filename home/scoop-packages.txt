@@ -1,0 +1,12 @@
+chezmoi
+delta
+eza
+fd
+fzf
+gh
+lazygit
+neovim
+psfzf
+ripgrep
+starship
+GeistMono-NF

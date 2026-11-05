@@ -4,6 +4,7 @@ tap "hashicorp/tap"
 # Formulae
 brew "ansible"
 brew "btop"
+brew "chezmoi"
 brew "eza"
 brew "fd"
 brew "fish"
@@ -28,21 +29,26 @@ brew "openshift-cli"
 brew "opentofu"
 brew "pipx"
 brew "peco"
+brew "pre-commit"
 brew "rust"
 brew "stylua"
 brew "terraform"
 brew "tfsec"
-brew "tmux"
-brew "vercel-cli"
 brew "vite-plus"
 brew "hashicorp/tap/hcp"
-brew "hashicorp/tap/vagrant"
 brew "hashicorp/tap/vault"
 
-# macOS
-brew "dockutil"
+if OS.mac?
+  brew "dockutil"
 
-# Casks
-cask "1password"
-cask "1password-cli"
-cask "font-geist-mono-nerd-font"
+  cask "1password"
+  cask "1password-cli"
+  cask "vagrant"
+  cask "vercel"
+  cask "font-geist-mono-nerd-font"
+end
+
+unless OS.mac?
+  brew "tmux"
+  brew "hashicorp/tap/vagrant"
+end
