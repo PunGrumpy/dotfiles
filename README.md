@@ -47,7 +47,7 @@
 - Fish config
 - Rex config (macOS)
 - Tmux config (Linux and WSL)
-- gwq, mise and lazygit config
+- gwq, mise and lazygit config. gwq creates worktrees in `~/.t3/worktrees/<repo>/<branch>`, where T3 Code keeps its own
 
 ## `👽` NeoVim
 
