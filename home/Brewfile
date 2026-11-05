@@ -1,4 +1,3 @@
-tap "anomalyco/tap"
 tap "d-kuro/tap"
 tap "hashicorp/tap"
 
@@ -31,7 +30,6 @@ brew "neovim"
 brew "ripgrep"
 brew "rsync"
 brew "sqlite"
-brew "anomalyco/tap/opencode-v2"
 brew "openshift-cli"
 brew "opentofu"
 brew "pipx"
@@ -50,6 +48,7 @@ brew "hashicorp/tap/hcp"
 brew "hashicorp/tap/vault"
 
 if OS.mac?
+  brew "agent-desktop"
   brew "dockutil"
 
   cask "1password"

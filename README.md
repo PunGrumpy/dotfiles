@@ -92,7 +92,6 @@
 
 ## `🤖` AI Config
 
-- [OpenCode](http://opencode.ai/) - AI-powered terminal, code editor, and more
 - [Cursor](https://www.cursor.com/) - AI-powered code editor
 
 ## `🏗️` Install
