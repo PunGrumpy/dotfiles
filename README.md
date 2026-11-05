@@ -51,12 +51,17 @@
 
 ## `👽` NeoVim
 
-- [NeoVim](https://neovim.io/) >= 0.9.0 (needs to be built with [**LuaJIT**](https://luajit.org/luajit.html)).
-- [LazyVim](https://github.com/LazyVim/LazyVim) - Neovim config for the lazy
-- [Telescope](https://github.com/nvim-telescope/telescope.nvim) - Find, Filter, Preview, Pick. All lua, all the time
+A flat setup on Neovim's built-ins: `vim.pack` installs the plugins, with no plugin manager or distribution on top. It is tuned for reviewing agent output: lazygit in a float (`;g`), [codediff](https://github.com/esmuellert/codediff.nvim) (`<leader>dv`) and a [mini.diff](https://github.com/nvim-mini/mini.diff) overlay (`<leader>gd`). `<leader>yf` and `<leader>yp` copy a path with a line reference (`src/app.ts#L42`) to paste into an agent prompt. Add machine-local plugins in `lua/pungrumpy/plugins/local.lua`, which is not tracked.
+
+- [NeoVim](https://neovim.io/) >= 0.12 (needs to be built with [**LuaJIT**](https://luajit.org/luajit.html)).
+- [vim.pack](https://neovim.io/doc/user/pack.html) - Built-in plugin manager. The first start asks to confirm the installs.
+- [Snacks](https://github.com/folke/snacks.nvim) picker instead of Telescope - Files, grep, LSP and git pickers, plus lazygit
   - [Ripgrep](https://github.com/BurntSushi/ripgrep) - Recursively searches directories for a regex pattern
   - [FD](https://github.com/sharkdp/fd) - Fast and user-friendly alternative to find
+- [Mason](https://github.com/mason-org/mason.nvim) - Installs the language servers, formatters and the tree-sitter CLI on first start
 - [vercel.nvim](https://github.com/PunGrumpy/vercel.nvim) - Vercel's Geist colors for Neovim
+
+Structure and keymaps based on [craftzdog/dotfiles](https://github.com/craftzdog/dotfiles).
 
 ## `🐚` Shell setup (macOS & Linux)
 
