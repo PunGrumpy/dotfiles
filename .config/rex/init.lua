@@ -1,4 +1,4 @@
--- Translated from ~/.config/ghostty/config. Theme, font and padding live in Rex Settings.
+-- Theme, font and padding live in Rex Settings. .scripts/rex sets them.
 
 -- Font size
 rex.bind("ctrl+=", "client.font.increase")
