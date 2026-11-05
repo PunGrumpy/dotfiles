@@ -13,5 +13,6 @@ fi
 
 brew trust --tap hashicorp/tap
 brew trust --tap anomalyco/tap
+brew trust --tap d-kuro/tap
 brew bundle --file="{{ joinPath .chezmoi.sourceDir "Brewfile" }}"
 {{- end }}

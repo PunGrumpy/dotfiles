@@ -4,10 +4,7 @@ set -uo pipefail
 
 {{ template "brew-env.sh" }}
 
-if command -v vp >/dev/null 2>&1; then
-  vp env setup
-  export PATH="$HOME/.local/share/vite-plus/bin:$PATH"
-fi
+export PATH="$HOME/.local/share/vite-plus/bin:$PATH"
 
 if ! command -v bunx >/dev/null 2>&1; then
   echo "bunx not found, skipping agent skills" >&2

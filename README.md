@@ -47,6 +47,7 @@
 - Fish config
 - Rex config (macOS)
 - Tmux config (Linux and WSL)
+- gwq, mise and lazygit config
 
 ## `👽` NeoVim
 
@@ -85,7 +86,7 @@
 
 ## `🦒` Git config
 
-- [Git commitizen](https://github.com/Zhengqbbb/cz-git) - Commitizen helps you commit better messages `bun install -g cz-git`
+- [Git commitizen](https://github.com/Zhengqbbb/cz-git) - Commitizen helps you commit better messages
 - [Lazygit](https://github.com/jesseduffield/lazygit/) - Simple terminal UI for git commands `brew install lazygit`
 - [Delta](https://github.com/dandavison/delta) - Syntax-highlighting pager for git `brew install git-delta`
 
@@ -112,7 +113,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 iex "&{$(irm 'https://get.chezmoi.io/ps1')} -- init --apply PunGrumpy"
 ```
 
-`chezmoi apply` installs the packages from `home/Brewfile` or `home/scoop-packages.txt`, and runs a package script again only when its list changes.
+`chezmoi apply` installs the packages from `home/apt-packages.txt`, `home/Brewfile`, `home/winget.json` or `home/scoop-packages.txt`, and runs a package script again only when its list changes.
 
 Run these steps by hand on a new Mac:
 

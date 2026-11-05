@@ -1,0 +1,20 @@
+name: 💧 Gitleaks
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  gitleaks_scan:
+    name: 💧 Gitleaks Scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: 🛫 Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: 🔎 Gitleaks Scanning
+        uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_VERSION: 8.30.1
