@@ -56,12 +56,10 @@ if OS.mac?
 
   cask "1password"
   cask "1password-cli"
-  cask "vagrant"
   cask "vercel"
   cask "font-geist-mono-nerd-font"
 end
 
 unless OS.mac?
   brew "tmux"
-  brew "hashicorp/tap/vagrant"
 end

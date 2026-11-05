@@ -18,7 +18,6 @@ Session.vim
 .config/fish/conf.d/zoxide.fish
 .config/fish/functions/_*
 .config/fish/functions/__*
-.config/fish/functions/bass.fish
 .config/fish/functions/fisher.fish
 .config/fish/functions/fish_prompt.fish
 .config/fish/functions/fish_mode_prompt.fish
