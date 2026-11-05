@@ -17,7 +17,7 @@
     <ul>
         <li>color scheme <strong>Vercel Dark</strong></li>
         <li>fish</li>
-        <li>tmux</li>
+        <li>Rex</li>
     </ul>
   </details>
 

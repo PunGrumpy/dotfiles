@@ -3,6 +3,7 @@
 
 # Read config from ~/.config, like the other platforms
 $env:XDG_CONFIG_HOME = "$HOME\.config"
+
 # Load mise
 if (Get-Command mise -ErrorAction SilentlyContinue) {
     mise activate pwsh | Out-String | Invoke-Expression
