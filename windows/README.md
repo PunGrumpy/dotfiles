@@ -10,7 +10,7 @@
    - Install [oh-my-posh](https://ohmyposh.dev/docs/installation) (Not updated anymore)
    - Install [Starship](https://starship.rs/guide/#%F0%9F%9A%80-installation) (Recommended)
 4. Install [Nerd Fonts](https://www.nerdfonts.com/font-downloads) (Recommended: Hack Nerd Font)
-5. Run `chezmoi init --apply PunGrumpy`. It writes the profile for `pwsh` and `powershell` to `Documents`. If OneDrive moves your `Documents` folder, copy the profile to the path in `$PROFILE`.
+5. Run `chezmoi init --apply PunGrumpy`. It writes the profile for `pwsh` and `powershell` to `Documents`, and to `OneDrive\Documents` when that folder exists. Windows gets the shell and Git config only. Neovim runs without the config, and development tools stay in WSL.
 
 > [!NOTE]
 > I've customize color scheme for Windows Terminal, you can find it in `windows/settings.json` file.

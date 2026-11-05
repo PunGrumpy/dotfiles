@@ -1,13 +1,9 @@
 chezmoi
 delta
 eza
-fd
 fzf
 gh
-lazygit
-mise
 neovim
 psfzf
-ripgrep
 starship
 GeistMono-NF

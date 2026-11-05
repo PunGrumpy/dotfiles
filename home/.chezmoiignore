@@ -42,9 +42,19 @@ Session.vim
 {{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
+.config/btop
+.config/dockercolorize
 .config/fish
+.config/gwq
+.config/lazygit
+.config/mise
+.config/nvim
 .scripts
+{{- if not (stat (joinPath .chezmoi.homeDir "OneDrive/Documents")) }}
+OneDrive
+{{- end }}
 {{- else }}
 .config/starship.toml
 Documents
+OneDrive
 {{- end }}

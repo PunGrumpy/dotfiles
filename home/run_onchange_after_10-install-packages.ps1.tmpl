@@ -6,7 +6,9 @@ if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
   Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 }
 
-scoop install git
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+  scoop install git
+}
 scoop bucket add extras
 scoop bucket add nerd-fonts
 
