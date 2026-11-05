@@ -3,6 +3,7 @@ delta
 eza
 fzf
 gh
+mise
 neovim
 psfzf
 starship

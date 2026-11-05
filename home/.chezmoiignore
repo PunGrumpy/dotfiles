@@ -47,7 +47,6 @@ Session.vim
 .config/fish
 .config/gwq
 .config/lazygit
-.config/mise
 .config/nvim
 .scripts
 {{- if not (stat (joinPath .chezmoi.homeDir "OneDrive/Documents")) }}
