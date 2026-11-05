@@ -1,0 +1,20 @@
+Brewfile
+scoop-packages.txt
+
+{{- if ne .chezmoi.os "darwin" }}
+.config/rex
+.scripts/dock
+.scripts/rex
+{{- end }}
+
+{{- if ne .chezmoi.os "linux" }}
+.config/tmux
+{{- end }}
+
+{{- if eq .chezmoi.os "windows" }}
+.config/fish
+.scripts
+{{- else }}
+.config/starship.toml
+Documents
+{{- end }}

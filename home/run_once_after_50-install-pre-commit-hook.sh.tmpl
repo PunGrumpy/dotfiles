@@ -1,0 +1,11 @@
+{{- if ne .chezmoi.os "windows" -}}
+#!/bin/bash
+set -euo pipefail
+
+{{ template "brew-env.sh" }}
+
+if command -v pre-commit >/dev/null 2>&1; then
+  cd "{{ .chezmoi.workingTree }}"
+  pre-commit install
+fi
+{{- end }}

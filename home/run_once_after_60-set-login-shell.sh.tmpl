@@ -1,0 +1,15 @@
+{{- if ne .chezmoi.os "windows" -}}
+#!/bin/bash
+set -euo pipefail
+
+{{ template "brew-env.sh" }}
+
+fish_path="$(command -v fish || true)"
+if [ -z "$fish_path" ]; then
+  echo "fish not found, skipping login shell" >&2
+  exit 0
+fi
+
+grep -qxF "$fish_path" /etc/shells || echo "$fish_path" | sudo tee -a /etc/shells >/dev/null
+chsh -s "$fish_path" || echo "chsh failed, run: chsh -s $fish_path" >&2
+{{- end }}

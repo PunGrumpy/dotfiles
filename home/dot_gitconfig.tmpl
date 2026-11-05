@@ -66,15 +66,19 @@
   directory = *
 [gpg "ssh"]
   allowedSignersFile = ~/.config/git/allowed_signers
+{{- if eq .chezmoi.os "darwin" }}
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+{{- else if eq .chezmoi.os "windows" }}
+	program = {{ .chezmoi.homeDir }}/AppData/Local/1Password/app/8/op-ssh-sign.exe
+{{- end }}
 [credential]
   helper = cache
 [credential "https://github.com"]
 	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !{{ if eq .chezmoi.os "darwin" }}/opt/homebrew/bin/{{ end }}gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !/opt/homebrew/bin/gh auth git-credential
+	helper = !{{ if eq .chezmoi.os "darwin" }}/opt/homebrew/bin/{{ end }}gh auth git-credential
 [include]
   path = ~/.config/git/delta.gitconfig
 [include]

@@ -1,0 +1,9 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+set -euo pipefail
+
+tpm="$HOME/.config/tmux/plugins/tpm"
+if [ ! -d "$tpm" ]; then
+  git clone --depth 1 https://github.com/tmux-plugins/tpm "$tpm"
+fi
+{{- end }}

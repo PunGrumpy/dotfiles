@@ -45,7 +45,8 @@
 - Git config
 - PowerShell config
 - Fish config
-- Tmux config
+- Rex config (macOS)
+- Tmux config (Linux and WSL)
 
 ## `👽` NeoVim
 
@@ -93,13 +94,33 @@
 - [OpenCode](http://opencode.ai/) - AI-powered terminal, code editor, and more
 - [Cursor](https://www.cursor.com/) - AI-powered code editor
 
-## `🏗️` Build
+## `🏗️` Install
+
+The dotfiles are managed with [chezmoi](https://www.chezmoi.io/). `home/` is the source of the home directory.
 
 ```bash
-wget -O - https://raw.githubusercontent.com/PunGrumpy/dotfiles/main/build.sh | bash
-# or
-curl -fsSL https://raw.githubusercontent.com/PunGrumpy/dotfiles/main/build.sh | bash
+# macOS only: install git first
+xcode-select --install
+
+# macOS, Linux and WSL
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply PunGrumpy
 ```
+
+```powershell
+# Windows: chezmoi runs PowerShell scripts, so allow them first
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+iex "&{$(irm 'https://get.chezmoi.io/ps1')} -- init --apply PunGrumpy"
+```
+
+`chezmoi apply` installs the packages from `home/Brewfile` or `home/scoop-packages.txt`, and runs a package script again only when its list changes.
+
+Run these steps by hand on a new Mac:
+
+1. Download [Rex](https://www.superlogical.com/rex). It has no Homebrew cask.
+2. Run `~/.scripts/rex` to set the Rex preferences. It restarts the app.
+3. Run `~/.scripts/dock` to rebuild the Dock.
+
+Apps can change a deployed file. Run `chezmoi status` to see the difference, then `chezmoi re-add` to keep the change or `chezmoi apply` to discard it. `chezmoi re-add` skips templates, so copy a change to `.gitconfig` into `home/dot_gitconfig.tmpl` by hand.
 
 ## `🚚` Migrate to a new Mac
 
