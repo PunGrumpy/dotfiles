@@ -72,6 +72,22 @@ require("treesitter-autoinstall").setup()
 vim.filetype.add({ extension = { mdx = "mdx" } })
 vim.treesitter.language.register("markdown", "mdx")
 
+local function helm_or_yaml(path)
+	return vim.fs.root(path, "Chart.yaml") and "helm" or "yaml"
+end
+
+vim.filetype.add({
+	pattern = {
+		[".*/templates/.*%.ya?ml"] = helm_or_yaml,
+		[".*/templates/.*%.tpl"] = helm_or_yaml,
+		[".*/playbooks?/.*%.ya?ml"] = "yaml.ansible",
+		[".*/roles/.*/tasks/.*%.ya?ml"] = "yaml.ansible",
+		[".*/roles/.*/handlers/.*%.ya?ml"] = "yaml.ansible",
+		[".*/site%.ya?ml"] = "yaml.ansible",
+	},
+})
+vim.treesitter.language.register("yaml", "yaml.ansible")
+
 vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("TreesitterIndent", { clear = true }),
 	callback = function(ev)

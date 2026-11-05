@@ -83,6 +83,9 @@ require("conform").setup({
 		lua = { "stylua" },
 		sh = { "shfmt" },
 		fish = { "fish_indent" },
+		terraform = { "terraform_fmt" },
+		["terraform-vars"] = { "terraform_fmt" },
+		hcl = { "terraform_fmt" },
 	},
 	formatters = {
 		-- Run only in projects that have a config for the tool, falling back to the next one.

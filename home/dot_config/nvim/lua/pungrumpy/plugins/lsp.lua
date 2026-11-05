@@ -3,6 +3,7 @@ require("mason-tool-installer").setup({
 	ensure_installed = {
 		"tree-sitter-cli",
 		-- servers
+		"ansible-language-server",
 		"biome",
 		"copilot-language-server",
 		"css-lsp",
@@ -10,6 +11,7 @@ require("mason-tool-installer").setup({
 		"dockerfile-language-server",
 		"eslint-lsp",
 		"gopls",
+		"helm-ls",
 		"html-lsp",
 		"json-lsp",
 		"lua-language-server",
@@ -22,6 +24,8 @@ require("mason-tool-installer").setup({
 		"tflint",
 		"vtsls",
 		"yaml-language-server",
+		-- linters
+		"ansible-lint",
 		-- formatters
 		"gofumpt",
 		"goimports",
@@ -47,12 +51,14 @@ vim.lsp.config("*", {
 })
 
 vim.lsp.enable({
+	"ansiblels",
 	"biome",
 	"cssls",
 	"docker_compose_language_service",
 	"dockerls",
 	"eslint",
 	"gopls",
+	"helm_ls",
 	"html",
 	"jsonls",
 	"lua_ls",
