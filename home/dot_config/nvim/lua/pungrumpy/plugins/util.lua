@@ -27,7 +27,8 @@ require("copilot").setup({
 	suggestion = {
 		auto_trigger = true,
 		keymap = {
-			accept = "<C-l>",
+			-- Rex uses <C-l> to move between panes.
+			accept = "<C-y>",
 			accept_word = "<M-l>",
 			accept_line = "<M-S-l>",
 			next = "<M-]>",
