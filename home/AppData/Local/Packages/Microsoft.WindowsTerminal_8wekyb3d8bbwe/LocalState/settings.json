@@ -53,14 +53,6 @@
         "opacity": 100,
         "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
       }
-      // {
-      //   "colorScheme": "Xcad",
-      //   "hidden": false,
-      //   "icon": "%USERPROFILE%\\.config\\windows-terminal\\icon-4.png",
-      //   "name": "DigitalAllThings Th 1",
-      //   "opacity": 100,
-      //   "commandline": "ssh th1-dat"
-      // }
     ]
   },
   "rendering.disablePartialInvalidation": true,

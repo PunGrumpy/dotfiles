@@ -50,7 +50,6 @@ foreach ($alias in 'ls', 'wget') {
     if (Test-Path "alias:$alias") { Remove-Item "alias:$alias" -Force }
 }
 
-Set-Alias -Name vim -Value nvim
 Set-Alias -Name ls -Value eza
 Set-Alias -Name ll -Value Get-LSColor
 Set-Alias -Name g -Value git
