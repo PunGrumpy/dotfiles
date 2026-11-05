@@ -12,7 +12,6 @@ Session.vim
 .config/fish/completions/
 .config/fish/conf.d/_tide_init.fish
 .config/fish/conf.d/fzf.fish
-.config/fish/conf.d/kubernetes.fish
 .config/fish/conf.d/pisces.fish
 .config/fish/conf.d/puffer_fish_key_bindings.fish
 .config/fish/conf.d/vite-plus.fish
