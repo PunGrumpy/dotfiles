@@ -2,7 +2,7 @@
 
 My macOS, Linux, and Windows setup. [chezmoi](https://www.chezmoi.io/) manages it, and `home/` is the source of the home directory.
 
-![Neovim and fish in tmux on WSL, in Windows Terminal](images/wsl.png)
+![Neovim and fish in Rex on macOS](images/rex.png)
 
 ## Install
 

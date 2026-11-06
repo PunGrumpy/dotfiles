@@ -4,6 +4,8 @@
 
 Windows gets the terminal setup only. Development tools and the Git config stay in WSL. Windows Terminal is the terminal until [Rex](https://www.superlogical.com/rex) supports Windows.
 
+![Neovim and fish in tmux on WSL, in Windows Terminal](../images/wsl.png)
+
 ## Install
 
 Run the Windows commands in the [main README](../README.md#install). `chezmoi apply` then does the rest:
