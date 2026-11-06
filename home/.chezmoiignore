@@ -15,7 +15,6 @@ Session.vim
 .config/fish/conf.d/pisces.fish
 .config/fish/conf.d/puffer_fish_key_bindings.fish
 .config/fish/conf.d/vite-plus.fish
-.config/fish/conf.d/zoxide.fish
 .config/fish/functions/_*
 .config/fish/functions/__*
 .config/fish/functions/fisher.fish
