@@ -1,191 +1,76 @@
-<div>
-  <div align="center">
-    <h1><code>🐙</code> PunGrumpy's Dotfiles</h1>
-  </div>
+# dotfiles
 
-  <details open>
-    <summary>NeoVim</summary>
-    <img src="./images/neovim/preview-1.png"
-        alt="NeoVim" />
-  </details>
+My macOS, Linux, and Windows setup. [chezmoi](https://www.chezmoi.io/) manages it, and `home/` is the source of the home directory.
 
-  <details>
-    <summary>Terminal Linux/OSX</summary>
-    <img src="./images/terminal/preview-1.png"
-        alt="Terminal Linux/OSX" />
-    <p>This terminal use:</p>
-    <ul>
-        <li>color scheme <strong>Vercel Dark</strong></li>
-        <li>fish</li>
-        <li>Rex</li>
-    </ul>
-  </details>
+![Neovim and fish in Rex on macOS](images/rex.png)
 
-  <details>
-    <summary>Terminal Windows</summary>
-    <img src="./images/terminal/preview-2.png"
-        alt="Terminal Windows" />
-    <p>This terminal use:</p>
-    <ul>
-        <li>color scheme <strong>Vercel Dark</strong></li>
-        <li>powershell</li>
-    </ul>
-  </details>
-</div>
+## Install
 
-> [!WARNING]
-> Don't bindly use my setting unless you know what that entails. Use at your own risk!
+These settings are mine. Read a file before you apply it.
 
-> [!TIP]
-> For Windows user you can find the color scheme for **Windows Terminal** in <https://windowsterminalthemes.dev/>
-
-## `⚙️` Contents
-
-- NeoVim config
-- Git config
-- PowerShell config
-- Fish config
-- Rex config (macOS)
-- Tmux config (Linux and WSL)
-- gwq, mise and lazygit config. gwq creates worktrees in `~/.t3/worktrees/<repo>/<branch>`, where T3 Code keeps its own
-
-## `👽` NeoVim
-
-A flat setup on Neovim's built-ins: `vim.pack` installs the plugins, with no plugin manager or distribution on top. It is tuned for reviewing agent output: lazygit in a float (`;g`), [codediff](https://github.com/esmuellert/codediff.nvim) (`<leader>dv`) and a [mini.diff](https://github.com/nvim-mini/mini.diff) overlay (`<leader>gd`). `<leader>yf` and `<leader>yp` copy a path with a line reference (`src/app.ts#L42`) to paste into an agent prompt. Add machine-local plugins in `lua/pungrumpy/plugins/local.lua`, which is not tracked.
-
-- [NeoVim](https://neovim.io/) >= 0.12 (needs to be built with [**LuaJIT**](https://luajit.org/luajit.html)).
-- [vim.pack](https://neovim.io/doc/user/pack.html) - Built-in plugin manager. The first start asks to confirm the installs.
-- [Snacks](https://github.com/folke/snacks.nvim) picker instead of Telescope - Files, grep, LSP and git pickers, plus lazygit
-  - [Ripgrep](https://github.com/BurntSushi/ripgrep) - Recursively searches directories for a regex pattern
-  - [FD](https://github.com/sharkdp/fd) - Fast and user-friendly alternative to find
-- [Mason](https://github.com/mason-org/mason.nvim) - Installs the language servers, formatters and the tree-sitter CLI on first start
-- [vercel.nvim](https://github.com/PunGrumpy/vercel.nvim) - Vercel's Geist colors for Neovim
-
-Structure and keymaps based on [craftzdog/dotfiles](https://github.com/craftzdog/dotfiles).
-
-## `🐚` Shell setup (macOS & Linux)
-
-- [Home Brew](https://brew.sh/)
-- [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use Hack.
-- [Eza](https://eza.rocks/) - `ls` replacement
-- [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
-- [Fish shell](https://fishshell.com/) - User-friendly shell
-- [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
-- [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 6 `fisher install ilancosman/tide@v6`
-- [zoxide for fish](https://github.com/kidonng/zoxide.fish) - Directory jumping `fisher install kidonng/zoxide.fish`
-- [Fzf for fish](https://github.com/PatrickF1/fzf.fish) - Interactive filtering `fisher install PatrickF1/fzf.fish`
-- [Puffer for fish](https://github.com/nickeb96/puffer-fish) - Text expander `fisher install nickeb96/puffer-fish`
-- [Pisces for fish](https://github.com/laughedelic/pisces) - Paired symbols `fisher install laughedelic/pisces`
-- [mise](https://mise.jdx.dev/) - Version manager for Go, Python and Rust. [Vite+](https://viteplus.dev/) manages Node.js, Bun and pnpm
-
-## `👧` PowerShell setup (Windows)
-
-- [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=th-th&gl=th)
-- [Scoop](https://scoop.sh/) - A command-line installer
-- [Git for Windows](https://gitforwindows.org/)
-- [Oh My Posh](https://ohmyposh.dev/) - Prompt theme engine
-- [Terminal Icons](https://github.com/devblackops/Terminal-Icons) - Folder and file icons
-- [PSReadLine](https://docs.microsoft.com/en-us/powershell/module/psreadline/) - Cmdlets for customizing the editing environment, used for autocompletion
-- [z](https://www.powershellgallery.com/packages/z) - Directory jumper
-- [PSFzf](https://github.com/kelleyma49/PSFzf) - Fuzzy finder
-
-## `🦒` Git config
-
-- [Git commitizen](https://github.com/Zhengqbbb/cz-git) - Commitizen helps you commit better messages
-- [Lazygit](https://github.com/jesseduffield/lazygit/) - Simple terminal UI for git commands `brew install lazygit`
-- [Delta](https://github.com/dandavison/delta) - Syntax-highlighting pager for git `brew install git-delta`
-
-## `🤖` AI Config
-
-- [Cursor](https://www.cursor.com/) - AI-powered code editor
-
-## `🏗️` Install
-
-The dotfiles are managed with [chezmoi](https://www.chezmoi.io/). `home/` is the source of the home directory.
+On macOS, Linux, and WSL, run the command below. On macOS, run `xcode-select --install` first to get git.
 
 ```bash
-# macOS only: install git first
-xcode-select --install
-
-# macOS, Linux and WSL
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply PunGrumpy
 ```
 
+On Windows, chezmoi runs PowerShell scripts, so allow them first.
+
 ```powershell
-# Windows: chezmoi runs PowerShell scripts, so allow them first
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 iex "&{$(irm 'https://get.chezmoi.io/ps1')} -- init --apply PunGrumpy"
 ```
 
-`chezmoi apply` installs the packages from `home/apt-packages.txt`, `home/Brewfile`, `home/winget.json` or `home/scoop-packages.txt`, and runs a package script again only when its list changes.
+`chezmoi apply` installs the packages in `home/Brewfile`, `home/apt-packages.txt`, `home/winget.json`, and `home/scoop-packages.txt`. It runs a package script again only when its list changes.
 
-Run these steps by hand on a new Mac:
+On a new Mac, finish with the steps in [macOS](macos/README.md). [Windows](windows/README.md) lists what the Windows setup covers. To try the setup in a container, see the [`docker` branch](https://github.com/PunGrumpy/dotfiles/tree/docker).
 
-1. Download [Rex](https://www.superlogical.com/rex). It has no Homebrew cask.
-2. Run `~/.scripts/rex` to set the Rex preferences. It restarts the app.
-3. Run `~/.scripts/dock` to rebuild the Dock.
+## Terminal
 
-Apps can change a deployed file. Run `chezmoi status` to see the difference, then `chezmoi re-add` to keep the change or `chezmoi apply` to discard it. `chezmoi re-add` skips templates, so copy a change to `.gitconfig` into `home/dot_gitconfig.tmpl` by hand.
+I use [Rex](https://www.superlogical.com/rex). Rex runs only on macOS today, so Linux and Windows use another terminal until Rex supports them.
 
-## `🚚` Migrate to a new Mac
+| System | Terminal | Shell |
+| --- | --- | --- |
+| macOS | Rex | fish |
+| Linux | [Ghostty](https://ghostty.org/) | fish in tmux |
+| Windows | [Windows Terminal](https://github.com/microsoft/terminal) | PowerShell, or fish in tmux on WSL |
 
-Code lives on its own APFS volume (`/Volumes/Dev`, no Spotlight, no fseventsd log), and `~/Developments` links to it.
+Rex and Windows Terminal use GeistMono Nerd Font. Rex, tmux, Neovim, and the WSL profile in Windows Terminal use the Vercel colors. This repository has no Ghostty config yet.
 
-```bash
-# old Mac: quit T3 Code, Codex and Claude Code, then back up into ~/agents-bak-DATE (asks for a passphrase)
-~/.scripts/migrate/agents-export.sh
+## What you get
 
-# new Mac
-~/.scripts/migrate/dev-volume.sh create   # then tick "Remember password" in Disk Utility
-dec() { openssl enc -d -aes-256-cbc -pbkdf2 -iter 600000 -in "$1" | zstd -dc | tar -x -C "$2"; }
-dec agents-bak-DATE/dev.tar.zst.enc /Volumes/Dev
-~/.scripts/migrate/dev-volume.sh link     # projects, T3 worktrees, package caches
-dec agents-bak-DATE/home.tar.zst.enc ~
-~/.scripts/migrate/agents-rewrite-paths.sh /Users/OLD /Users/NEW   # only if the home path changed
-```
+| Tool | Setup |
+| --- | --- |
+| Neovim | A flat config on the built-in `vim.pack`, with no plugin manager or distribution. See [Neovim](#neovim). |
+| fish | The [Tide](https://github.com/IlanCosman/tide) prompt. [Fisher](https://github.com/jorgebucaran/fisher) installs fzf.fish, zoxide.fish, puffer-fish, and pisces. |
+| tmux | Linux and WSL only. On macOS, Rex splits the panes. |
+| PowerShell | The [Starship](https://starship.rs/) prompt, PSFzf, and eza. Windows only. |
+| Git | [delta](https://github.com/dandavison/delta) as the pager, [lazygit](https://github.com/jesseduffield/lazygit), and [cz-git](https://github.com/Zhengqbbb/cz-git) for commit messages. |
+| gwq | Creates worktrees in `~/.t3/worktrees/<repo>/<branch>`, where T3 Code keeps its worktrees. |
+| mise | Go, Python, and Rust. [Vite+](https://viteplus.dev/) manages Node.js, Bun, and pnpm. |
+| Agent skills | `chezmoi apply` installs my global skills with `bunx skills add`. |
 
-## `🐳` Playground
+## Neovim
 
-```bash
-docker run -it --rm --name dotfiles-pungrumpy \
-  -v $HOME/.config:/home/pungrumpy/.config \
-  -v $HOME/.gitconfig:/home/pungrumpy/.gitconfig \
-  -v $HOME/.gitignore:/home/pungrumpy/.gitignore \
-  -v $HOME/.czrc:/home/pungrumpy/.czrc \
-  -v $HOME/.scripts:/home/pungrumpy/.scripts \
-  ghcr.io/pungrumpy/dotfiles:latest
-```
+The config needs Neovim 0.12 or later. The first start asks to confirm the plugin installs. [Mason](https://github.com/mason-org/mason.nvim) then installs the language servers and the formatters.
 
-[More info](https://github.com/PunGrumpy/dotfiles/tree/docker?tab=readme-ov-file) about Docker image
+I tuned the config to review agent output.
 
-## `©️` Reference setting
+| Key | Action |
+| --- | --- |
+| `;g` | Open lazygit in a float. |
+| `<leader>dv` | Open [codediff](https://github.com/esmuellert/codediff.nvim). |
+| `<leader>gd` | Toggle the [mini.diff](https://github.com/nvim-mini/mini.diff) overlay. |
+| `<leader>yf`, `<leader>yp` | Copy the relative or the absolute path with a line reference, such as `src/app.ts#L42`, to paste into an agent prompt. |
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/craftzdog">
-        <img src="https://avatars.githubusercontent.com/u/1332805?v=4" width="100px;" alt="Takuya Matsuyama" />
-        <br />
-        <sub><b>Takuya Matsuyama</b></sub>
-        <br />
-        <a href="https://github.com/craftzdog/dotfiles-public">📂</a>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/mathiasbynens">
-      <img src="https://avatars.githubusercontent.com/u/81942?v=4" width="100px;" alt="Mathias Bynens" />
-      <br />
-      <sub><b>Mathias Bynens</b></sub>
-      <br />
-      <a href="https://github.com/mathiasbynens/dotfiles">📂</a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/paulirish">
-      <img src="https://avatars.githubusercontent.com/u/39191?v=4" width="100px;" alt="Paul Irish" />
-      <br />
-      <sub><b>Paul Irish</b></sub>
-      <br />
-      <a href="https://github.com/paulirish/dotfiles">📂</a>
-    </td>
-  </tr>
-</table>
+Put machine-local plugins in `~/.config/nvim/lua/pungrumpy/plugins/local.lua`. chezmoi ignores that file.
+
+## Keep a change that an app made
+
+An app can change a deployed file. Run `chezmoi status` to see the difference. Then run `chezmoi re-add` to keep the change, or `chezmoi apply` to discard it.
+
+`chezmoi re-add` skips templates. Copy a change to `~/.gitconfig` into `home/dot_gitconfig.tmpl` by hand.
+
+## Credits
+
+The Neovim structure and keymaps are based on [craftzdog/dotfiles](https://github.com/craftzdog/dotfiles). Other ideas come from [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles) and [paulirish/dotfiles](https://github.com/paulirish/dotfiles).
