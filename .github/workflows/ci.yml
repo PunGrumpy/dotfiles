@@ -38,11 +38,13 @@ jobs:
           workflow='\.github/workflows/ci\.yml'
           # Bootstrap runs the run_*.sh.tmpl scripts on Linux. Each script is hashed against, or reads,
           # one of these inputs, and the check step looks for the tools they install.
-          bootstrap='run_.*\.sh\.tmpl$|Brewfile$|apt-packages\.txt$|\.chezmoi(ignore|data|external|templates/brew-env\.sh)'
+          bootstrap='run_.*\.sh(\.tmpl)?$|Brewfile$|apt-packages\.txt$'
+          bootstrap+='|\.chezmoi[^/]*$|\.chezmoi(data|external)[^/]*/|\.chezmoi(scripts|templates)/.*\.sh(\.tmpl)?$'
           bootstrap+='|dot_config/(mise/|git/|fish/(config|conf\.d/|fish_plugins))|dot_gitconfig\.tmpl$'
+          # .gitattributes sets the line endings of every script that CI checks out.
           declare -A patterns=(
-            [home]="^(home/|\.chezmoiroot$|$workflow$)"
-            [bootstrap]="^(home/($bootstrap)|\.chezmoiroot$|$workflow$)"
+            [home]="^(home/|\.chezmoiroot$|\.gitattributes$|$workflow$)"
+            [bootstrap]="^(home/($bootstrap)|\.chezmoiroot$|\.gitattributes$|$workflow$)"
             [scoop]="^(home/scoop-packages\.txt|$workflow)$"
           )
 
