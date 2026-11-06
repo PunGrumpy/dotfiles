@@ -42,7 +42,7 @@ Rex and Windows Terminal use GeistMono Nerd Font. Rex, tmux, Neovim, and the WSL
 | Tool | Setup |
 | --- | --- |
 | Neovim | A flat config on the built-in `vim.pack`, with no plugin manager or distribution. See [Neovim](#neovim). |
-| fish | The [Tide](https://github.com/IlanCosman/tide) prompt. [Fisher](https://github.com/jorgebucaran/fisher) installs fzf.fish, puffer-fish, and pisces. |
+| fish | The [Tide](https://github.com/IlanCosman/tide) prompt. [Fisher](https://github.com/jorgebucaran/fisher) installs fzf.fish, zoxide.fish, puffer-fish, and pisces. |
 | tmux | Linux and WSL only. On macOS, Rex splits the panes. |
 | PowerShell | The [Starship](https://starship.rs/) prompt, PSFzf, and eza. Windows only. |
 | Git | [delta](https://github.com/dandavison/delta) as the pager, [lazygit](https://github.com/jesseduffield/lazygit), and [cz-git](https://github.com/Zhengqbbb/cz-git) for commit messages. |

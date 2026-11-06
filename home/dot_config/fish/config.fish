@@ -84,9 +84,6 @@ end
 # Vite+ shims take precedence over Homebrew
 fish_add_path -g --move --path $HOME/.local/share/vite-plus/bin
 
-# Zoxide
-status is-interactive; and type -q zoxide; and zoxide init fish | source
-
 # Load local configurations if available
 set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
 if test -f $LOCAL_CONFIG
