@@ -23,7 +23,7 @@ iex "&{$(irm 'https://get.chezmoi.io/ps1')} -- init --apply PunGrumpy"
 
 `chezmoi apply` installs the packages in `home/Brewfile`, `home/apt-packages.txt`, `home/winget.json`, and `home/scoop-packages.txt`. It runs a package script again only when its list changes.
 
-On a new Mac, finish with the steps in [macOS](macos/README.md). [Windows](windows/README.md) lists what the Windows setup covers. To try the setup in a container, see the [`docker` branch](https://github.com/PunGrumpy/dotfiles/tree/docker).
+On a new Mac, finish with the steps in [macOS](macos/README.md). [Windows](windows/README.md) lists what the Windows setup covers.
 
 ## Terminal
 
