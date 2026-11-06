@@ -42,9 +42,21 @@ Session.vim
 {{- end }}
 
 {{- if eq .chezmoi.os "windows" }}
+.config/btop
+.config/dockercolorize
 .config/fish
+.config/git
+.config/gwq
+.config/lazygit
+.config/mise
+.config/nvim
+.czrc
+.gitconfig
+.gitignore
 .scripts
 {{- else }}
+.config/powershell
 .config/starship.toml
-Documents
+.config/windows-terminal
+AppData
 {{- end }}

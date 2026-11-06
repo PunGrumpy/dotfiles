@@ -10,8 +10,7 @@
    - Install [oh-my-posh](https://ohmyposh.dev/docs/installation) (Not updated anymore)
    - Install [Starship](https://starship.rs/guide/#%F0%9F%9A%80-installation) (Recommended)
 4. Install [Nerd Fonts](https://www.nerdfonts.com/font-downloads) (Recommended: Hack Nerd Font)
-5. Run `chezmoi init --apply PunGrumpy`. It writes the profile for `pwsh` and `powershell` to `Documents`. If OneDrive moves your `Documents` folder, copy the profile to the path in `$PROFILE`.
+5. Run `chezmoi init --apply PunGrumpy`. The profile is `~/.config/powershell/user_profile.ps1`, and chezmoi makes `$PROFILE` load it for `pwsh` and `powershell`, including when OneDrive moves your `Documents` folder. Windows gets the terminal appearance only: Windows Terminal, the PowerShell profile, Starship, eza and the font. Development tools and the Git config stay in WSL.
 
 > [!NOTE]
-> I've customize color scheme for Windows Terminal, you can find it in `windows/settings.json` file.
-> If you want to use it, you can copy the content and replace it with your settings.json file.
+> chezmoi manages the Windows Terminal `settings.json`. After you change a setting in the app, run `chezmoi re-add` to keep the change.

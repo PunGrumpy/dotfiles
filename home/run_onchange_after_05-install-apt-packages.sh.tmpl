@@ -3,6 +3,15 @@
 # apt-packages.txt hash: {{ include "apt-packages.txt" | sha256sum }}
 set -euo pipefail
 
+missing=()
+while read -r package; do
+  dpkg-query -W -f='${Status}' "$package" 2>/dev/null | grep -q 'ok installed' || missing+=("$package")
+done <"{{ joinPath .chezmoi.sourceDir "apt-packages.txt" }}"
+
+if [ "${#missing[@]}" -eq 0 ]; then
+  exit 0
+fi
+
 sudo apt update
-xargs -a "{{ joinPath .chezmoi.sourceDir "apt-packages.txt" }}" sudo apt install -y
+sudo apt install -y "${missing[@]}"
 {{- end }}
