@@ -4,11 +4,6 @@
 # Read config from ~/.config, like the other platforms
 $env:XDG_CONFIG_HOME = "$HOME\.config"
 
-# Load mise
-if (Get-Command mise -ErrorAction SilentlyContinue) {
-    mise activate pwsh | Out-String | Invoke-Expression
-}
-
 # Load prompt config
 Invoke-Expression (&starship init powershell)
 
@@ -16,7 +11,9 @@ Invoke-Expression (&starship init powershell)
 Set-PSReadLineOption -EditMode Emacs
 Set-PSReadLineOption -BellStyle None
 Set-PSReadLineKeyHandler -Chord 'Ctrl+d' -Function DeleteChar
-Set-PSReadLineOption -PredictionSource History
+if ($PSVersionTable.PSVersion.Major -ge 7) {
+    Set-PSReadLineOption -PredictionSource History
+}
 
 # Fzf Configuration
 Import-Module PSFzf
@@ -48,10 +45,11 @@ function lla {
 }
 
 # Aliases
-# `ls` ships as an AllScope alias on Windows PowerShell 5.1 and cannot be overridden in place
-if (Test-Path alias:ls) { Remove-Item alias:ls -Force }
+# These ship as AllScope aliases on Windows PowerShell 5.1 and cannot be overridden in place
+foreach ($alias in 'ls', 'wget') {
+    if (Test-Path "alias:$alias") { Remove-Item "alias:$alias" -Force }
+}
 
-Set-Alias -Name vim -Value nvim
 Set-Alias -Name ls -Value eza
 Set-Alias -Name ll -Value Get-LSColor
 Set-Alias -Name g -Value git

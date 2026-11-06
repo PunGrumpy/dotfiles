@@ -1,3 +1,4 @@
+{{- $wsl := and (eq .chezmoi.os "linux") (contains "microsoft" (lower .chezmoi.kernel.osrelease)) -}}
 [gpg]
 	format = ssh
 [commit]
@@ -11,6 +12,9 @@
 	ignorecase = false
 	longpaths = true
 	autocrlf = false
+{{- if $wsl }}
+	sshCommand = ssh.exe
+{{- end }}
 [push]
   default = simple
 [color]
@@ -41,8 +45,8 @@
   allowedSignersFile = ~/.config/git/allowed_signers
 {{- if eq .chezmoi.os "darwin" }}
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-{{- else if eq .chezmoi.os "windows" }}
-	program = {{ .chezmoi.homeDir }}/AppData/Local/1Password/app/8/op-ssh-sign.exe
+{{- else if $wsl }}
+	program = op-ssh-sign-wsl.exe
 {{- end }}
 [credential]
   helper = cache

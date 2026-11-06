@@ -6,12 +6,18 @@ if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
   Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 }
 
-scoop install git
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+  scoop install git
+}
 scoop bucket add extras
 scoop bucket add nerd-fonts
 
+$fontDir = "$env:LOCALAPPDATA\Microsoft\Windows\Fonts"
+
 $failed = @()
 foreach ($package in Get-Content "{{ joinPath .chezmoi.sourceDir "scoop-packages.txt" }}") {
+  # Scoop cannot overwrite a font that a running app has open
+  if ($package -like '*-NF' -and (Test-Path "$fontDir\$($package -replace '-NF$')NerdFont-*")) { continue }
   scoop install $package
   if ($LASTEXITCODE -ne 0) { $failed += $package }
 }

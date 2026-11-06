@@ -11,7 +11,7 @@ if ! command -v bunx >/dev/null 2>&1; then
   exit 0
 fi
 
-export GIT_SSH_COMMAND="ssh -o BatchMode=yes"
+export GIT_SSH_COMMAND="$(git config --global core.sshCommand || echo ssh) -o BatchMode=yes"
 
 failed=0
 skill() { bunx skills add "$@" --global --yes --agent cursor </dev/null || failed=$((failed + 1)); }
