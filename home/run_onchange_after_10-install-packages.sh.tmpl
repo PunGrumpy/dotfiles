@@ -14,4 +14,5 @@ fi
 brew trust --tap hashicorp/tap
 brew trust --tap d-kuro/tap
 brew bundle --file="{{ joinPath .chezmoi.sourceDir "Brewfile" }}"
+agent-browser install
 {{- end }}
