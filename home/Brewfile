@@ -2,6 +2,8 @@ tap "d-kuro/tap"
 tap "hashicorp/tap"
 
 # Formulae
+brew "agent-browser"
+brew "agent-desktop"
 brew "ansible"
 brew "bat"
 brew "btop"
@@ -51,7 +53,6 @@ brew "hashicorp/tap/hcp"
 brew "hashicorp/tap/vault"
 
 if OS.mac?
-  brew "agent-desktop"
   brew "dockutil"
 
   cask "1password"
