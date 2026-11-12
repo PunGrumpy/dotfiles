@@ -2,7 +2,12 @@
 [gpg]
 	format = ssh
 [commit]
+{{- if env "UPSTASH_BOX_ID" }}
+	# The signing key lives in 1Password, which an Upstash Box cannot reach.
+	gpgsign = false
+{{- else }}
 	gpgsign = true
+{{- end }}
 [init]
   defaultBranch = main
 [core]
