@@ -5,6 +5,8 @@ set -euo pipefail
 {{ template "brew-env.sh" }}
 
 vp env setup
+# A fresh setup prefers system tools and makes no bun, npm or pnpm shims.
+vp env on
 export PATH="$HOME/.local/share/vite-plus/bin:$HOME/.bun/bin:$PATH"
 
 bun add -g commitizen cz-git
