@@ -71,7 +71,15 @@ else
   echo "Rex app did not connect; import the theme from Settings > Themes and run 'rex config reload' manually"
 fi
 
-if ! "$REX" skill status 2>/dev/null | grep -q 'skill   current'; then
+skill_current() {
+  "$REX" skill status --json 2>/dev/null | python3 -I -c '
+import sys, json
+agents = {h["id"]: h for h in json.load(sys.stdin)["harnesses"]}
+items = [i for a in ("claude", "codex") for i in agents.get(a, {}).get("items", [])]
+sys.exit(0 if items and all(i["state"] == "current" for i in items) else 1)' 2>/dev/null
+}
+
+if ! skill_current; then
   "$REX" skill setup --agent claude --agent codex
 fi
 echo "Rex configured."
