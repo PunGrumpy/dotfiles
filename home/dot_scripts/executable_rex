@@ -8,9 +8,9 @@ if [[ "$(uname -s)" != "Darwin" ]]; then
   exit 0
 fi
 
-APP="/Applications/Rex Beta.app"
+APP="/Applications/Rex.app"
 if [[ ! -d "$APP" ]]; then
-  echo "Skipping Rex configuration; $APP not found (download the beta from https://www.superlogical.com/rex)"
+  echo "Skipping Rex configuration; $APP not found (download it from https://www.superlogical.com/rex)"
   exit 0
 fi
 
@@ -43,10 +43,10 @@ defaults write $D rex.client.remoteControl -bool true
 
 # The app reads preferences at launch, so restart it. Sessions live on the server and survive.
 if pgrep -xq Rex; then
-  osascript -e 'tell application "Rex Beta" to quit' >/dev/null 2>&1 || true
+  osascript -e 'tell application "Rex" to quit' >/dev/null 2>&1 || true
   sleep 2
 fi
-open -a "Rex Beta"
+open -a "Rex"
 
 client=""
 for _ in $(seq 1 20); do
