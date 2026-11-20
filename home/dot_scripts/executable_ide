@@ -15,7 +15,7 @@ if [ -z "${REX_BLOCK:-}" ]; then
   exit 1
 fi
 
-rex() { "/Applications/Rex Beta.app/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex" "$@"; }
+rex() { "/Applications/Rex.app/Contents/Helpers/Rex Server.rex/Contents/MacOS/rex" "$@"; }
 
 rex split -s "$REX_SESSION" -b "$REX_BLOCK" --split=right --ratio 20 >/dev/null
 bottom=$(rex split -s "$REX_SESSION" -b "$REX_BLOCK" --split=below --ratio 30)
