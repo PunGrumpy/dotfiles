@@ -66,3 +66,30 @@ end
 
 keymap.set("n", "<leader>yf", yank_path_with_line("%:.", "relative"), { desc = "Yank relative path with line number" })
 keymap.set("n", "<leader>yp", yank_path_with_line("%:p", "absolute"), { desc = "Yank absolute path with line number" })
+
+local codeblock_lang = {
+	typescriptreact = "tsx",
+	javascriptreact = "jsx",
+	typescript = "ts",
+	javascript = "js",
+}
+
+-- Copies the selection as a fenced block whose info string carries the path and first line.
+local function yank_codeblock()
+	if vim.api.nvim_buf_get_name(0) == "" then
+		vim.notify("Buffer has no file name", vim.log.levels.WARN)
+		return
+	end
+	local first = math.min(vim.fn.line("v"), vim.fn.line("."))
+	local last = math.max(vim.fn.line("v"), vim.fn.line("."))
+	local path = vim.fn.expand("%:."):gsub("\\", "/")
+	local lang = codeblock_lang[vim.bo.filetype] or vim.bo.filetype
+	local block = { ("```%s filename=\"%s\" line=%d"):format(lang, path, first) }
+	vim.list_extend(block, vim.api.nvim_buf_get_lines(0, first - 1, last, false))
+	table.insert(block, "```")
+	vim.fn.setreg("+", table.concat(block, "\n"))
+	vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "nx", false)
+	vim.notify(("Copied %d lines as codeblock"):format(last - first + 1))
+end
+
+keymap.set("x", "<leader>cc", yank_codeblock, { desc = "Copy selection as Markdown codeblock" })
