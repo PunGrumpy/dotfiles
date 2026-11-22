@@ -3,11 +3,14 @@
 -- A full-screen program shows only its visible rows, because the alternate
 -- screen keeps no scrollback.
 -- The mappings are buffer-local so they win over global ones from plugins.
+-- A stdin buffer is listed with an empty buftype, so Copilot would attach and
+-- upload the scrollback. StdinReadPre makes it a nofile buffer before the read.
 
 local floating_pane = require("floating_pane")
 
 local SCROLLBACK_IN_NVIM = [[
 rex capture -s "$1" -b "$2" --trim | nvim -R \
+  --cmd 'autocmd StdinReadPre * setlocal buftype=nofile nobuflisted' \
   -c 'xnoremap <buffer> <CR> "+y<Cmd>qa!<CR>' \
   -c 'xnoremap <buffer> q <Cmd>qa!<CR>' \
   -c 'nnoremap <buffer> q <Cmd>qa!<CR>' \
