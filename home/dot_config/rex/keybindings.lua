@@ -21,6 +21,9 @@ rex.bind("ctrl+a>left", "client.tab.move.backward")
 rex.bind("ctrl+a>ctrl+left", "client.tab.move.backward")
 rex.bind("ctrl+a>right", "client.tab.move.forward")
 rex.bind("ctrl+a>ctrl+right", "client.tab.move.forward")
+for tab_number = 1, 9 do
+  rex.bind("ctrl+a>" .. tab_number, "client.tab.goto", { index = tab_number })
+end
 
 rex.bind("ctrl+a>h", "pane.split", { direction = "right" })
 rex.bind("ctrl+a>ctrl+h", "pane.split", { direction = "right" })
