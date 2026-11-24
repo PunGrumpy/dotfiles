@@ -25,10 +25,10 @@ for tab_number = 1, 9 do
   rex.bind("ctrl+a>" .. tab_number, "client.tab.goto", { index = tab_number })
 end
 
-rex.bind("ctrl+a>h", "pane.split", { direction = "right" })
-rex.bind("ctrl+a>ctrl+h", "pane.split", { direction = "right" })
-rex.bind("ctrl+a>v", "pane.split", { direction = "down" })
-rex.bind("ctrl+a>ctrl+v", "pane.split", { direction = "down" })
+rex.bind("ctrl+a>h", "split_ssh", { direction = "right" })
+rex.bind("ctrl+a>ctrl+h", "split_ssh", { direction = "right" })
+rex.bind("ctrl+a>v", "split_ssh", { direction = "down" })
+rex.bind("ctrl+a>ctrl+v", "split_ssh", { direction = "down" })
 rex.bind("ctrl+a>e", "pane.balance")
 rex.bind("ctrl+a>ctrl+e", "pane.balance")
 rex.bind("ctrl+a>z", "pane.zoom")
