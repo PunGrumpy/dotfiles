@@ -1,5 +1,6 @@
 -- Live sync on ctrl+a>i, like broadcast input in iTerm2: type in any pane and the
--- key goes to every matching pane of the tab. ctrl+a>i again stops it.
+-- key goes to every matching pane of the tab. ctrl+a>i in a synced pane stops it,
+-- and in a matching pane that is not synced, such as a new one, adds that pane.
 --
 -- From an ssh pane, only ssh panes match. From any other pane, only panes that
 -- run the same program and are not ssh, so keys meant for remote hosts never
@@ -20,7 +21,7 @@ local sync_keys = require("sync_keys")
 local TERMINAL = "com.superlogical.terminal"
 local STATE = (os.getenv("TMPDIR") or os.getenv("HOME") .. "/Library/Caches"):gsub("/$", "") .. "/rex-sync.json"
 
--- Window ID to { session_id, is_ssh, targets, border }.
+-- Window ID to { session_id, kind, targets, border }.
 local groups = {}
 do
   local file = io.open(STATE)
@@ -69,7 +70,7 @@ local function read_tab(ctx)
     for _, layer in ipairs(window.layers) do
       if layer.kind == "tiled" then
         local tab = { window_id = window.window_id, blocks = layer.blocks or {}, here = {} }
-        for _, block in ipairs(tab.blocks) do tab.here[block.block_id] = true end
+        for _, block in ipairs(tab.blocks) do tab.here[block.block_id] = block end
         if tab.here[ctx.block_id] then return tab end
       end
     end
@@ -77,25 +78,41 @@ local function read_tab(ctx)
   error("sync works in tiled panes only", 0)
 end
 
-local function find_targets(ctx, blocks)
-  local origin = identify(ctx.block_id)
-  if origin == nil then error("cannot tell what this pane runs", 0) end
-
-  local targets, is_ssh = {}, origin.kind == "ssh"
+local function matching(blocks, kind)
+  local targets = {}
   for _, block in ipairs(blocks) do
     if block.creator_name == TERMINAL then
       local pane = identify(block.block_id)
-      if pane ~= nil and pane.kind == origin.kind then
+      if pane ~= nil and pane.kind == kind then
         pane.block_id = block.block_id
         targets[#targets + 1] = pane
       end
     end
   end
+  return targets
+end
+
+local function describe(pane)
+  return pane.kind == "ssh" and "ssh" or ("local " .. pane.name)
+end
+
+local function find_targets(ctx, blocks)
+  local origin = identify(ctx.block_id)
+  if origin == nil then error("cannot tell what this pane runs", 0) end
+  local targets = matching(blocks, origin.kind)
   if #targets < 2 then
-    local what = is_ssh and "ssh" or ("local " .. origin.name)
-    error(("sync needs at least 2 %s panes, and this tab has %d"):format(what, #targets), 0)
+    error(("sync needs at least 2 %s panes, and this tab has %d"):format(describe(origin), #targets), 0)
   end
-  return targets, is_ssh
+  return targets, origin.kind
+end
+
+-- This pane alone, to add to a sync of the given panes.
+local function find_joining(ctx, tab, synced)
+  local found = matching({ tab.here[ctx.block_id] }, synced[1].kind)
+  if #found == 0 then
+    error(("this tab syncs %s panes, and this pane is not one. Press ctrl+a i in a synced pane to stop"):format(describe(synced[1])), 0)
+  end
+  return found
 end
 
 -- Marks panes as synced through their ttys, as if their programs had: a status, as
@@ -131,7 +148,9 @@ local function prepare(panes)
     local ps = rex.exec({ "/bin/ps", "-o", "tty=", "-p", tostring(pane.pid) }, { timeout = 5 })
     pane.tty = ps and ps.ok and ps.stdout:match("^%s*(ttys%d+)%s*$") or nil
     local status = rex.block.call(TERMINAL, "program_status", { block_id = pane.block_id })
-    pane.root = status ~= nil and #(status.records or {}) == 0
+    -- A pane that syncs again may still show our own status, which comes first when it has no ID.
+    local first = status ~= nil and (status.records or {})[1]
+    pane.root = first == nil or (first and first.id == nil and first.app == "sync")
   end
 end
 
@@ -144,9 +163,21 @@ end
 -- An ssh that ended, reconnected or was suspended leaves something else in front,
 -- and keys meant for a remote host must not reach it.
 local function still_runs(group, pane)
-  if not group.is_ssh then return true end
+  if group.kind ~= "ssh" then return true end
   local process = rex.block.call(TERMINAL, "process", { block_id = pane.block_id })
   return process ~= nil and process.foreground ~= nil and process.foreground.pid == pane.pid
+end
+
+-- The targets that stay in a sync, and those that left it but are still open.
+local function sort_targets(group, here)
+  local kept, left = {}, {}
+  for _, pane in ipairs(group.targets) do
+    if here[pane.block_id] then
+      local list = still_runs(group, pane) and kept or left
+      list[#list + 1] = pane
+    end
+  end
+  return kept, left
 end
 
 -- nil when the screen cannot be read, and then nothing is copied.
@@ -187,26 +218,16 @@ local function copy(ctx, event)
   if group == nil then return end
   local tab = read_tab(ctx)
   local asks = asks_for_password(ctx.block_id)
-  local kept, skipped, lost = {}, 0, {}
-  for _, pane in ipairs(group.targets) do
-    if not tab.here[pane.block_id] or not still_runs(group, pane) then
-      lost[#lost + 1] = pane
-    else
-      kept[#kept + 1] = pane
-    end
-  end
-  if #lost > 0 then
+  local kept, left = sort_targets(group, tab.here)
+  local skipped, lost = 0, #kept < #group.targets
+  if lost then
     if #kept < 2 then
       stop(window_id, tab.here)
       return
     end
-    local closed = {}
-    for _, pane in ipairs(lost) do
-      if tab.here[pane.block_id] then closed[#closed + 1] = pane end
-    end
     group.targets = kept
     save()
-    report(closed, nil, 0.3)
+    report(left, nil, 0.3)
     -- This pane may be the one that left.
     if group_of(ctx.block_id) == nil then return end
   end
@@ -223,7 +244,7 @@ local function copy(ctx, event)
 
   -- A new shell prompt drops the status, so it is reported again after Enter.
   local enter = event.type == "key" and event.payload.key == "enter"
-  if enter or group.entered or #lost > 0 or skipped ~= (group.skipped or 0) then
+  if enter or group.entered or lost or skipped ~= (group.skipped or 0) then
     show(group, skipped, enter and 1 or 0)
   end
   group.entered, group.skipped = enter, skipped
@@ -281,7 +302,7 @@ rex.action{
 rex.action{
   name        = "sync_panes",
   title       = "Sync Typing in Matching Panes",
-  description = "Type in every pane of this tab that matches this one: ssh panes from an ssh pane, else panes running the same program. Run it again to stop.",
+  description = "Type in every pane of this tab that matches this one: ssh panes from an ssh pane, else panes running the same program. Run it again in a synced pane to stop, or in a matching pane that is not synced to add that pane.",
   category    = "SSH",
   keywords    = "ssh send broadcast input synchronize sync type panes",
   run         = function(ctx, args)
@@ -290,15 +311,39 @@ rex.action{
     local panes, border = 0, nil
     local _, any = next(groups)
     local before = any and any.border
-    if groups[tab.window_id] ~= nil then
+    local group = groups[tab.window_id]
+    local targets, left, synced = {}, {}, false
+    if group ~= nil then targets, left = sort_targets(group, tab.here) end
+    for _, pane in ipairs(targets) do synced = synced or pane.block_id == ctx.block_id end
+    if synced then
       stop(tab.window_id, tab.here)
       if next(groups) == nil then border = before end
     elseif armed and any == nil then
       -- The last sync ended by itself, and a key cannot set the highlight back.
       border = last_border
     else
-      local targets, is_ssh = find_targets(ctx, tab.blocks)
-      prepare(targets)
+      local new, kind
+      if #targets > 0 then
+        new, kind = find_joining(ctx, tab, targets), group.kind
+      else
+        local ok
+        ok, new, kind = pcall(find_targets, ctx, tab.blocks)
+        if not ok then
+          -- No pane is left in which to stop a sync whose panes are all gone.
+          if group ~= nil then stop(tab.window_id, tab.here) end
+          error(new, 0)
+        end
+      end
+      prepare(new)
+      local joined, gone = {}, {}
+      for _, pane in ipairs(new) do
+        targets[#targets + 1] = pane
+        joined[pane.block_id] = true
+      end
+      -- A pane that syncs again is marked anew, and a late clear would undo that.
+      for _, pane in ipairs(left) do
+        if not joined[pane.block_id] then gone[#gone + 1] = pane end
+      end
       -- Groups of tabs that are gone.
       for window_id, group in pairs(groups) do
         local view = rex.call("session.view", { session_id = group.session_id })
@@ -307,8 +352,10 @@ rex.action{
         if not alive then groups[window_id] = nil end
       end
       before = before or read_border()
-      groups[tab.window_id] = { session_id = ctx.session_id, is_ssh = is_ssh, targets = targets, border = before }
+      -- A late report after Enter still has the old count, so `entered` makes the next key report again.
+      groups[tab.window_id] = { session_id = ctx.session_id, kind = kind, targets = targets, border = before, entered = group and group.entered }
       save()
+      if #gone > 0 then report(gone, nil, 0.3) end
       show(groups[tab.window_id], 0)
       panes, border = #targets, SYNC_BORDER
     end
