@@ -1,0 +1,15 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+# Rex loads sync typing from this clone. See dot_config/rex/init.lua.
+# The repository is private, so a failure here must not stop chezmoi apply on a Mac that has no access yet.
+set -uo pipefail
+
+dir="$HOME/.local/share/rex-sync"
+export GIT_SSH_COMMAND="ssh -o BatchMode=yes"
+
+if [ -d "$dir/.git" ]; then
+  git -C "$dir" pull --quiet --ff-only || echo "rex-sync: could not update $dir. Rex keeps the copy it has." >&2
+else
+  git clone --quiet git@github.com:PunGrumpy/rex-sync.git "$dir" || echo "rex-sync: could not clone to $dir. Rex runs without sync typing until this works." >&2
+fi
+{{- end }}

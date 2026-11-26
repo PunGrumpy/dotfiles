@@ -1,7 +1,8 @@
 -- Split a pane. Beside an ssh pane, the new pane logs in to the same host.
 -- keybindings.lua binds it with the other pane keys.
 
-local ssh_pane = require("ssh_pane")
+-- ssh_pane comes from the rex-sync repository. Without it every split is an ordinary split.
+local has_ssh_pane, ssh_pane = pcall(require, "ssh_pane")
 
 local SHELL_FLAVOR = "com.superlogical.terminal.shell"
 local SPLITS = { right = "horizontal", down = "vertical" }
@@ -20,7 +21,7 @@ rex.action{
   run         = function(ctx, args)
     local direction = args.direction or "right"
     -- With ctx.server set the pane is on another machine, where ps here sees nothing.
-    local ssh = ctx.server == nil and ssh_pane.of(ctx.block_id)
+    local ssh = has_ssh_pane and ctx.server == nil and ssh_pane.of(ctx.block_id)
     if not (ssh and ssh.argv) then
       rex.client.queue("pane.split", { direction = direction })
       return
