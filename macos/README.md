@@ -7,6 +7,7 @@ Run these steps by hand after `chezmoi apply`:
 1. Download [Rex](https://www.superlogical.com/rex). Rex has no Homebrew cask.
 2. Run `~/.scripts/rex` to set the Rex preferences. The script restarts Rex.
 3. Run `~/.scripts/dock` to rebuild the Dock.
+4. Give this Mac SSH access to GitHub, then run `chezmoi apply` again. It clones the private rex-sync repository, which holds sync typing for Rex. Until then Rex runs without it.
 
 ## Move to a new Mac
 

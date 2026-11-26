@@ -1,0 +1,3 @@
+.config/rex/ssh_pane.lua
+.config/rex/sync_keys.lua
+.config/rex/sync_panes.lua
