@@ -4,6 +4,8 @@
 
 Windows gets the terminal setup only. Development tools and the Git config stay in WSL. [Rex](https://www.superlogical.com/rex) is the terminal, with the same keys and actions as on macOS. Windows Terminal stays set up as a second terminal.
 
+![Neovim and fish on WSL in Rex on Windows](../images/rex-windows.png)
+
 ![Neovim and fish in tmux on WSL, in Windows Terminal](../images/wsl.png)
 
 ## Install
