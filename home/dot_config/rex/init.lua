@@ -19,10 +19,10 @@ require("claude")
 require("copy_mode")
 require("split_ssh")
 
--- sshpick: pick a host in a floating layer, open it in a labelled tab. See sshpick's docs/rex.md.
+-- keyway: pick a host from Rex's palette, open it in a labelled tab. See keyway's docs/rex.md.
 -- It is linked in by hand.
-if optional("sshpick") then
-  rex.bind("ctrl+a>s", "sshpick")
+if optional("keyway") then
+  rex.bind("ctrl+a>s", "keyway")
 end
 
 -- Last, because it leaves the keys bound above to their own actions.
