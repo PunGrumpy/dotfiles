@@ -16,6 +16,9 @@ Run the Windows commands in the [main README](../README.md#install). `chezmoi ap
 
 1. Download [Rex](https://www.superlogical.com/rex) and open it once.
 2. Run `~/.scripts/rex.ps1` to set the font, cursor, Vercel themes, and the WSL shell. The script restarts Rex. Your sessions survive.
+3. Run `rex server install --user -- --tailscale` to start the Rex server, with Tailscale, each time you sign in. It needs no password and no administrator rights.
+
+Without `--user`, Rex installs a Windows Service that starts at boot and asks for the password of your Microsoft account. With "Only allow Windows Hello sign-in for Microsoft accounts" on, the PC may not have your current password, and Windows refuses it. This setup uses `--user` instead. The server then stops when you sign out. `rex server uninstall` removes it.
 
 Rex for Windows reads `%AppData%\rex\init.lua`. That file loads `~/.config/rex`, the same config as on macOS. The actions that run lazygit, nvim, and Claude Code start them in WSL, in the folder of the focused pane. Sync typing and sshpick are macOS only.
 
