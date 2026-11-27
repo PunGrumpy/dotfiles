@@ -56,6 +56,8 @@ Set-RexSetting cursor_blink false
 Set-RexSetting theme dark
 Set-RexSetting pane_header_visibility never
 Set-RexSetting inactive_pane_dim_amount 0
+# A see-through titlebar leaves the window buttons in an opaque block (Rex 0.1.1-snapshot.510).
+Set-RexSetting use_transparent_background false
 # New tabs open fish in WSL, where the development tools live.
 Set-RexSetting default_shell wsl
 
