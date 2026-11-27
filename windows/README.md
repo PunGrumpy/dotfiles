@@ -22,6 +22,8 @@ Without `--user`, Rex installs a Windows Service that starts at boot and asks fo
 
 Rex for Windows reads `%AppData%\rex\init.lua`. That file loads `~/.config/rex`, the same config as on macOS. The actions that run lazygit, nvim, and Claude Code start them in WSL, in the folder of the focused pane. Sync typing and sshpick are macOS only.
 
+Rex for Windows 0.1.1-snapshot.520 does not use the key bindings in `init.lua`. `ctrl+a>l` and the other keys in `keybindings.lua` do nothing, and the command palette does not list the actions. Run an action from a Rex pane instead, for example `rex.com do lazygit` in WSL or `rex do lazygit` in PowerShell. The keys Rex for Windows has itself work, such as Ctrl+Shift+T for a new tab and Ctrl+Shift+W to close a pane.
+
 ## Keep a Windows Terminal change
 
 chezmoi manages the Windows Terminal `settings.json`. After you change a setting in the app, run `chezmoi re-add` to keep the change.
