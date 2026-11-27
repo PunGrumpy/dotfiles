@@ -1,6 +1,7 @@
 -- Claude Code in its own tab, opened in the focused pane's directory.
 
 local pane_cwd = require("pane_cwd")
+local unix = require("unix")
 
 rex.action{
   name  = "claude_here",
@@ -11,7 +12,7 @@ rex.action{
       layout = rex.layout.block{
         flavor = "com.superlogical.terminal.shell",
         label = "claude",
-        options = { command = { "claude" }, cwd = pane_cwd.of(ctx.block_id) },
+        options = unix.options({ "claude" }, pane_cwd.of(ctx.block_id)),
       },
     }
     if err ~= nil then error(err, 0) end

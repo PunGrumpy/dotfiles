@@ -32,9 +32,16 @@ Session.vim
 .config/nvim/lua/pungrumpy/plugins/local.lua
 
 {{- if ne .chezmoi.os "darwin" }}
-.config/rex
 .scripts/dock
 .scripts/rex
+{{- end }}
+
+{{- if eq .chezmoi.os "linux" }}
+.config/rex
+{{- end }}
+
+{{- if ne .chezmoi.os "windows" }}
+.scripts/rex.ps1
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
@@ -53,7 +60,8 @@ Session.vim
 .czrc
 .gitconfig
 .gitignore
-.scripts
+.scripts/*
+!.scripts/rex.ps1
 {{- else }}
 .config/powershell
 .config/starship.toml
