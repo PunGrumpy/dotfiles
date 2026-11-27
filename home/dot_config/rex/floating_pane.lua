@@ -1,14 +1,15 @@
 -- Floating panes that run one script and hand focus back when it exits.
 
+local unix = require("unix")
+
 local M = {}
 
 local SHELL_FLAVOR = "com.superlogical.terminal.shell"
 local BOUNDS = { 0.1, 0.1, 0.8, 0.8 }
 
 -- Rex picks another pane when a floating pane closes, so the script refocuses
--- the pane it was opened from. rex is a function because the first rex on PATH
--- can be ~/.scripts/rex, which restarts Rex. REX_BIN_DIR is set by Rex.
-local PRELUDE = 'rex() { "${REX_BIN_DIR:+$REX_BIN_DIR/}rex" "$@"; }\n'
+-- the pane it was opened from.
+local PRELUDE = "rex() { " .. unix.rex .. ' "$@"; }\n'
 local REFOCUS_ORIGIN = '\nrex focus -s "$1" "$2"\n'
 
 --- Runs a shell script in a floating pane over the window.
@@ -26,10 +27,10 @@ function M.run(ctx, script, cwd)
     focus  = true,
     layout = rex.layout.block{
       flavor  = SHELL_FLAVOR,
-      options = {
-        command = { "sh", "-c", PRELUDE .. script .. REFOCUS_ORIGIN, "floating_pane", ctx.session_id, ctx.block_id },
-        cwd     = cwd,
-      },
+      options = unix.options(
+        { "sh", "-c", PRELUDE .. script .. REFOCUS_ORIGIN, "floating_pane", ctx.session_id, ctx.block_id },
+        cwd
+      ),
     },
   }
   if err ~= nil then error(err, 0) end

@@ -2,7 +2,7 @@
 -- Each file beside this one holds one concern. Add new ones here.
 
 -- sync_panes and ssh_pane live in the rex-sync repository. run_after_45-update-rex-sync.sh clones it.
-package.path = os.getenv("HOME") .. "/.local/share/rex-sync/packages/sync-typing/lua/?.lua;" .. package.path
+package.path = require("unix").home .. "/.local/share/rex-sync/packages/sync-typing/lua/?.lua;" .. package.path
 
 -- For a module from another repository, so a machine without that repository still loads this file.
 local function optional(name)

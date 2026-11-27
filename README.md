@@ -23,19 +23,19 @@ iex "&{$(irm 'https://get.chezmoi.io/ps1')} -- init --apply PunGrumpy"
 
 `chezmoi apply` installs the packages in `home/Brewfile`, `home/apt-packages.txt`, `home/winget.json`, and `home/scoop-packages.txt`. It runs a package script again only when its list changes.
 
-On a new Mac, finish with the steps in [macOS](macos/README.md). [Windows](windows/README.md) lists what the Windows setup covers.
+On a new Mac, finish with the steps in [macOS](macos/README.md). On Windows, finish with the steps in [Windows](windows/README.md).
 
 ## Terminal
 
-I use [Rex](https://www.superlogical.com/rex). Rex runs only on macOS today, so Linux and Windows use another terminal until Rex supports them.
+I use [Rex](https://www.superlogical.com/rex) on macOS and Windows. Rex has no Linux app, so Linux uses another terminal.
 
 | System | Terminal | Shell |
 | --- | --- | --- |
 | macOS | Rex | fish |
 | Linux | [Ghostty](https://ghostty.org/) | fish in tmux |
-| Windows | [Windows Terminal](https://github.com/microsoft/terminal) | PowerShell, or fish in tmux on WSL |
+| Windows | Rex | fish on WSL |
 
-Rex and Windows Terminal use GeistMono Nerd Font. Rex, tmux, Neovim, and the WSL profile in Windows Terminal use the Vercel colors. This repository has no Ghostty config yet.
+Rex and Windows Terminal use GeistMono Nerd Font. Rex, tmux, Neovim, and the WSL profile in Windows Terminal use the Vercel colors. chezmoi still sets up [Windows Terminal](https://github.com/microsoft/terminal) as a second terminal on Windows. This repository has no Ghostty config yet.
 
 ## What you get
 
@@ -43,7 +43,7 @@ Rex and Windows Terminal use GeistMono Nerd Font. Rex, tmux, Neovim, and the WSL
 | --- | --- |
 | Neovim | A flat config on the built-in `vim.pack`, with no plugin manager or distribution. See [Neovim](#neovim). |
 | fish | The [Tide](https://github.com/IlanCosman/tide) prompt. [Fisher](https://github.com/jorgebucaran/fisher) installs fzf.fish, zoxide.fish, puffer-fish, and pisces. |
-| tmux | Linux and WSL only. On macOS, Rex splits the panes. |
+| tmux | Linux and WSL only. In Rex, Rex splits the panes. |
 | PowerShell | The [Starship](https://starship.rs/) prompt, PSFzf, and eza. Windows only. |
 | Git | [delta](https://github.com/dandavison/delta) as the pager, [lazygit](https://github.com/jesseduffield/lazygit), and [cz-git](https://github.com/Zhengqbbb/cz-git) for commit messages. |
 | gwq | Creates worktrees in `~/.t3/worktrees/<repo>/<branch>`, where T3 Code keeps its worktrees. |
